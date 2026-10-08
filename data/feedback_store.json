@@ -1,0 +1,404 @@
+{
+  "implicit_views": {
+    "DEST_MB_10": {
+      "name": "Núi Đồi Bù",
+      "region": "Miền Bắc",
+      "views": 12
+    },
+    "DEST_MB_13": {
+      "name": "Vườn Quốc Gia Ba Vì",
+      "region": "Miền Bắc",
+      "views": 4
+    },
+    "DEST_MB_01": {
+      "name": "Vịnh Hạ Long",
+      "region": "Miền Bắc",
+      "views": 8
+    },
+    "DEST_MB_22": {
+      "name": "Thác Bản Giốc",
+      "region": "Miền Bắc",
+      "views": 3
+    },
+    "DEST_MB_20": {
+      "name": "Khu du lịch Sông Hồng",
+      "region": "Miền Bắc",
+      "views": 5
+    },
+    "DEST_MB_17": {
+      "name": "Mộc Châu – Sơn La",
+      "region": "Miền Bắc",
+      "views": 12
+    },
+    "DEST_MT_27": {
+      "name": "Đèo Hải Vân",
+      "region": "Miền Trung",
+      "views": 12
+    },
+    "DEST_MT_56": {
+      "name": "Vĩnh Hy",
+      "region": "Miền Trung",
+      "views": 8
+    },
+    "DEST_MT_24": {
+      "name": "Cù Lao Chàm",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MT_25": {
+      "name": "Ngũ Hành Sơn",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MT_36": {
+      "name": "Động Phong Nha - Kẻ Bàng",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MT_35": {
+      "name": "Vịnh Lăng Cô",
+      "region": "Miền Trung",
+      "views": 3
+    },
+    "DEST_MN_81": {
+      "name": "Tượng chúa Kito Vua",
+      "region": "Miền Nam",
+      "views": 11
+    },
+    "DEST_MN_61": {
+      "name": "Hồ Tuyền Lâm",
+      "region": "Miền Nam",
+      "views": 4
+    },
+    "DEST_MN_60": {
+      "name": "Đỉnh Langbiang",
+      "region": "Miền Nam",
+      "views": 11
+    },
+    "DEST_MN_89": {
+      "name": "Côn Đảo",
+      "region": "Miền Nam",
+      "views": 10
+    },
+    "DEST_MN_78": {
+      "name": "Khu Du Lịch Hồ Mây",
+      "region": "Miền Nam",
+      "views": 6
+    },
+    "DEST_MN_68": {
+      "name": "Đồi Kỳ Quan Phan Thiết",
+      "region": "Miền Nam",
+      "views": 11
+    },
+    "DEST_MB_21": {
+      "name": "Cột cờ Lũng Cú",
+      "region": "Miền Bắc",
+      "views": 11
+    },
+    "DEST_MN_76": {
+      "name": "Núi Bà Đen Tây Ninh",
+      "region": "Miền Nam",
+      "views": 10
+    },
+    "DEST_MB_18": {
+      "name": "Đảo Cát Bà",
+      "region": "Miền Bắc",
+      "views": 7
+    },
+    "DEST_MT_43": {
+      "name": "Kỳ Co",
+      "region": "Miền Trung",
+      "views": 6
+    },
+    "DEST_MT_28": {
+      "name": "Bãi biển Mỹ Khê",
+      "region": "Miền Trung",
+      "views": 7
+    },
+    "DEST_MT_40": {
+      "name": "Bãi biển Nhật Lệ",
+      "region": "Miền Trung",
+      "views": 7
+    },
+    "DEST_MT_29": {
+      "name": "Bãi biển Tiên Sa",
+      "region": "Miền Trung",
+      "views": 6
+    },
+    "DEST_MT_54": {
+      "name": "Vịnh Nha Trang",
+      "region": "Miền Trung",
+      "views": 7
+    },
+    "DEST_MN_99": {
+      "name": "Bãi Tắm Sao, Phú Quốc",
+      "region": "Miền Nam",
+      "views": 7
+    },
+    "DEST_MN_95": {
+      "name": "Đảo Phú Quốc",
+      "region": "Miền Nam",
+      "views": 7
+    },
+    "DEST_MN_100": {
+      "name": "Bãi Dài",
+      "region": "Miền Nam",
+      "views": 7
+    },
+    "DEST_MN_96": {
+      "name": "Đảo Nam Du",
+      "region": "Miền Nam",
+      "views": 7
+    },
+    "DEST_MN_82": {
+      "name": "Mũi Nghinh phong",
+      "region": "Miền Nam",
+      "views": 3
+    },
+    "DEST_MB_03": {
+      "name": "Nhà tù Hỏa Lò",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MB_15": {
+      "name": "Thành Cổ Loa",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MB_04": {
+      "name": "Văn Miếu - Quốc Tử Giám",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MB_09": {
+      "name": "Tràng An, Ninh Bình",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MT_33": {
+      "name": "Sông Hương",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_41": {
+      "name": "Khu phố cổ Hội An",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_44": {
+      "name": "Tháp Đôi Quy Nhơn",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_32": {
+      "name": "Đại Nội Huế",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_34": {
+      "name": "Cầu Tràng Tiền",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_23": {
+      "name": "Bà Nà Hills",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MN_83": {
+      "name": "Bạch Dinh",
+      "region": "Miền Nam",
+      "views": 2
+    },
+    "DEST_MN_86": {
+      "name": "Chợ Nổi Cái Răng",
+      "region": "Miền Nam",
+      "views": 2
+    },
+    "DEST_MN_79": {
+      "name": "Wonder Museum - Bảo tàng kỳ quan",
+      "region": "Miền Nam",
+      "views": 2
+    },
+    "DEST_MB_16": {
+      "name": "Sapa – Lào Cai",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MT_49": {
+      "name": "Măng Đen",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_26": {
+      "name": "Bán đảo Sơn Trà",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_31": {
+      "name": "Cầu Tình Yêu Đà Nẵng",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MN_59": {
+      "name": "Đồi chè Cầu Đất Farm",
+      "region": "Miền Nam",
+      "views": 2
+    },
+    "DEST_MN_57": {
+      "name": "Vườn thú ZooDoo Đà Lạt",
+      "region": "Miền Nam",
+      "views": 2
+    },
+    "DEST_MT_50": {
+      "name": "Hòn Tằm",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MN_97": {
+      "name": "Hòn Thơm",
+      "region": "Miền Nam",
+      "views": 1
+    },
+    "DEST_MN_94": {
+      "name": "Thành phố Hà Tiên",
+      "region": "Miền Nam",
+      "views": 2
+    }
+  },
+  "explicit_reviews": [
+    {
+      "timestamp": "2026-09-22 02:21:02",
+      "persona": "Khách (Ngân sách: 5.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Bãi Tắm Sao, Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Nam Du (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MN_99",
+          "name": "Bãi Tắm Sao, Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 1.0,
+            "duration_fit": -2.5,
+            "style_match": 0.303470861371937,
+            "cluster_fit": 1.0,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.984,
+            "duration_fit": -1.5,
+            "style_match": 0.19975032600124176,
+            "cluster_fit": 1.0,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_43",
+          "name": "Kỳ Co",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.92,
+            "duration_fit": -2.5,
+            "style_match": 0.19523297739952217,
+            "cluster_fit": 1.0,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_96",
+          "name": "Đảo Nam Du",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.9545,
+            "duration_fit": -0.5,
+            "style_match": 0.1732370544755341,
+            "cluster_fit": 1.0,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 1.0,
+            "duration_fit": -2.5,
+            "style_match": 0.17417145084217397,
+            "cluster_fit": 1.0,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 5000000,
+        "duration": 3.0,
+        "style": "chúng tôi muốn đi du lịch biển"
+      }
+    },
+    {
+      "timestamp": "2026-09-22 01:23:00",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Nhà tù Hỏa Lò (Miền Bắc)",
+        "Thành Cổ Loa (Miền Bắc)",
+        "Côn Đảo (Miền Nam)",
+        "Bạch Dinh (Miền Nam)",
+        "Sông Hương (Miền Trung)"
+      ],
+      "unfit_items": [],
+      "comment": ""
+    },
+    {
+      "timestamp": "2026-09-22 01:18:51",
+      "persona": "Khách (Ngân sách: 1.0 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Bãi Tắm Sao, Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": ""
+    },
+    {
+      "timestamp": "2026-09-22 01:14:55",
+      "persona": "Sinh viên / Giới trẻ (Ngân sách: 1.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Cột cờ Lũng Cú (Miền Bắc)",
+        "Núi Đồi Bù (Miền Bắc)",
+        "Tượng chúa Kito Vua (Miền Nam)",
+        "Đèo Hải Vân (Miền Trung)"
+      ],
+      "unfit_items": [],
+      "comment": ""
+    }
+  ]
+}
