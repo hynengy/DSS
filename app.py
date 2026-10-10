@@ -758,7 +758,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                 else:
                     fit_list = [k for k, v in item_evals.items() if v == "Phù hợp"]
                     unfit_list = [k for k, v in item_evals.items() if v == "Chưa phù hợp"]
-                    persona_label = f"Khách (Ngân sách: {budget/1e6:.1f} triệu)"
+                    persona_label = f"Khách (Ngân sách: {budget_per_person/1e6:.1f} triệu)"
 
                     # Ghi kèm đặc trưng TOPSIS của từng địa điểm để hệ thống học lại trọng số
                     _feat_cols = ["rating_num", "budget_fit", "duration_fit", "style_match",
@@ -781,7 +781,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                         unfit_items=unfit_list,
                         comment=comment_input,
                         items=items_payload,
-                        context={"budget": budget, "duration": duration, "style": style},
+                        context={"budget": budget_per_person, "duration": duration, "style": style},
                     )
                     st.success("✅ Cảm ơn bạn! Đánh giá đã được lưu thành công vào hệ thống.")
 
