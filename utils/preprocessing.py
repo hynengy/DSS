@@ -19,54 +19,96 @@ def parse_rating(value):
     return float(match.group()) if match else None
 
 
+USD_TO_VND = 25_000
+_MONEY_UNIT = re.compile(r"^\s*(triệu|tr\b|nghìn|ngàn|k\b|usd|\$)")
+_MONEY_TOKEN = re.compile(r"\d[\d.,]*")
+
+
+def _money_unit(tail):
+    m = _MONEY_UNIT.match(tail)
+    if not m:
+        return None
+    u = m.group(1)
+    if u in ("triệu", "tr"):
+        return 1_000_000
+    if u in ("nghìn", "ngàn", "k"):
+        return 1_000
+    return USD_TO_VND
+
+
 def parse_money(text):
-    if pd.isna(text) or "miễn phí" in str(text).lower():
+    """
+    Chuỗi giá -> (min, max) VND. Đơn vị được xác định cho TỪNG số (vd "500k - 1.5 triệu"
+    -> 500.000 và 1.500.000). Số không có đơn vị trong một khoảng thì mượn đơn vị của số
+    phía sau ("600 - 1 triệu" -> 600k; "1.2 - 2.5 triệu" -> 1.2 triệu).
+    "Miễn phí" chỉ áp dụng khi xuất hiện TRƯỚC con số đầu tiên (vé vào cổng miễn phí, còn
+    các khoản phía sau là dịch vụ tùy chọn). Bỏ các số < 1.000đ (vd "1,3m", "4 cồn").
+    """
+    if pd.isna(text):
+        return (0, 0)
+    text = str(text).lower()
+    first_num = _MONEY_TOKEN.search(text)
+    free_pos = text.find("miễn phí")
+    if free_pos >= 0 and (first_num is None or free_pos < first_num.start()):
         return (0, 0)
 
-    text = str(text).lower()
-
-    if "triệu" in text or re.search(r"\btr\b", text):
-        decimal_unit_multiplier = 1_000_000
-    elif "nghìn" in text or re.search(r"\d\s*k\b", text):
-        decimal_unit_multiplier = 1_000
-    else:
-        decimal_unit_multiplier = 1
-
-    raw_tokens = re.findall(r"\d[\d.,]*", text)
-
-    numbers = []
-    for token in raw_tokens:
-        token = token.strip(".,")
-        if not token:
+    toks = []  # (giá trị thô, đơn vị riêng hoặc None, có dấu phân cách nghìn)
+    for m in _MONEY_TOKEN.finditer(text):
+        tok = m.group().strip(".,")
+        if not tok:
             continue
+        grouped = bool(re.fullmatch(r"\d{1,3}([.,]\d{3})+", tok))
+        val = float(tok.replace(".", "").replace(",", "")) if grouped else float(tok.replace(",", "."))
+        toks.append([val, _money_unit(text[m.end():]), grouped])
 
-        if re.fullmatch(r"\d{1,3}([.,]\d{3})+", token):
-            value = float(token.replace(".", "").replace(",", ""))
-        else:
-            value = float(token.replace(",", ".")) * decimal_unit_multiplier
+    values = []
+    for i, (val, unit, grouped) in enumerate(toks):
+        if unit is None and not grouped and val < 1000:
+            nxt = next((t[1] for t in toks[i + 1:] if t[1] is not None), None)
+            if nxt == 1_000_000 and val >= 100:
+                unit = 1_000          # "600 - 1 triệu" -> 600 nghìn
+            else:
+                unit = nxt
+        v = val * (unit or 1)
+        if v >= 1000:
+            values.append(v)
 
-        numbers.append(value)
-
-    if not numbers:
+    if not values:
         return (None, None)
-    if len(numbers) == 1:
-        return (numbers[0], numbers[0])
-    return (numbers[0], numbers[1])
+    pair = values[:2]
+    return (min(pair), max(pair))
+
+
+_DUR_UNIT = re.compile(r"(phút|tiếng|giờ|ngày|buổi)")
+HOURS_PER_DAY = 8.0  # một ngày tham quan ~ 8 tiếng
 
 
 def parse_duration(text):
+    """
+    Thời lượng tham quan lý tưởng -> số NGÀY (1 ngày tham quan = 8 tiếng, 1 buổi = 0.5 ngày).
+    Mỗi số lấy đơn vị đứng sau gần nhất: "45 phút – 1,5 tiếng", "30 - 45 phút".
+    Bỏ nội dung trong ngoặc (giờ mở cửa "21:00", "5:30 - 8:00"...) và cụm "x đêm".
+    """
     if pd.isna(text):
         return None
+    t = str(text).lower()
+    t = re.sub(r"\([^)]*\)", " ", t)
+    t = re.sub(r"\d+\s*đêm", " ", t)
+    t = t.replace("nửa ngày", "0.5 ngày").replace("cả ngày", "1 ngày")
 
-    text_lower = str(text).lower()
-    if "nửa ngày" in text_lower:
+    unit_days = {"phút": 1 / 60 / HOURS_PER_DAY, "tiếng": 1 / HOURS_PER_DAY,
+                 "giờ": 1 / HOURS_PER_DAY, "ngày": 1.0, "buổi": 0.5}
+    vals = []
+    for m in re.finditer(r"\d+(?:[.,]\d+)?", t):
+        u = _DUR_UNIT.search(t, m.end())
+        if not u:
+            continue
+        vals.append(float(m.group().replace(",", ".")) * unit_days[u.group(1)])
+    if vals:
+        return round(sum(vals[:2]) / len(vals[:2]), 3)
+    if re.search(r"buổi|sáng|chiều|tối", t):
         return 0.5
-    if "cả ngày" in text_lower or "1 ngày" in text_lower:
-        return 1.0
-
-    numbers = re.findall(r"\d+", text_lower)
-    numbers = [int(n) for n in numbers]
-    return sum(numbers) / len(numbers) if numbers else None
+    return None
 
 
 def parse_keywords(text):

@@ -119,6 +119,9 @@ SYNONYM_MAP = {
     "chùa": "chùa đền tâm linh miếu thiền viện",
     "nghỉ dưỡng": "nghỉ dưỡng resort spa thư giãn",
     "phượt": "phượt trekking cắm trại",
+    "thiên nhiên": "thiên nhiên sinh thái vườn quốc gia rừng núi thác suối hồ",
+    "xanh mát": "xanh mát sinh thái rừng đồi chè vườn quốc gia",
+    "sông nước": "sông nước chợ nổi miệt vườn cồn",
 }
 
 
@@ -157,6 +160,48 @@ def cluster_affinity(df, keyword_query, tfidf_model, tfidf_matrix):
     return (s / mx) if mx > 0 else None
 
 
+def trip_days(preferred_duration):
+    """Số ngày chuyến đi (điểm giữa khoảng thời lượng người dùng chọn)."""
+    if not preferred_duration:
+        return 1.0
+    lo, hi = preferred_duration
+    return (lo + hi) / 2 if hi < 999 else lo + 1
+
+
+def hotel_price_per_night(hotel_df):
+    """
+    Giá phòng tiêu biểu / đêm của từng điểm đến = TRUNG VỊ giá giữa (min+max)/2 các khách sạn
+    lân cận (trung vị để 1 khách sạn siêu sang không kéo lệch). Bỏ giá thiếu/0.
+    """
+    if hotel_df is None or hotel_df.empty or "destination_id" not in hotel_df.columns:
+        return pd.Series(dtype=float)
+    h = hotel_df[["destination_id", "price_min", "price_max"]].copy()
+    h["mid"] = h[["price_min", "price_max"]].mean(axis=1)
+    h = h[h["mid"] > 0]
+    return h.groupby("destination_id")["mid"].median()
+
+
+def estimate_trip_cost(df, preferred_duration=None, hotel_df=None, num_people: int = 1) -> pd.Series:
+    """
+    Tổng chi phí ước tính của CẢ NHÓM cho từng điểm đến (dùng chung cho xếp hạng, giải thích
+    và đánh giá offline để mọi nơi tính giống nhau):
+        vé vào cổng/người x số người
+      + giá phòng/đêm x số phòng (2 người/phòng) x số đêm (số ngày - 1, làm tròn lên)
+    Chuyến đi trong ngày (<= 1 ngày) không tính khách sạn.
+    """
+    num_people = max(1, int(num_people or 1))
+    ticket = df[["cost_min", "cost_max"]].mean(axis=1).fillna(0)
+    total = ticket * num_people
+    nights = max(0, int(np.ceil(trip_days(preferred_duration))) - 1)
+    if nights > 0 and hotel_df is not None and "destination_id" in df.columns:
+        per_night = hotel_price_per_night(hotel_df)
+        if not per_night.empty:
+            rooms = (num_people + 1) // 2
+            room_cost = df["destination_id"].map(per_night).fillna(per_night.median())
+            total = total + room_cost * rooms * nights
+    return total
+
+
 def build_decision_matrix(
     df: pd.DataFrame,
     preferred_duration=None,
@@ -166,6 +211,8 @@ def build_decision_matrix(
     tfidf_model=None,
     tfidf_matrix=None,
     community: dict = None,
+    hotel_df: pd.DataFrame = None,
+    num_people: int = 1,
 ) -> pd.DataFrame:
     """
     Xây ma trận quyết định (decision matrix) từ dữ liệu điểm đến đã lọc,
@@ -181,21 +228,21 @@ def build_decision_matrix(
     else:
         m["rating_num"] = 1.0
 
-    # ── budget_fit: khoảng cách tương đối tới ngân sách ────
+    # ── budget_fit: phần ngân sách còn lại sau tổng chi phí ước tính ────
     # Giá trị ∈ [0, 1]: 1 = miễn phí, 0 = vượt ngân sách
-    avg_cost = df[["cost_min", "cost_max"]].mean(axis=1).fillna(0)
+    est_cost = estimate_trip_cost(df, preferred_duration, hotel_df, num_people)
+    m["est_total_cost"] = est_cost
     if budget and budget > 0:
-        m["budget_fit"] = ((budget - avg_cost) / budget).clip(lower=0.0, upper=1.0)
+        m["budget_fit"] = ((budget - est_cost) / budget).clip(lower=0.0, upper=1.0)
     else:
         m["budget_fit"] = 1.0  # Không có budget → không phạt
 
-    # ── duration_fit ─────────────────────────────────────────
+    # ── duration_fit: 1 / (1 + |thời lượng điểm đến - số ngày khách có|) ∈ (0, 1] ──
     if preferred_duration:
-        lo, hi = preferred_duration
-        mid = (lo + hi) / 2 if hi < 999 else lo + 1
-        m["duration_fit"] = -(df["duration_days"].fillna(mid) - mid).abs()
+        mid = trip_days(preferred_duration)
+        m["duration_fit"] = 1.0 / (1.0 + (df["duration_days"].fillna(mid) - mid).abs())
     else:
-        m["duration_fit"] = 0.0
+        m["duration_fit"] = 1.0
 
     # ── style_match: TF-IDF cosine > cluster filter > uniform ─
     if keyword_query and tfidf_model is not None and tfidf_matrix is not None:
@@ -241,6 +288,8 @@ def rank_by_suitability(
     tfidf_model=None,
     tfidf_matrix=None,
     community: dict = None,
+    hotel_df: pd.DataFrame = None,
+    num_people: int = 1,
     **kwargs
 ) -> pd.DataFrame:
     """
@@ -283,10 +332,14 @@ def rank_by_suitability(
         tfidf_model=tfidf_model,
         tfidf_matrix=tfidf_matrix,
         community=community,
+        hotel_df=hotel_df,
+        num_people=num_people,
     )
+    est_cost = matrix.pop("est_total_cost")  # thông tin hiển thị, không phải tiêu chí TOPSIS
     scores = topsis_score(matrix, criteria)
 
     out = df.copy()
+    out["est_total_cost"] = est_cost
     out["style_match"] = matrix["style_match"]
     out["cluster_fit"] = matrix["cluster_fit"]
     out["community_score"] = matrix["community_score"]
@@ -304,17 +357,9 @@ def rank_by_suitability(
             keep = keep | (matrix["cluster_fit"].reindex(out.index) >= CLUSTER_KEEP_THRESHOLD)
         out = out[keep]
 
-    # Rescale điểm số của các địa điểm phù hợp (còn lại) lên khoảng 60% - 98%
-    # để phù hợp với tâm lý người dùng (>= 50% là phù hợp)
-    if len(out) > 0:
-        max_s = out["suitability_score"].max()
-        min_s = out["suitability_score"].min()
-        if max_s > min_s:
-            out["suitability_score"] = 60 + (out["suitability_score"] - min_s) / (max_s - min_s) * (98 - 60)
-        else:
-            out["suitability_score"] = 95.0
-            
-        out["suitability_score"] = out["suitability_score"].round(1)
+    # suitability_score = hệ số gần lý tưởng C* của TOPSIS (x100), KHÔNG co giãn lại.
+    # (Trước đây điểm được kéo giãn về 60-98% nên điểm cuối danh sách luôn hiện "60%"
+    # dù C* thực chỉ ~0.28 -> sai lệch so với kết quả TOPSIS.)
 
     out = out.sort_values("suitability_score", ascending=False)
     return out
@@ -337,9 +382,10 @@ def explain_top_criteria(row: pd.Series, budget=None, keyword_query=None, feedba
             and pd.notna(row.get("cluster_name")):
         reasons.append(f"Thuộc nhóm điểm đến gần với sở thích của bạn: {str(row.get('cluster_name')).strip()}")
 
-    cost_min, cost_max = row.get("cost_min"), row.get("cost_max")
-    if budget and pd.notna(cost_max) and cost_max <= budget:
-        reasons.append("Phù hợp ngân sách của bạn")
+    est = row.get("est_total_cost")
+    if budget and pd.notna(est) and est <= budget:
+        reasons.append(f"Tổng chi phí ước tính ~{est / 1e6:.2f} triệu đ, trong ngân sách "
+                       f"{budget / 1e6:.1f} triệu đ (vé vào cổng + khách sạn)")
 
     rating = row.get("rating_num")
     if pd.notna(rating) and rating >= 4.0:

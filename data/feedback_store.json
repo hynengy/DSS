@@ -3,42 +3,42 @@
     "DEST_MB_10": {
       "name": "Núi Đồi Bù",
       "region": "Miền Bắc",
-      "views": 12
+      "views": 14
     },
     "DEST_MB_13": {
       "name": "Vườn Quốc Gia Ba Vì",
       "region": "Miền Bắc",
-      "views": 4
+      "views": 7
     },
     "DEST_MB_01": {
       "name": "Vịnh Hạ Long",
       "region": "Miền Bắc",
-      "views": 8
+      "views": 13
     },
     "DEST_MB_22": {
       "name": "Thác Bản Giốc",
       "region": "Miền Bắc",
-      "views": 3
+      "views": 8
     },
     "DEST_MB_20": {
       "name": "Khu du lịch Sông Hồng",
       "region": "Miền Bắc",
-      "views": 5
+      "views": 6
     },
     "DEST_MB_17": {
       "name": "Mộc Châu – Sơn La",
       "region": "Miền Bắc",
-      "views": 12
+      "views": 15
     },
     "DEST_MT_27": {
       "name": "Đèo Hải Vân",
       "region": "Miền Trung",
-      "views": 12
+      "views": 14
     },
     "DEST_MT_56": {
       "name": "Vĩnh Hy",
       "region": "Miền Trung",
-      "views": 8
+      "views": 14
     },
     "DEST_MT_24": {
       "name": "Cù Lao Chàm",
@@ -53,7 +53,7 @@
     "DEST_MT_36": {
       "name": "Động Phong Nha - Kẻ Bàng",
       "region": "Miền Trung",
-      "views": 1
+      "views": 6
     },
     "DEST_MT_35": {
       "name": "Vịnh Lăng Cô",
@@ -63,97 +63,97 @@
     "DEST_MN_81": {
       "name": "Tượng chúa Kito Vua",
       "region": "Miền Nam",
-      "views": 11
+      "views": 13
     },
     "DEST_MN_61": {
       "name": "Hồ Tuyền Lâm",
       "region": "Miền Nam",
-      "views": 4
+      "views": 6
     },
     "DEST_MN_60": {
       "name": "Đỉnh Langbiang",
       "region": "Miền Nam",
-      "views": 11
+      "views": 13
     },
     "DEST_MN_89": {
       "name": "Côn Đảo",
       "region": "Miền Nam",
-      "views": 10
+      "views": 16
     },
     "DEST_MN_78": {
       "name": "Khu Du Lịch Hồ Mây",
       "region": "Miền Nam",
-      "views": 6
+      "views": 9
     },
     "DEST_MN_68": {
       "name": "Đồi Kỳ Quan Phan Thiết",
       "region": "Miền Nam",
-      "views": 11
+      "views": 13
     },
     "DEST_MB_21": {
       "name": "Cột cờ Lũng Cú",
       "region": "Miền Bắc",
-      "views": 11
+      "views": 13
     },
     "DEST_MN_76": {
       "name": "Núi Bà Đen Tây Ninh",
       "region": "Miền Nam",
-      "views": 10
+      "views": 12
     },
     "DEST_MB_18": {
       "name": "Đảo Cát Bà",
       "region": "Miền Bắc",
-      "views": 7
+      "views": 13
     },
     "DEST_MT_43": {
       "name": "Kỳ Co",
       "region": "Miền Trung",
-      "views": 6
+      "views": 12
     },
     "DEST_MT_28": {
       "name": "Bãi biển Mỹ Khê",
       "region": "Miền Trung",
-      "views": 7
+      "views": 11
     },
     "DEST_MT_40": {
       "name": "Bãi biển Nhật Lệ",
       "region": "Miền Trung",
-      "views": 7
+      "views": 11
     },
     "DEST_MT_29": {
       "name": "Bãi biển Tiên Sa",
       "region": "Miền Trung",
-      "views": 6
+      "views": 9
     },
     "DEST_MT_54": {
       "name": "Vịnh Nha Trang",
       "region": "Miền Trung",
-      "views": 7
+      "views": 10
     },
     "DEST_MN_99": {
       "name": "Bãi Tắm Sao, Phú Quốc",
       "region": "Miền Nam",
-      "views": 7
+      "views": 13
     },
     "DEST_MN_95": {
       "name": "Đảo Phú Quốc",
       "region": "Miền Nam",
-      "views": 7
+      "views": 13
     },
     "DEST_MN_100": {
       "name": "Bãi Dài",
       "region": "Miền Nam",
-      "views": 7
+      "views": 10
     },
     "DEST_MN_96": {
       "name": "Đảo Nam Du",
       "region": "Miền Nam",
-      "views": 7
+      "views": 13
     },
     "DEST_MN_82": {
       "name": "Mũi Nghinh phong",
       "region": "Miền Nam",
-      "views": 3
+      "views": 6
     },
     "DEST_MB_03": {
       "name": "Nhà tù Hỏa Lò",
@@ -173,7 +173,7 @@
     "DEST_MB_09": {
       "name": "Tràng An, Ninh Bình",
       "region": "Miền Bắc",
-      "views": 2
+      "views": 5
     },
     "DEST_MT_33": {
       "name": "Sông Hương",
@@ -203,7 +203,7 @@
     "DEST_MT_23": {
       "name": "Bà Nà Hills",
       "region": "Miền Trung",
-      "views": 2
+      "views": 4
     },
     "DEST_MN_83": {
       "name": "Bạch Dinh",
@@ -223,27 +223,27 @@
     "DEST_MB_16": {
       "name": "Sapa – Lào Cai",
       "region": "Miền Bắc",
-      "views": 2
+      "views": 4
     },
     "DEST_MT_49": {
       "name": "Măng Đen",
       "region": "Miền Trung",
-      "views": 2
+      "views": 4
     },
     "DEST_MT_26": {
       "name": "Bán đảo Sơn Trà",
       "region": "Miền Trung",
-      "views": 2
+      "views": 6
     },
     "DEST_MT_31": {
       "name": "Cầu Tình Yêu Đà Nẵng",
       "region": "Miền Trung",
-      "views": 2
+      "views": 4
     },
     "DEST_MN_59": {
       "name": "Đồi chè Cầu Đất Farm",
       "region": "Miền Nam",
-      "views": 2
+      "views": 3
     },
     "DEST_MN_57": {
       "name": "Vườn thú ZooDoo Đà Lạt",
@@ -264,6 +264,26 @@
       "name": "Thành phố Hà Tiên",
       "region": "Miền Nam",
       "views": 2
+    },
+    "DEST_MB_14": {
+      "name": "Thiên Sơn – Suối Ngà",
+      "region": "Miền Bắc",
+      "views": 3
+    },
+    "DEST_MT_48": {
+      "name": "Vườn Quốc Gia Yok Đôn",
+      "region": "Miền Trung",
+      "views": 3
+    },
+    "DEST_MN_91": {
+      "name": "Vườn Quốc Gia U Minh Hạ",
+      "region": "Miền Nam",
+      "views": 3
+    },
+    "DEST_MN_64": {
+      "name": "Ga Đà Lạt",
+      "region": "Miền Nam",
+      "views": 1
     }
   },
   "explicit_reviews": [

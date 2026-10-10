@@ -8,21 +8,27 @@ A. Đánh giá THẬT từ người dùng (online): Precision@5, Hit-rate@5, đi
 
 B. Đánh giá offline theo KỊCH BẢN, so sánh hệ thống với các baseline. Không có nhãn
    người dùng thật ở quy mô lớn nên "phù hợp" được định nghĩa bằng chính các ràng buộc
-   khách nêu: chi phí tối đa <= ngân sách, thời lượng lệch <= 1 ngày, và (nếu có mô tả)
+   khách nêu: TỔNG chi phí ước tính (vé vào cổng x số người + khách sạn, cùng công thức
+   với TOPSIS) <= ngân sách cả nhóm, thời lượng lệch <= 1 ngày, và (nếu có mô tả)
    tên/từ khóa gán tay của điểm đến chứa từ khóa của ý định. Định nghĩa này không dùng
    mô tả văn bản nên độc lập với TF-IDF của bộ xếp hạng. Kết quả chỉ nói hệ thống đáp
    ứng yêu cầu đã nêu tốt đến đâu, KHÔNG thay cho đánh giá của người dùng thật.
+   Độ tin cậy: khoảng tin cậy bootstrap 95% trên các kịch bản + kiểm định Wilcoxon cặp
+   đôi (DSS so với baseline mạnh nhất), để chắc chắn khoảng cách không do ngẫu nhiên.
 
-C. Chất lượng phân cụm: silhouette, kích thước cụm.
+C. Chất lượng & độ ổn định phân cụm: silhouette, kích thước cụm, ARI giữa các lần chạy.
 """
 
 import numpy as np
 import pandas as pd
+from scipy.stats import wilcoxon
 from sklearn.metrics import silhouette_score
 
-from utils.topsis import rank_by_suitability, recommended_weights
+from utils.topsis import rank_by_suitability, recommended_weights, estimate_trip_cost
 
 K = 5
+N_BOOT = 1000
+NUM_PEOPLE = 2  # kịch bản chuẩn: nhóm 2 người (1 phòng)
 
 # ý định -> từ khóa để xác định "đúng chủ đề" (chỉ dò trong TÊN + TỪ KHÓA gán tay)
 INTENT_TERMS = {
@@ -34,7 +40,7 @@ INTENT_TERMS = {
     "núi thác": ["núi", "thác", "suối", "đèo", "cao nguyên", "đồi"],
 }
 BUDGETS = [1_000_000, 2_000_000, 3_000_000, 5_000_000, 8_000_000]
-DURATIONS = [1.0, 2.0, 3.0, 5.0]
+DURATIONS = [0.5, 1.0, 2.0, 3.0]
 
 
 def _tag_text(df):
@@ -42,9 +48,14 @@ def _tag_text(df):
     return (df["destination_name"].fillna("") + " " + kws).str.lower()
 
 
-def _relevance(df, tag_text, budget, duration, intent):
-    """Trả về (graded 0..1, binary 0/1, intent_ok, budget_ok, duration_ok) theo index df."""
-    b_ok = (df["cost_max"].fillna(0) <= budget).astype(float)
+def _relevance(df, tag_text, budget, duration, intent, hotel_df=None, num_people=NUM_PEOPLE):
+    """
+    Trả về (graded 0..1, binary 0/1, intent_ok, budget_ok, duration_ok) theo index df.
+    budget = ngân sách / NGƯỜI; so với tổng chi phí cả nhóm (cùng công thức với TOPSIS).
+    """
+    pref = (max(0.5, duration - 1), duration + 1)
+    cost = estimate_trip_cost(df, pref, hotel_df, num_people)
+    b_ok = (cost <= budget * num_people).astype(float)
     d_ok = ((df["duration_days"].fillna(duration) - duration).abs() <= 1).astype(float)
     parts = [b_ok, d_ok]
     if intent:
@@ -67,11 +78,25 @@ def _ndcg(gains_ranked, all_gains, k=K):
     return float((g * disc).sum() / idcg) if idcg > 0 else np.nan
 
 
-def offline_evaluation(df, tfidf_model, tfidf_matrix, community=None, seed=42):
+def _bootstrap_ci(values, n_boot=N_BOOT, seed=0):
+    v = np.asarray([x for x in values if not np.isnan(x)], dtype=float)
+    if len(v) == 0:
+        return (np.nan, np.nan)
+    rng = np.random.RandomState(seed)
+    means = v[rng.randint(0, len(v), size=(n_boot, len(v)))].mean(axis=1)
+    return float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))
+
+
+SYSTEM_NAME = "Hệ thống DSS (TOPSIS + K-Means + phản hồi)"
+ORACLE_NAME = "Giới hạn trên (xếp lý tưởng)"
+
+
+def offline_evaluation(df, tfidf_model, tfidf_matrix, community=None, seed=42, hotel_df=None,
+                       num_people=NUM_PEOPLE):
     """
     df: DataFrame điểm đến đã có cluster_id/cluster_name (kết quả run_kmeans),
         thứ tự dòng khớp với tfidf_matrix.
-    Trả về (bảng so sánh các hệ thống, số kịch bản).
+    Trả về (bảng so sánh, số kịch bản, thống kê độ tin cậy).
     """
     from sklearn.metrics.pairwise import cosine_similarity
     from utils.topsis import expand_query_terms
@@ -97,9 +122,9 @@ def offline_evaluation(df, tfidf_model, tfidf_matrix, community=None, seed=42):
 
     def rank_system(b, d, it):
         out = rank_by_suitability(
-            df, weights=recommended_weights(bool(it)), budget=b,
+            df, weights=recommended_weights(bool(it)), budget=b * num_people, num_people=num_people,
             preferred_duration=(max(0.5, d - 1), d + 1), keyword_query=it or "",
-            tfidf_model=tfidf_model, tfidf_matrix=tfidf_matrix, community=community,
+            tfidf_model=tfidf_model, tfidf_matrix=tfidf_matrix, community=community, hotel_df=hotel_df,
         )
         return list(out.index)
 
@@ -110,14 +135,14 @@ def offline_evaluation(df, tfidf_model, tfidf_matrix, community=None, seed=42):
         "Ngẫu nhiên": rank_random,
         "Chỉ xếp theo rating": rank_rating,
         "Chỉ TF-IDF (content-based)": rank_tfidf,
-        "Hệ thống DSS (TOPSIS + K-Means + phản hồi)": rank_system,
-        "Giới hạn trên (xếp lý tưởng)": rank_oracle,
+        SYSTEM_NAME: rank_system,
+        ORACLE_NAME: rank_oracle,
     }
 
     acc = {name: {"p": [], "ndcg": [], "intent": [], "budget": [], "dur": [], "div": [], "seen": set()}
            for name in systems}
     for (b, d, it) in scenarios:
-        graded, binary, i_ok, b_ok, d_ok = _relevance(df, tag_text, b, d, it)
+        graded, binary, i_ok, b_ok, d_ok = _relevance(df, tag_text, b, d, it, hotel_df, num_people)
         for name, fn in systems.items():
             top = (fn(b, d, it, graded=graded) if fn is rank_oracle else fn(b, d, it))[:K]
             a = acc[name]
@@ -132,17 +157,39 @@ def offline_evaluation(df, tfidf_model, tfidf_matrix, community=None, seed=42):
 
     rows = []
     for name, a in acc.items():
+        lo, hi = _bootstrap_ci(a["ndcg"])
         rows.append({
             "Hệ thống": name,
             f"Precision@{K}": round(float(np.nanmean(a["p"])), 3),
             f"NDCG@{K}": round(float(np.nanmean(a["ndcg"])), 3),
+            f"NDCG@{K} KTC 95%": f"[{lo:.3f} – {hi:.3f}]",
             "Đúng chủ đề": round(float(np.mean(a["intent"])), 3),
             "Trong ngân sách": round(float(np.mean(a["budget"])), 3),
             "Đúng thời lượng": round(float(np.mean(a["dur"])), 3),
             "Đa dạng cụm": round(float(np.mean(a["div"])), 3),
             "Độ phủ danh mục": round(len(a["seen"]) / len(df), 3),
         })
-    return pd.DataFrame(rows), len(scenarios)
+
+    # Kiểm định Wilcoxon cặp đôi (cùng kịch bản) giữa DSS và baseline tốt nhất
+    baselines = [n for n in systems if n not in (SYSTEM_NAME, ORACLE_NAME)]
+    best_base = max(baselines, key=lambda n: np.nanmean(acc[n]["ndcg"]))
+    sys_v, base_v = np.array(acc[SYSTEM_NAME]["ndcg"]), np.array(acc[best_base]["ndcg"])
+    mask = ~(np.isnan(sys_v) | np.isnan(base_v))
+    diff = sys_v[mask] - base_v[mask]
+    try:
+        p_value = float(wilcoxon(sys_v[mask], base_v[mask]).pvalue) if np.any(diff != 0) else 1.0
+    except ValueError:
+        p_value = 1.0
+    d_lo, d_hi = _bootstrap_ci(diff)
+    stats = {
+        "baseline": best_base,
+        "delta_ndcg": float(diff.mean()),
+        "delta_ci": (d_lo, d_hi),
+        "p_value": p_value,
+        "win": int((diff > 0).sum()), "tie": int((diff == 0).sum()), "loss": int((diff < 0).sum()),
+        "num_people": num_people,
+    }
+    return pd.DataFrame(rows), len(scenarios), stats
 
 
 def online_metrics(reviews):
@@ -168,11 +215,14 @@ def online_metrics(reviews):
     }
 
 
-def clustering_report(X, labels):
+def clustering_report(X, labels, stability=None):
     sizes = pd.Series(labels).value_counts().sort_index()
-    return {
+    rep = {
         "silhouette": float(silhouette_score(X, labels)),
         "k": int(len(sizes)),
         "sizes": sizes.tolist(),
         "min_size": int(sizes.min()),
     }
+    if stability:
+        rep.update(stability)
+    return rep

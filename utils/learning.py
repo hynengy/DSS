@@ -68,9 +68,20 @@ def community_scores(reviews, name_index=None, a=1.0, b=1.0, include_legacy=Fals
     return scores, counts
 
 
-def collect_training_data(reviews):
+def _review_has_query(rv):
+    return bool(str((rv.get("context") or {}).get("style", "") or "").strip())
+
+
+def collect_training_data(reviews, has_query=None):
+    """
+    has_query=True/False: chỉ lấy các lượt đánh giá CÓ / KHÔNG CÓ câu mô tả sở thích.
+    Khi không có câu mô tả, style_match và cluster_fit luôn = 1.0 (hằng số) và trọng số
+    khởi điểm cũng khác, nên trộn chung hai loại sẽ làm mô hình học sai.
+    """
     rows, y = [], []
     for rv in reviews:
+        if has_query is not None and _review_has_query(rv) != has_query:
+            continue
         for it in rv.get("items", []) or []:
             f = it.get("features")
             if f and all(k in f for k in LEARN_FEATURES) and it.get("label") in ("fit", "unfit"):
@@ -79,12 +90,13 @@ def collect_training_data(reviews):
     return np.array(rows), np.array(y)
 
 
-def learn_weights(reviews, base_weights, min_labels=MIN_LABELS):
+def learn_weights(reviews, base_weights, min_labels=MIN_LABELS, has_query=None):
     """
     Trả về (weights, info). info: {status, n_labels, n_fit, n_unfit, lambda, cv_auc, coefs}.
     status: 'learned' | 'insufficient_data' | 'single_class'
+    has_query: học riêng cho kịch bản có / không có câu mô tả sở thích (None = trộn chung).
     """
-    X, y = collect_training_data(reviews)
+    X, y = collect_training_data(reviews, has_query=has_query)
     info = {"status": "insufficient_data", "n_labels": int(len(y)), "n_fit": int(y.sum()) if len(y) else 0,
             "n_unfit": int(len(y) - y.sum()) if len(y) else 0, "lambda": 0.0, "cv_auc": None,
             "coefs": {}, "min_labels": min_labels}

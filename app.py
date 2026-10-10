@@ -518,18 +518,27 @@ if st.session_state["active_view"] == "SURVEY":
 
         st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
 
-        # 2. Hàng thông tin ràng buộc chuyến đi (Ngân sách & Số ngày)
-        rc1, rc2 = st.columns(2)
+        # 2. Hàng thông tin ràng buộc chuyến đi (Ngân sách & Số ngày & Số người)
+        rc1, rc2, rc3 = st.columns(3)
         with rc1:
+            num_people_input = st.number_input(
+                "SỐ NGƯỜI ĐI",
+                min_value=1,
+                max_value=50,
+                value=1,
+                step=1,
+                help="Nhập số lượng người tham gia chuyến đi."
+            )
+        with rc2:
             budget_input = st.number_input(
-                "NGÂN SÁCH CHUYẾN ĐI (VNĐ)",
+                "NGÂN SÁCH / NGƯỜI (VNĐ)",
                 min_value=200000,
                 max_value=50000000,
                 value=3000000,
                 step=500000,
-                help="Nhập tổng chi phí tối đa bạn dự kiến chi trả cho chuyến đi."
+                help="Nhập chi phí dự kiến cho MỘT NGƯỜI. Hệ thống sẽ tự động nhân với số người."
             )
-        with rc2:
+        with rc3:
             duration = st.number_input(
                 "SỐ NGÀY LƯU TRÚ",
                 min_value=0.5,
@@ -547,6 +556,7 @@ if st.session_state["active_view"] == "SURVEY":
             rec_weights = recommended_weights(bool(style_input.strip()))
 
             st.session_state["user_inputs"] = {
+                "num_people": num_people_input,
                 "budget": budget_input,
                 "duration": duration,
                 "style": style_input,
@@ -569,7 +579,9 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
             st.rerun()
     else:
         u_inputs = st.session_state.get("user_inputs", {})
-        budget = u_inputs.get("budget", 3000000)
+        num_people = u_inputs.get("num_people", 1)
+        budget_per_person = u_inputs.get("budget", 3000000)
+        total_budget = budget_per_person * num_people
         duration = u_inputs.get("duration", 2.0)
         style = u_inputs.get("style", "")
         weights = st.session_state.get("topsis_weights") or recommended_weights(bool(style.strip()))
@@ -586,22 +598,24 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
         # Bước 2-3: học từ hành vi người dùng trước (phản hồi tường minh)
         _reviews = load_feedback_data().get("explicit_reviews", [])
         community, fb_counts = community_scores(_reviews, build_name_index(dest_df))
-        weights, learn_info = learn_weights(_reviews, weights)
+        weights, learn_info = learn_weights(_reviews, weights, has_query=bool(style.strip()))
 
-        # TOPSIS Ranking
         scored_df = rank_by_suitability(
             result_df,
             weights=weights,
-            budget=budget,
+            budget=total_budget,
+            num_people=num_people,
             preferred_duration=(max(0.5, duration - 1), duration + 1),
             keyword_query=style,
             tfidf_model=vectorizer,
             tfidf_matrix=tfidf_matrix,
-            community=community
+            community=community,
+            hotel_df=hotel_df
         )
 
         # Region Tabs
         st.markdown('<div class="section-title">Gợi ý điểm đến hàng đầu theo 3 Miền</div>', unsafe_allow_html=True)
+        st.info("💡 **Lưu ý về Ngân sách:** Độ phù hợp ngân sách (Budget Fit) được hệ thống tính toán bao gồm **giá vé vào cổng** kết hợp với **trung bình giá phòng khách sạn** lân cận.")
         t_mb, t_mt, t_mn = st.tabs(["MIỀN BẮC", "MIỀN TRUNG", "MIỀN NAM"])
 
         def format_sub_rating(val):
@@ -630,7 +644,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                 rating_part = f"<span>★ {r_num:.1f}</span><span class='meta-sep'>•</span>" if (pd.notna(r_num) and r_num > 0) else ""
                 province_part = f"<span>{row.get('province', '')}</span>" if row.get('province') else ""
                 price_str = format_price_range(row.get('cost_min'), row.get('cost_max'))
-                price_part = f"<span class='meta-sep'>•</span><span>{price_str}</span>" if price_str else ""
+                price_part = f"<span class='meta-sep'>•</span><span title='Giá vé vào cổng (Hệ thống đã tự động cộng thêm chi phí khách sạn khi đánh giá mức độ phù hợp ngân sách)'>Vé vào cổng: {price_str}</span>" if price_str else ""
 
                 col_img, col_info = st.columns([1, 2])
                 with col_img:
@@ -656,7 +670,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                             _logged.add(row["destination_id"])
 
                         reasons = explain_top_criteria(
-                            row, budget=budget, keyword_query=style,
+                            row, budget=budget_per_person, keyword_query=style,
                             feedback=fb_counts.get(row["destination_id"]),
                         )
                         if reasons:
@@ -828,7 +842,7 @@ elif st.session_state["active_view"] == "ADMIN":
         clu = clustering_report(feature_matrix, result_df["cluster_id"].values)
         _rv = stats["explicit_reviews"]
         _comm, _ = community_scores(_rv, build_name_index(dest_df))
-        _, _linfo = learn_weights(_rv, recommended_weights(True))
+        _, _linfo = learn_weights(_rv, recommended_weights(True), has_query=True)
 
         def _pct(v):
             return "—" if v is None else f"{v * 100:.0f}%"
