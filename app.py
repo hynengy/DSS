@@ -40,37 +40,34 @@ st.set_page_config(
 
 
 # =========================================================
-# CUSTOM CSS (ENTERPRISE MONTSERRAT DESIGN SYSTEM)
+# CUSTOM CSS (CLEAN INTER DESIGN SYSTEM)
 # =========================================================
 st.markdown("""
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
     --primary:      #9E4429;
     --primary-dk:   #81351E;
     --primary-lt:   #FBF4F1;
-    --bg-base:      #F7F5EF;
+    --bg-base:      #F8F7F4;
     --bg-card:      #FFFFFF;
     --cream-dk:     #EFEBE2;
-    --text-main:    #242019;
-    --text-muted:   #6C6556;
-    --text-2:       #595346;
-    --navy:         #242019;
-    --navy-mid:     #474034;
+    --text-main:    #1F2937;
+    --text-muted:   #6B7280;
+    --text-2:       #4B5563;
     --white:        #FFFFFF;
-    --border:       #DFD8CB;
-    --border-light: #ECE6DA;
+    --border:       #E5E7EB;
+    --border-light: #F3F4F6;
     --gold:         #B87C28;
     --gold-bg:      #FCF8EF;
-    --shadow-sm:    0 2px 8px rgba(36, 32, 25, 0.04);
-    --shadow-md:    0 8px 24px rgba(36, 32, 25, 0.07);
-    --shadow-lg:    0 16px 36px rgba(36, 32, 25, 0.10);
-    --r-sm:         8px;
-    --r-md:         14px;
-    --font:         'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-serif:   'Playfair Display', Georgia, serif;
+    --shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md:    0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-lg:    0 10px 24px rgba(0, 0, 0, 0.08);
+    --r-sm:         6px;
+    --r-md:         10px;
+    --font:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Base font & page background */
@@ -89,101 +86,83 @@ p, label, li, span {
 /* Hide Streamlit default chrome */
 #MainMenu, footer, [data-testid="stDecoration"] { visibility: hidden; }
 
-/* ═══ HEADINGS & TITLES (With safe line-height for Vietnamese accents) ═══ */
+/* ═══ HEADINGS & TITLES ═══ */
 h1, h2, h3, h4, .admin-table-title {
     font-family: var(--font) !important;
-    text-transform: uppercase !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
     color: var(--text-main) !important;
-    letter-spacing: 0.05em;
     line-height: 1.4 !important;
-    overflow: visible !important;
+    letter-spacing: normal !important;
 }
 
-/* ═══ HERO BANNER (Luxury Editorial Style) ═══ */
+/* ═══ HERO BANNER ═══ */
 .hero {
-    background-color: #242019;
-    background-image: radial-gradient(circle at top right, rgba(158, 68, 41, 0.22), transparent 55%),
-                      radial-gradient(circle at bottom left, rgba(184, 124, 40, 0.15), transparent 55%);
+    background-color: #1E293B;
     border-radius: var(--r-md);
-    padding: 50px 36px;
+    padding: 32px 24px;
     text-align: center;
-    margin-bottom: 28px;
-    box-shadow: var(--shadow-md);
-    border: 1px solid rgba(223, 216, 203, 0.15);
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
 }
 .hero-eyebrow {
-    color: var(--gold);
+    color: #F59E0B;
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    margin-bottom: 12px;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
     display: inline-block;
-    line-height: 1.4;
 }
 .hero-title {
-    font-family: var(--font-serif) !important;
-    font-style: italic;
-    font-weight: 500 !important;
-    font-size: 2.7rem !important;
-    line-height: 1.45 !important;
-    color: #FAF7F2 !important;
-    margin-bottom: 14px !important;
-    overflow: visible !important;
+    font-family: var(--font) !important;
+    font-weight: 600 !important;
+    font-size: 1.7rem !important;
+    line-height: 1.35 !important;
+    color: #F8FAFC !important;
+    margin-bottom: 8px !important;
 }
 .hero-description {
-    color: #D6D0C4;
-    font-size: 0.98rem;
+    color: #94A3B8;
+    font-size: 0.90rem;
     max-width: 620px;
     margin: 0 auto;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
-/* ═══ CARD CONTAINERS (Clean & Un-nested) ═══ */
+/* ═══ CARD CONTAINERS ═══ */
 div[data-testid="stVerticalBlockBorderWrapper"] {
     background: var(--bg-card);
     border: 1px solid var(--border) !important;
     border-radius: var(--r-md) !important;
     box-shadow: var(--shadow-sm) !important;
-    margin-bottom: 24px;
-    transition: box-shadow 0.25s ease, border-color 0.25s ease;
-}
-div[data-testid="stVerticalBlockBorderWrapper"]:hover {
-    border-color: #D0C7B6 !important;
-    box-shadow: var(--shadow-md) !important;
+    margin-bottom: 20px;
 }
 div[data-testid="stVerticalBlockBorderWrapper"] > div {
-    padding: 24px 28px !important;
+    padding: 20px 24px !important;
 }
 
 .section-title {
-    font-family: var(--font-serif) !important;
-    font-size: 1.6rem !important;
+    font-family: var(--font) !important;
+    font-size: 1.15rem !important;
     font-weight: 600 !important;
     color: var(--text-main) !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 16px !important;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 10px;
-    line-height: 1.45 !important;
-    overflow: visible !important;
+    padding-bottom: 8px;
+    line-height: 1.4 !important;
 }
 
 /* ═══ BUTTONS ═══ */
 .stButton > button, .stButton > button p {
     font-family: var(--font) !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
+    font-weight: 600 !important;
+    letter-spacing: normal !important;
     line-height: 1.4 !important;
 }
 .stButton > button {
     border-radius: var(--r-sm) !important;
-    padding: 8px 22px !important;
-    transition: all 0.25s ease !important;
-}
-.stButton > button:hover {
-    transform: translateY(-1px);
+    padding: 7px 18px !important;
+    font-size: 0.88rem !important;
 }
 
 /* Align button right in header column */
@@ -194,43 +173,31 @@ div[data-testid="column"]:nth-of-type(2) .stButton {
 
 /* ═══ FORM LABELS & INPUTS ═══ */
 .stTextInput label, .stNumberInput label, .stSlider label, .stTextArea label {
-    text-transform: uppercase !important;
-    font-size: 0.76rem !important;
-    font-weight: 700 !important;
-    color: var(--text-muted) !important;
-    letter-spacing: 0.06em !important;
-    line-height: 1.4 !important;
-    overflow: visible !important;
+    font-family: var(--font) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    color: var(--text-2) !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
 }
-.stSlider label p {
-    white-space: normal !important;
-    overflow: visible !important;
-    margin-bottom: 6px !important;
-}
-.stSlider {
-    padding-top: 4px;
-    margin-bottom: 8px;
-}
-
-/* Times New Roman font inside user input */
-.stTextInput input, .stTextArea textarea {
-    font-family: 'Times New Roman', Times, serif !important;
-    font-size: 1.12rem !important;
+.stTextInput input, .stTextArea textarea, .stNumberInput input {
+    font-family: var(--font) !important;
+    font-size: 0.92rem !important;
     color: var(--text-main) !important;
     background-color: #FFFFFF !important;
     border: 1px solid var(--border) !important;
     border-radius: var(--r-sm) !important;
-    padding: 10px 14px !important;
+    padding: 8px 12px !important;
 }
 .stTextInput input::placeholder, .stTextArea textarea::placeholder {
-    font-family: 'Times New Roman', Times, serif !important;
-    font-style: italic !important;
-    color: #9C9484 !important;
-    font-size: 1.05rem !important;
+    font-family: var(--font) !important;
+    font-style: normal !important;
+    color: #9CA3AF !important;
+    font-size: 0.88rem !important;
 }
-.stTextInput input:focus, .stTextArea textarea:focus {
+.stTextInput input:focus, .stTextArea textarea:focus, .stNumberInput input:focus {
     border-color: var(--primary) !important;
-    box-shadow: 0 0 0 2px rgba(158, 68, 41, 0.15) !important;
+    box-shadow: 0 0 0 2px rgba(158, 68, 41, 0.12) !important;
 }
 
 /* ═══ KPI METRIC CARDS ═══ */
@@ -238,62 +205,57 @@ div[data-testid="column"]:nth-of-type(2) .stButton {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--r-md);
-    padding: 22px;
+    padding: 16px;
     text-align: center;
     box-shadow: var(--shadow-sm);
 }
 .kpi-value {
     color: var(--primary);
-    font-size: 2.3rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    font-family: var(--font-serif);
+    font-family: var(--font);
     line-height: 1.3;
 }
 .kpi-label {
     color: var(--text-muted);
     font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-top: 6px;
-    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
 }
 
 /* ═══ DESTINATION ITEM CARDS ═══ */
 .dest-card-img {
-    width: 100%; height: 165px; object-fit: cover;
+    width: 100%; height: 160px; object-fit: cover;
     border-radius: var(--r-sm);
     box-shadow: var(--shadow-sm);
 }
 .dest-name {
-    font-family: var(--font-serif);
-    font-size: 1.3rem;
+    font-family: var(--font);
+    font-size: 1.15rem;
     font-weight: 600;
     color: var(--text-main);
     line-height: 1.35;
     margin-bottom: 6px;
-    overflow: visible;
 }
 .match-badge {
-    background: rgba(158, 68, 41, 0.08); color: var(--primary);
-    border: 1px solid rgba(158, 68, 41, 0.2);
-    padding: 3px 10px; border-radius: 12px; font-weight: 600; font-size: 0.78rem;
-    letter-spacing: 0.02em;
+    background: #FDF2E9; color: var(--primary);
+    border: 1px solid #FADBD8;
+    padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.78rem;
 }
 .cluster-tag {
-    font-size: 0.73rem; font-weight: 500; padding: 3px 10px;
-    border-radius: 12px; display: inline-block;
-    letter-spacing: 0.02em;
-    background: #F2EFE9; color: var(--text-2);
+    font-size: 0.75rem; font-weight: 500; padding: 2px 8px;
+    border-radius: 4px; display: inline-block;
+    background: #F3F4F6; color: var(--text-2);
     border: 1px solid var(--border);
 }
 .dest-meta {
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    font-size: 0.85rem; color: var(--text-2); margin-bottom: 8px;
+    font-size: 0.82rem; color: var(--text-2); margin-bottom: 8px;
     line-height: 1.4;
 }
 .meta-sep {
-    color: #C0B8AA; margin: 0 2px;
+    color: #D1D5DB; margin: 0 2px;
 }
 
 </style>
@@ -310,11 +272,11 @@ def clean_title_icon(text):
     return re.sub(r'[\U00010000-\U0010ffff\u2600-\u27ff\u2300-\u23ff\ufe0f]', '', str(text)).strip()
 
 
-def safe_image_tag(url, class_name="dest-card-img", fallback_icon="🏝️"):
+def safe_image_tag(url, class_name="dest-card-img"):
     url_str = str(url).strip() if (url and not pd.isna(url)) else ""
     if url_str and (url_str.startswith("http://") or url_str.startswith("https://")):
         return f'<img src="{url_str}" class="{class_name}" alt="Destination" onerror="this.onerror=null; this.src=\'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80\';"/>'
-    return f'<div class="{class_name}" style="background:var(--cream-dk); display:flex; align-items:center; justify-content:center; font-size:3rem; min-height:160px;">{fallback_icon}</div>'
+    return f'<div class="{class_name}" style="background:#F3F4F6; display:flex; align-items:center; justify-content:center; color:#9CA3AF; font-size:0.85rem; min-height:160px; border:1px solid #E5E7EB;">Hình ảnh điểm đến</div>'
 
 
 def format_price_range(min_val, max_val, unit="VNĐ"):
@@ -415,23 +377,23 @@ h_col1, h_col2 = st.columns([3, 1])
 
 with h_col1:
     st.markdown("""
-    <div style="padding: 6px 0; overflow: visible;">
-        <div style="font-family:var(--font-serif); font-size:1.45rem; font-weight:600; color:var(--text-main); line-height:1.45; overflow:visible;">
+    <div style="padding: 4px 0;">
+        <div style="font-family:var(--font); font-size:1.30rem; font-weight:700; color:var(--text-main); line-height:1.4;">
             Hệ thống Trợ giúp Ra quyết định Du lịch
         </div>
-        <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--gold); line-height:1.4; margin-top:2px;">
-            ĐỒ ÁN MÔN DSS · K-MEANS · TOPSIS · CONTENT-BASED FILTERING
+        <div style="font-size:0.75rem; font-weight:600; color:var(--text-muted); margin-top:2px;">
+            ĐỒ ÁN DSS · K-MEANS · TOPSIS · CONTENT-BASED FILTERING
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 with h_col2:
     if not st.session_state["is_admin_logged_in"]:
-        if st.button("ĐĂNG NHẬP", key="top_admin_btn"):
+        if st.button("Đăng nhập", key="top_admin_btn"):
             st.session_state["show_top_admin_login"] = not st.session_state.get("show_top_admin_login", False)
             st.rerun()
     else:
-        if st.button("ĐĂNG XUẤT", key="top_logout_btn"):
+        if st.button("Đăng xuất", key="top_logout_btn"):
             st.session_state["is_admin_logged_in"] = False
             st.session_state["active_view"] = "SURVEY"
             st.rerun()
@@ -439,7 +401,7 @@ with h_col2:
 # Modal / Card Đăng nhập Admin xuất hiện ngay dưới Header khi bấm nút
 if not st.session_state["is_admin_logged_in"] and st.session_state.get("show_top_admin_login", False):
     with st.container(border=True):
-        st.markdown("<div class='section-title' style='font-size:1.15rem !important; margin-bottom:12px !important;'>Đăng nhập Quản trị viên</div>", unsafe_allow_html=True)
+        st.markdown("<div class='section-title' style='font-size:1.05rem !important; margin-bottom:12px !important;'>Đăng nhập Quản trị viên</div>", unsafe_allow_html=True)
         with st.form("admin_login_form"):
             f_col1, f_col2, f_col3 = st.columns([3, 1, 1])
             with f_col1:
@@ -453,10 +415,10 @@ if not st.session_state["is_admin_logged_in"] and st.session_state.get("show_top
                 )
             with f_col2:
                 st.markdown("<div style='height:28px;'></div>", unsafe_allow_html=True)
-                login_btn = st.form_submit_button("VÀO ADMIN", type="primary", use_container_width=True)
+                login_btn = st.form_submit_button("Vào Admin", type="primary", use_container_width=True)
             with f_col3:
                 st.markdown("<div style='height:28px;'></div>", unsafe_allow_html=True)
-                cancel_btn = st.form_submit_button("ĐÓNG", use_container_width=True)
+                cancel_btn = st.form_submit_button("Đóng", use_container_width=True)
 
             if cancel_btn:
                 st.session_state["show_top_admin_login"] = False
@@ -480,15 +442,15 @@ if st.session_state["is_admin_logged_in"]:
     st.markdown("<div style='margin-bottom:16px;'>", unsafe_allow_html=True)
     v1, v2, v3 = st.columns(3)
     with v1:
-        if st.button("📝 KHẢO SÁT NHU CẦU", use_container_width=True):
+        if st.button("Khảo sát nhu cầu", use_container_width=True):
             st.session_state["active_view"] = "SURVEY"
             st.rerun()
     with v2:
-        if st.button("🧭 GỢI Ý THEO 3 MIỀN", use_container_width=True):
+        if st.button("Xem gợi ý theo 3 Miền", use_container_width=True):
             st.session_state["active_view"] = "RECOMMENDATIONS"
             st.rerun()
     with v3:
-        if st.button("📊 QUẢN TRỊ ADMIN", type="primary", use_container_width=True):
+        if st.button("Quản trị Admin", type="primary", use_container_width=True):
             st.session_state["active_view"] = "ADMIN"
             st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)
@@ -496,11 +458,11 @@ elif st.session_state.get("has_run", False):
     st.markdown("<div style='margin-bottom:16px;'>", unsafe_allow_html=True)
     v1, v2 = st.columns(2)
     with v1:
-        if st.button("📝 SỬA KHẢO SÁT NHU CẦU", use_container_width=True):
+        if st.button("Sửa khảo sát nhu cầu", use_container_width=True):
             st.session_state["active_view"] = "SURVEY"
             st.rerun()
     with v2:
-        if st.button("🧭 XEM GỢI Ý THEO 3 MIỀN", type="primary", use_container_width=True):
+        if st.button("Xem gợi ý theo 3 Miền", type="primary", use_container_width=True):
             st.session_state["active_view"] = "RECOMMENDATIONS"
             st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)
@@ -515,17 +477,17 @@ if st.session_state["active_view"] == "SURVEY":
         <span class="hero-eyebrow">Tối ưu hóa Lộ trình</span>
         <div class="hero-title">Thiết kế chuyến đi của riêng bạn</div>
         <div class="hero-description">
-            Hãy chia sẻ nguyện vọng và sở thích để hệ thống gợi ý những điểm đến hoàn hảo nhất dành riêng cho bạn.
+            Chia sẻ nguyện vọng và ngân sách để hệ thống gợi ý những điểm đến phù hợp nhất dành cho bạn.
         </div>
     </div>
     """, unsafe_allow_html=True)
 
     with st.container(border=True):
-        st.markdown('<div class="section-title">Khảo sát Thông tin & Ràng buộc</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title">Khảo sát thông tin & ràng buộc</div>', unsafe_allow_html=True)
 
         # 1. Ô nhập từ khóa / câu văn tự do
         style_input = st.text_input(
-            "PHONG CÁCH & YÊU CẦU DU LỊCH (NHẬP TỪ KHÓA HOẶC CÂU VĂN TỰ DO)",
+            "Phong cách & yêu cầu du lịch (nhập từ khóa hoặc câu văn tự do)",
             value="",
             placeholder="Ví dụ: Tôi muốn đi đến địa điểm có phong cảnh thiên nhiên xanh mát...",
             help="Nhập sở thích hoặc yêu cầu cụ thể của bạn về chuyến đi."
@@ -533,7 +495,7 @@ if st.session_state["active_view"] == "SURVEY":
 
         parsed_kws, boosts = extract_intent_keywords(style_input)
         if parsed_kws:
-            st.caption(f"✓ Đã nhận diện các từ khóa: {', '.join(parsed_kws)} - Hệ thống sẽ tự động ưu tiên.")
+            st.caption(f"Đã nhận diện các từ khóa: {', '.join(parsed_kws)} - Hệ thống sẽ tự động ưu tiên.")
 
         st.markdown("<div style='height:12px;'></div>", unsafe_allow_html=True)
 
@@ -541,7 +503,7 @@ if st.session_state["active_view"] == "SURVEY":
         rc1, rc2, rc3 = st.columns(3)
         with rc1:
             num_people_input = st.number_input(
-                "SỐ NGƯỜI ĐI",
+                "Số người đi",
                 min_value=1,
                 max_value=50,
                 value=1,
@@ -550,16 +512,16 @@ if st.session_state["active_view"] == "SURVEY":
             )
         with rc2:
             budget_input = st.number_input(
-                "NGÂN SÁCH / NGƯỜI (VNĐ)",
+                "Ngân sách / người (VNĐ)",
                 min_value=200000,
                 max_value=50000000,
                 value=3000000,
                 step=500000,
-                help="Nhập chi phí dự kiến cho MỘT NGƯỜI. Hệ thống sẽ tự động nhân với số người."
+                help="Nhập chi phí dự kiến cho một người. Hệ thống sẽ tự động nhân với số người."
             )
         with rc3:
             duration = st.number_input(
-                "SỐ NGÀY LƯU TRÚ",
+                "Số ngày lưu trú",
                 min_value=0.5,
                 max_value=14.0,
                 value=2.0,
@@ -567,9 +529,9 @@ if st.session_state["active_view"] == "SURVEY":
                 help="Số ngày bạn có thể dành cho chuyến tham quan."
             )
 
-        st.markdown("<hr style='margin: 20px 0;'>", unsafe_allow_html=True)
+        st.markdown("<hr style='margin: 20px 0; border-color: var(--border);'>", unsafe_allow_html=True)
 
-        if st.button("🔍 PHÂN TÍCH & TÌM KIẾM GỢI Ý", type="primary", use_container_width=True):
+        if st.button("Phân tích & Tìm kiếm gợi ý", type="primary", use_container_width=True):
             # Trọng số khởi điểm theo có/không có mô tả sở thích. Khi đủ phản hồi người dùng,
             # trang gợi ý sẽ học lại các trọng số này (utils/learning.py).
             rec_weights = recommended_weights(bool(style_input.strip()))
@@ -592,8 +554,8 @@ if st.session_state["active_view"] == "SURVEY":
 # =========================================================
 elif st.session_state["active_view"] == "RECOMMENDATIONS":
     if not st.session_state.get("has_run", False):
-        st.warning("⚠️ Bạn chưa nhập thông tin khảo sát. Vui lòng hoàn thành khảo sát nhu cầu trước.")
-        if st.button("➡️ CHUYỂN TỚI KHẢO SÁT NHU CẦU"):
+        st.warning("Bạn chưa nhập thông tin khảo sát. Vui lòng hoàn thành khảo sát nhu cầu trước.")
+        if st.button("Chuyển tới khảo sát nhu cầu"):
             st.session_state["active_view"] = "SURVEY"
             st.rerun()
     else:
@@ -606,10 +568,10 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
         weights = st.session_state.get("topsis_weights") or recommended_weights(bool(style.strip()))
 
         # Hero Banner
-        st.markdown(f"""
+        st.markdown("""
         <div class="hero">
             <div class="hero-content">
-                <div class="hero-title">Gợi ý Danh sách Địa điểm Du lịch theo 3 Miền</div>
+                <div class="hero-title">Gợi ý danh sách điểm đến du lịch theo 3 Miền</div>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -637,8 +599,8 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
         st.markdown('<div class="section-title">Gợi ý điểm đến hàng đầu theo 3 Miền</div>', unsafe_allow_html=True)
         nights_calc = max(0, int(np.ceil(duration)) - 1)
         meals_calc = max(1, int(np.ceil(duration * 2)))
-        st.info(f"💡 **Dự toán Ngân sách Toàn diện (Budget Fit):** Đã tổng hợp toàn bộ chi phí chuyến đi: **Vé tham quan** + **Khách sạn lưu trú** ({num_people} người · {nights_calc} đêm) + **Ẩm thực nhà hàng** (~{meals_calc} bữa) để so sánh tối ưu với ngân sách **{total_budget/1e6:.1f} triệu VNĐ** của nhóm bạn.")
-        t_mb, t_mt, t_mn = st.tabs(["MIỀN BẮC", "MIỀN TRUNG", "MIỀN NAM"])
+        st.info(f"Dự toán ngân sách chuyến đi: Đã tổng hợp vé tham quan, khách sạn lưu trú ({num_people} người · {nights_calc} đêm) và ẩm thực nhà hàng (~{meals_calc} bữa) để đối chiếu với ngân sách {total_budget/1e6:.1f} triệu VNĐ của nhóm bạn.")
+        t_mb, t_mt, t_mn = st.tabs(["Miền Bắc", "Miền Trung", "Miền Nam"])
 
         def format_sub_rating(val):
             if pd.notna(val):
@@ -689,7 +651,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
 <span class="cluster-tag">{cluster_clean}</span>"""
                     st.markdown(card_html, unsafe_allow_html=True)
 
-                    with st.expander(f"Xem chi tiết dịch vụ & lý do gợi ý cho {row['destination_name'].strip()}"):
+                    with st.expander(f"Chi tiết chi phí & gợi ý cho {row['destination_name'].strip()}"):
                         # Log implicit view: nội dung expander chạy lại ở MỖI lần rerun nên phải
                         # khử trùng theo phiên, nếu không mỗi lần bấm sao/radio đều cộng lại lượt xem.
                         _logged = st.session_state.setdefault("_logged_views", set())
@@ -702,61 +664,36 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                             feedback=fb_counts.get(row["destination_id"]),
                         )
                         if reasons:
-                            st.markdown("**VÌ SAO LỰA CHỌN NÀY PHÙ HỢP?**")
+                            st.markdown("<div style='font-size:0.82rem; font-weight:600; color:var(--text-main); margin-bottom:4px;'>Vì sao lựa chọn này phù hợp?</div>", unsafe_allow_html=True)
                             for r in reasons:
                                 st.markdown(f"- {r}")
 
-                        if nights_calc > 0:
-                            hotel_pill = f"""
-                            <div style="background: var(--bg-base); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-light);">
-                                <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 2px;">🏨 Khách sạn ({nights_calc} đêm)</div>
-                                <div style="font-size: 0.90rem; font-weight: 700; color: var(--text-main);">{row.get('est_hotel_cost', 0):,.0f} đ</div>
-                            </div>
-                            """
-                        else:
-                            hotel_pill = """
-                            <div style="background: var(--bg-base); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-light); display: flex; flex-direction: column; justify-content: center;">
-                                <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 2px;">🏨 Lưu trú</div>
-                                <div style="font-size: 0.84rem; font-weight: 600; color: #2A7B5C;">Đi trong ngày (0 đêm)</div>
-                            </div>
-                            """
+                        ticket_val = row.get('est_ticket_cost', 0)
+                        hotel_val = row.get('est_hotel_cost', 0)
+                        food_val = row.get('est_food_cost', 0)
+                        tot_val = row.get('est_total_cost', 0)
 
-                        tot_display_str = f"~{tot_est:,.0f} đ" if tot_est < 1e6 else f"~{tot_est/1e6:.2f} triệu VNĐ"
+                        hotel_text = f"Khách sạn ({nights_calc} đêm): <b>{hotel_val:,.0f} đ</b>" if nights_calc > 0 else "Lưu trú: <b>Đi trong ngày</b>"
 
                         st.markdown(f"""
-                        <div style="background: #FFFFFF; border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin: 10px 0 16px 0; box-shadow: var(--shadow-sm);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
-                                <div style="font-weight: 700; color: var(--navy); font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; display: flex; align-items: center; gap: 6px;">
-                                    <span>💰</span> DỰ TOÁN CHI PHÍ CẢ CHUYẾN ĐI
-                                    <span style="font-size: 0.72rem; font-weight: 500; background: var(--bg-base); color: var(--text-muted); padding: 2px 8px; border-radius: 12px; border: 1px solid var(--border-light); text-transform: none;">
-                                        {num_people} người · {duration} ngày
-                                    </span>
-                                </div>
-                                <div style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">
-                                    {tot_display_str}
-                                </div>
-                            </div>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 8px;">
-                                <div style="background: var(--bg-base); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-light);">
-                                    <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 2px;">🎟️ Vé tham quan</div>
-                                    <div style="font-size: 0.90rem; font-weight: 700; color: var(--text-main);">{row.get('est_ticket_cost', 0):,.0f} đ</div>
-                                </div>
-                                <div style="background: var(--bg-base); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-light);">
-                                    <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 2px;">🍜 Ẩm thực (~{meals_calc} bữa)</div>
-                                    <div style="font-size: 0.90rem; font-weight: 700; color: var(--text-main);">{row.get('est_food_cost', 0):,.0f} đ</div>
-                                </div>
-                                {hotel_pill}
-                            </div>
-                        </div>
-                        """, unsafe_allow_html=True)
+<div style="background:#FAF8F5; border:1px solid var(--border); border-radius:6px; padding:10px 14px; margin:10px 0 14px 0; font-size:0.86rem;">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-light); padding-bottom:6px; margin-bottom:8px;">
+<span style="font-weight:600; color:var(--text-main);">Dự toán chi phí ({num_people} người · {duration} ngày)</span>
+<span style="font-weight:700; color:var(--primary); font-size:0.95rem;">~{tot_val:,.0f} VNĐ</span>
+</div>
+<div style="display:flex; flex-wrap:wrap; gap:14px; color:var(--text-2); font-size:0.82rem;">
+<span>Vé tham quan: <b>{ticket_val:,.0f} đ</b></span>
+<span style="color:var(--border);">|</span>
+<span>Ẩm thực (~{meals_calc} bữa): <b>{food_val:,.0f} đ</b></span>
+<span style="color:var(--border);">|</span>
+<span>{hotel_text}</span>
+</div>
+</div>
+""", unsafe_allow_html=True)
 
                         c_hotel, c_rest = st.columns(2)
                         with c_hotel:
-                            st.markdown("""
-                            <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:var(--text-main); letter-spacing:0.04em; margin-bottom:6px;">
-                                🏨 Khách sạn lân cận
-                            </div>
-                            """, unsafe_allow_html=True)
+                            st.markdown("<div style='font-size:0.82rem; font-weight:600; color:var(--text-main); margin-bottom:6px;'>Khách sạn lân cận</div>", unsafe_allow_html=True)
                             hotels = hotel_df[hotel_df["destination_id"] == row["destination_id"]].head(2)
                             if hotels.empty:
                                 st.caption("Đang cập nhật khách sạn...")
@@ -764,14 +701,10 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                                 h_name = clean_title_icon(h.get('hotel_name', ''))
                                 h_rate = format_sub_rating(h.get('rating_num'))
                                 h_price = format_price_range(h.get('price_min'), h.get('price_max'))
-                                h_p_str = f" <span style='color:var(--text-muted); font-size:0.78rem;'>({h_price}/đêm)</span>" if h_price else ""
+                                h_p_str = f" <span style='color:var(--text-muted); font-size:0.80rem;'>({h_price}/đêm)</span>" if h_price else ""
                                 st.markdown(f"- **{h_name}**{h_rate}{h_p_str}", unsafe_allow_html=True)
                         with c_rest:
-                            st.markdown("""
-                            <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:var(--text-main); letter-spacing:0.04em; margin-bottom:6px;">
-                                🍜 Quán ăn gợi ý
-                            </div>
-                            """, unsafe_allow_html=True)
+                            st.markdown("<div style='font-size:0.82rem; font-weight:600; color:var(--text-main); margin-bottom:6px;'>Quán ăn gợi ý</div>", unsafe_allow_html=True)
                             rests = rest_df[rest_df["destination_id"] == row["destination_id"]].head(2)
                             if rests.empty:
                                 st.caption("Đang cập nhật quán ăn...")
@@ -779,7 +712,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                                 r_name = clean_title_icon(r.get('restaurant_name', ''))
                                 r_rate = format_sub_rating(r.get('rating_num'))
                                 r_price = format_price_range(r.get('price_min'), r.get('price_max'))
-                                r_p_str = f" <span style='color:var(--text-muted); font-size:0.78rem;'>({r_price}/người)</span>" if r_price else ""
+                                r_p_str = f" <span style='color:var(--text-muted); font-size:0.80rem;'>({r_price}/người)</span>" if r_price else ""
                                 st.markdown(f"- **{r_name}**{r_rate}{r_p_str}", unsafe_allow_html=True)
 
                 st.markdown("<hr style='margin: 16px 0; border-color: var(--border);'>", unsafe_allow_html=True)
@@ -795,20 +728,20 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
         # KHỐI ĐÁNH GIÁ NGƯỜI DÙNG (IMAGE 1 STYLE)
         # =========================================================
         with st.container(border=True):
-            st.markdown('<div class="section-title">Kết quả này có hữu ích không?</div>', unsafe_allow_html=True)
-            st.markdown('<div style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;">Đánh giá của bạn giúp chúng tôi cải thiện thuật toán gợi ý.</div>', unsafe_allow_html=True)
+            st.markdown('<div class="section-title">Kết quả gợi ý có hữu ích không?</div>', unsafe_allow_html=True)
+            st.markdown('<div style="font-size:0.88rem; color:var(--text-muted); margin-bottom:14px;">Đánh giá của bạn giúp hệ thống cập nhật trọng số và cải thiện độ chính xác.</div>', unsafe_allow_html=True)
 
-            st.markdown("<b style='font-size:0.80rem; text-transform:uppercase;'>MỨC ĐỘ HÀI LÒNG:</b>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:0.82rem; font-weight:600; color:var(--text-main); margin-bottom:4px;'>Mức độ hài lòng:</div>", unsafe_allow_html=True)
             stars_choice = st.radio(
                 "Mức độ hài lòng",
                 [1, 2, 3, 4, 5],
                 index=None,
-                format_func=lambda x: "⭐" * x + f" ({x} sao)",
+                format_func=lambda x: f"{x} sao",
                 horizontal=True,
                 label_visibility="collapsed"
             )
 
-            st.markdown("<br><b style='font-size:0.80rem; text-transform:uppercase;'>ĐÁNH GIÁ SỰ PHÙ HỢP CỦA CÁC ĐỊA ĐIỂM TOP ĐẦU:</b>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:0.82rem; font-weight:600; color:var(--text-main); margin-top:14px; margin-bottom:6px;'>Đánh giá sự phù hợp của các địa điểm gợi ý:</div>", unsafe_allow_html=True)
 
             top_recommended = scored_df.head(5)
             item_evals = {}
@@ -831,11 +764,11 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                     item_evals[display_title] = choice
 
             comment_input = st.text_area(
-                "GÓP Ý THÊM (KHÔNG BẮT BUỘC)",
+                "Góp ý thêm (không bắt buộc)",
                 placeholder="Nhập ý kiến nhận xét của bạn về các địa điểm gợi ý..."
             )
 
-            if st.button("GỬI ĐÁNH GIÁ", type="primary"):
+            if st.button("Gửi đánh giá", type="primary"):
                 # Không đặt đáp án mặc định: nhãn "Phù hợp" mặc định sẽ làm Precision@5 cao giả tạo
                 if stars_choice is None or any(v is None for v in item_evals.values()):
                     st.warning("Vui lòng chọn mức hài lòng và đánh giá đủ từng địa điểm (Phù hợp / Chưa phù hợp) trước khi gửi.")
@@ -867,7 +800,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                         items=items_payload,
                         context={"budget": budget_per_person, "duration": duration, "style": style},
                     )
-                    st.success("✅ Cảm ơn bạn! Đánh giá đã được lưu thành công vào hệ thống.")
+                    st.success("Cảm ơn bạn! Đánh giá đã được lưu thành công vào hệ thống.")
 
 
 # =========================================================
@@ -875,16 +808,16 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
 # =========================================================
 elif st.session_state["active_view"] == "ADMIN":
     if not st.session_state.get("is_admin_logged_in", False):
-        st.error("⛔ Bạn chưa đăng nhập quyền Quản trị viên. Vui lòng bấm nút '🔑 ĐĂNG NHẬP ADMIN' ở góc trên bên phải.")
+        st.error("Bạn chưa đăng nhập quyền Quản trị viên. Vui lòng bấm nút 'Đăng nhập' ở góc trên bên phải.")
         st.stop()
 
     st.markdown("""
     <div class="hero">
         <div class="hero-content">
-            <span class="hero-eyebrow">KHU VỰC QUẢN TRỊ VIÊN</span>
-            <div class="hero-title">PHẢN HỒI NGƯỜI DÙNG & TƯƠNG TÁC THỰC TẾ</div>
+            <span class="hero-eyebrow">Khu vực Quản trị</span>
+            <div class="hero-title">Phản hồi Người dùng & Tương tác Thực tế</div>
             <div class="hero-description">
-                Tổng hợp Explicit Feedback (đánh giá tường minh) và Implicit Feedback (hành vi ngầm) thu thập từ hệ thống.
+                Tổng hợp Explicit Feedback (đánh giá tường minh) và Implicit Feedback (hành vi mở xem) thu thập từ hệ thống.
             </div>
         </div>
     </div>
@@ -904,15 +837,15 @@ elif st.session_state["active_view"] == "ADMIN":
     with m2:
         st.markdown(f"""
         <div class="kpi-card">
-            <div class="kpi-value">{stats['avg_stars']} / 5 SAO</div>
+            <div class="kpi-value">{stats['avg_stars']} / 5</div>
             <div class="kpi-label">ĐIỂM TRUNG BÌNH</div>
         </div>
         """, unsafe_allow_html=True)
     with m3:
         st.markdown(f"""
         <div class="kpi-card">
-            <div class="kpi-value">{stats['total_views']} LƯỢT</div>
-            <div class="kpi-label">TƯƠNG TÁC NGẦM (IMPLICIT VIEWS)</div>
+            <div class="kpi-value">{stats['total_views']}</div>
+            <div class="kpi-label">LƯỢT MỞ XEM CHI TIẾT</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -1002,7 +935,7 @@ elif st.session_state["active_view"] == "ADMIN":
                 formatted_rows.append({
                     "Thời gian": r["timestamp"],
                     "Ngữ cảnh khảo sát": r["persona"],
-                    "Sao": "⭐" * r["stars"],
+                    "Sao": f"{r['stars']} / 5 sao",
                     "Phù hợp": ", ".join(r["fit_items"]) if r["fit_items"] else "—",
                     "Chưa phù hợp": ", ".join(r["unfit_items"]) if r["unfit_items"] else "—",
                     "Bình luận": r["comment"] if r["comment"] else "—"
