@@ -445,8 +445,10 @@ if not st.session_state["is_admin_logged_in"] and st.session_state.get("show_top
             with f_col1:
                 admin_pwd = st.text_input(
                     "Mật khẩu quản trị",
-                    placeholder="Nhập mật khẩu (ví dụ: admin123 hoặc admin)",
-                    key="admin_code_input",
+                    type="password",
+                    placeholder="Nhập mật khẩu...",
+                    key="admin_pwd_login",
+                    autocomplete="current-password",
                     help="Nhập mật khẩu rồi bấm Enter để vào nhanh"
                 )
             with f_col2:
@@ -470,7 +472,7 @@ if not st.session_state["is_admin_logged_in"] and st.session_state.get("show_top
                 elif not pwd_clean:
                     st.warning("Vui lòng nhập mật khẩu.")
                 else:
-                    st.error("Mật khẩu không đúng. Mật khẩu mặc định là: admin123 (hoặc admin)")
+                    st.error("Mật khẩu không chính xác.")
 
 
 # Thanh chuyển View nếu Admin đã đăng nhập hoặc đã có kết quả
