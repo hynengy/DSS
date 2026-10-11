@@ -94,3 +94,14 @@ def get_feedback_stats():
         "implicit_list": implicit_list,
         "explicit_reviews": reviews
     }
+
+
+def reset_feedback_data():
+    """Xóa toàn bộ dữ liệu đánh giá và lượt xem về trạng thái trống ban đầu."""
+    empty_data = {
+        "implicit_views": {},
+        "explicit_reviews": []
+    }
+    save_feedback_data(empty_data)
+    return empty_data
+

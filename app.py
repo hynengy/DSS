@@ -22,6 +22,7 @@ from utils.feedback_manager import (
     log_implicit_view,
     save_explicit_feedback,
     get_feedback_stats,
+    reset_feedback_data,
 )
 from sklearn.metrics import silhouette_score
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -950,3 +951,15 @@ elif st.session_state["active_view"] == "ADMIN":
             st.dataframe(df_exp, use_container_width=True, hide_index=True)
         else:
             st.info("Chưa có lượt đánh giá tường minh nào.")
+
+    st.markdown("<div style='height:24px;'></div>", unsafe_allow_html=True)
+
+    # 3. Quản lý dữ liệu thực nghiệm
+    with st.container(border=True):
+        st.markdown('<div class="section-title">Quản lý dữ liệu thực nghiệm</div>', unsafe_allow_html=True)
+        st.caption("Xóa sạch toàn bộ các lượt đánh giá và lượt xem đã lưu để bắt đầu thu thập số liệu thực nghiệm mới từ đầu.")
+        if st.button("Xóa sạch dữ liệu đánh giá & lượt xem (Reset)", type="secondary"):
+            reset_feedback_data()
+            st.session_state.pop("_logged_views", None)
+            st.success("Đã xóa toàn bộ dữ liệu phản hồi về trạng thái ban đầu!")
+            st.rerun()
