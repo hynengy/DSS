@@ -181,25 +181,71 @@ def hotel_price_per_night(hotel_df):
     return h.groupby("destination_id")["mid"].median()
 
 
-def estimate_trip_cost(df, preferred_duration=None, hotel_df=None, num_people: int = 1) -> pd.Series:
+def restaurant_meal_price(rest_df):
     """
-    Tổng chi phí ước tính của CẢ NHÓM cho từng điểm đến (dùng chung cho xếp hạng, giải thích
-    và đánh giá offline để mọi nơi tính giống nhau):
-        vé vào cổng/người x số người
-      + giá phòng/đêm x số phòng (2 người/phòng) x số đêm (số ngày - 1, làm tròn lên)
-    Chuyến đi trong ngày (<= 1 ngày) không tính khách sạn.
+    Giá một bữa ăn tiêu biểu / người của từng điểm đến = TRUNG VỊ giá giữa (min+max)/2 các quán ăn
+    lân cận (trung vị để tránh quán siêu sang hoặc quán ăn vặt kéo lệch). Bỏ giá thiếu/0.
+    """
+    if rest_df is None or rest_df.empty or "destination_id" not in rest_df.columns:
+        return pd.Series(dtype=float)
+    r = rest_df[["destination_id", "price_min", "price_max"]].copy()
+    r["mid"] = r[["price_min", "price_max"]].mean(axis=1)
+    r = r[r["mid"] > 0]
+    return r.groupby("destination_id")["mid"].median()
+
+
+def estimate_trip_cost_breakdown(
+    df, preferred_duration=None, hotel_df=None, rest_df=None, num_people: int = 1
+):
+    """
+    Tính chi phí phân rã (vé tham quan, khách sạn, ẩm thực) và tổng chi phí của cả nhóm.
     """
     num_people = max(1, int(num_people or 1))
-    ticket = df[["cost_min", "cost_max"]].mean(axis=1).fillna(0)
-    total = ticket * num_people
-    nights = max(0, int(np.ceil(trip_days(preferred_duration))) - 1)
+    days = max(0.5, float(trip_days(preferred_duration)))
+
+    # 1. Chi phí vé tham quan
+    ticket_per_person = df[["cost_min", "cost_max"]].mean(axis=1).fillna(0)
+    ticket_cost = ticket_per_person * num_people
+
+    # 2. Chi phí lưu trú khách sạn (nếu chuyến đi >= 1.5 ngày)
+    nights = max(0, int(np.ceil(days)) - 1)
+    hotel_cost = pd.Series(0.0, index=df.index)
     if nights > 0 and hotel_df is not None and "destination_id" in df.columns:
         per_night = hotel_price_per_night(hotel_df)
         if not per_night.empty:
             rooms = (num_people + 1) // 2
             room_cost = df["destination_id"].map(per_night).fillna(per_night.median())
-            total = total + room_cost * rooms * nights
-    return total
+            hotel_cost = room_cost * rooms * nights
+
+    # 3. Chi phí ẩm thực (ước tính 2 bữa chính/ngày/người)
+    food_cost = pd.Series(0.0, index=df.index)
+    if rest_df is not None and "destination_id" in df.columns:
+        meal_rate = restaurant_meal_price(rest_df)
+        meals_count = max(1, int(np.ceil(days * 2)))
+        if not meal_rate.empty:
+            per_meal = df["destination_id"].map(meal_rate).fillna(meal_rate.median()).fillna(80000.0)
+            food_cost = per_meal * meals_count * num_people
+        else:
+            food_cost = pd.Series(80000.0 * meals_count * num_people, index=df.index)
+
+    total_cost = ticket_cost + hotel_cost + food_cost
+    return {
+        "total": total_cost,
+        "ticket": ticket_cost,
+        "hotel": hotel_cost,
+        "food": food_cost,
+    }
+
+
+def estimate_trip_cost(df, preferred_duration=None, hotel_df=None, num_people: int = 1, rest_df=None) -> pd.Series:
+    """
+    Tổng chi phí ước tính của CẢ NHÓM cho từng điểm đến:
+        vé vào cổng/người x số người
+      + giá phòng/đêm x số phòng x số đêm (nếu chuyến đi > 1 ngày)
+      + chi phí ăn uống/bữa x số bữa x số người (nếu có rest_df)
+    """
+    breakdown = estimate_trip_cost_breakdown(df, preferred_duration, hotel_df, rest_df, num_people)
+    return breakdown["total"]
 
 
 def build_decision_matrix(
@@ -213,6 +259,7 @@ def build_decision_matrix(
     community: dict = None,
     hotel_df: pd.DataFrame = None,
     num_people: int = 1,
+    rest_df: pd.DataFrame = None,
 ) -> pd.DataFrame:
     """
     Xây ma trận quyết định (decision matrix) từ dữ liệu điểm đến đã lọc,
@@ -229,11 +276,15 @@ def build_decision_matrix(
         m["rating_num"] = 1.0
 
     # ── budget_fit: phần ngân sách còn lại sau tổng chi phí ước tính ────
-    # Giá trị ∈ [0, 1]: 1 = miễn phí, 0 = vượt ngân sách
-    est_cost = estimate_trip_cost(df, preferred_duration, hotel_df, num_people)
-    m["est_total_cost"] = est_cost
+    # Giá trị ∈ [0, 1]: 1 = tối ưu ngân sách, 0 = vượt ngân sách
+    breakdown = estimate_trip_cost_breakdown(df, preferred_duration, hotel_df, rest_df, num_people)
+    m["est_total_cost"] = breakdown["total"]
+    m["est_ticket_cost"] = breakdown["ticket"]
+    m["est_hotel_cost"] = breakdown["hotel"]
+    m["est_food_cost"] = breakdown["food"]
+
     if budget and budget > 0:
-        m["budget_fit"] = ((budget - est_cost) / budget).clip(lower=0.0, upper=1.0)
+        m["budget_fit"] = ((budget - breakdown["total"]) / budget).clip(lower=0.0, upper=1.0)
     else:
         m["budget_fit"] = 1.0  # Không có budget → không phạt
 
@@ -334,12 +385,19 @@ def rank_by_suitability(
         community=community,
         hotel_df=hotel_df,
         num_people=num_people,
+        rest_df=kwargs.get("rest_df"),
     )
     est_cost = matrix.pop("est_total_cost")  # thông tin hiển thị, không phải tiêu chí TOPSIS
+    est_ticket = matrix.pop("est_ticket_cost")
+    est_hotel = matrix.pop("est_hotel_cost")
+    est_food = matrix.pop("est_food_cost")
     scores = topsis_score(matrix, criteria)
 
     out = df.copy()
     out["est_total_cost"] = est_cost
+    out["est_ticket_cost"] = est_ticket
+    out["est_hotel_cost"] = est_hotel
+    out["est_food_cost"] = est_food
     out["style_match"] = matrix["style_match"]
     out["cluster_fit"] = matrix["cluster_fit"]
     out["community_score"] = matrix["community_score"]
@@ -384,8 +442,15 @@ def explain_top_criteria(row: pd.Series, budget=None, keyword_query=None, feedba
 
     est = row.get("est_total_cost")
     if budget and pd.notna(est) and est <= budget:
-        reasons.append(f"Tổng chi phí ước tính ~{est / 1e6:.2f} triệu đ, trong ngân sách "
-                       f"{budget / 1e6:.1f} triệu đ (vé vào cổng + khách sạn)")
+        details = []
+        if pd.notna(row.get("est_ticket_cost")) and row.get("est_ticket_cost") > 0:
+            details.append(f"Vé: {row.get('est_ticket_cost')/1e3:.0f}k")
+        if pd.notna(row.get("est_hotel_cost")) and row.get("est_hotel_cost") > 0:
+            details.append(f"KS: {row.get('est_hotel_cost')/1e3:.0f}k")
+        if pd.notna(row.get("est_food_cost")) and row.get("est_food_cost") > 0:
+            details.append(f"Ăn: {row.get('est_food_cost')/1e3:.0f}k")
+        detail_str = f" ({', '.join(details)})" if details else ""
+        reasons.append(f"Tổng chi phí ước tính ~{est / 1e6:.2f} triệu đ{detail_str}, nằm trong ngân sách {budget / 1e6:.1f} triệu đ")
 
     rating = row.get("rating_num")
     if pd.notna(rating) and rating >= 4.0:

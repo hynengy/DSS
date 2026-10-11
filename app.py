@@ -629,12 +629,15 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
             tfidf_model=vectorizer,
             tfidf_matrix=tfidf_matrix,
             community=community,
-            hotel_df=hotel_df
+            hotel_df=hotel_df,
+            rest_df=rest_df
         )
 
         # Region Tabs
         st.markdown('<div class="section-title">Gợi ý điểm đến hàng đầu theo 3 Miền</div>', unsafe_allow_html=True)
-        st.info("💡 **Lưu ý về Ngân sách:** Độ phù hợp ngân sách (Budget Fit) được hệ thống tính toán bao gồm **giá vé vào cổng** kết hợp với **trung bình giá phòng khách sạn** lân cận.")
+        nights_calc = max(0, int(np.ceil(duration)) - 1)
+        meals_calc = max(1, int(np.ceil(duration * 2)))
+        st.info(f"💡 **Dự toán Ngân sách Toàn diện (Budget Fit):** Đã tổng hợp toàn bộ chi phí chuyến đi: **Vé tham quan** + **Khách sạn lưu trú** ({num_people} người · {nights_calc} đêm) + **Ẩm thực nhà hàng** (~{meals_calc} bữa) để so sánh tối ưu với ngân sách **{total_budget/1e6:.1f} triệu VNĐ** của nhóm bạn.")
         t_mb, t_mt, t_mn = st.tabs(["MIỀN BẮC", "MIỀN TRUNG", "MIỀN NAM"])
 
         def format_sub_rating(val):
@@ -663,7 +666,9 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                 rating_part = f"<span>★ {r_num:.1f}</span><span class='meta-sep'>•</span>" if (pd.notna(r_num) and r_num > 0) else ""
                 province_part = f"<span>{row.get('province', '')}</span>" if row.get('province') else ""
                 price_str = format_price_range(row.get('cost_min'), row.get('cost_max'))
-                price_part = f"<span class='meta-sep'>•</span><span title='Giá vé vào cổng (Hệ thống đã tự động cộng thêm chi phí khách sạn khi đánh giá mức độ phù hợp ngân sách)'>Vé vào cổng: {price_str}</span>" if price_str else ""
+                tot_est = row.get("est_total_cost", 0.0)
+                tot_per_person = tot_est / num_people if num_people > 0 else tot_est
+                cost_part = f"<span class='meta-sep'>•</span><span style='color:var(--primary); font-weight:600;' title='Dự toán toàn chuyến gồm Vé + Khách sạn + Ẩm thực'>Dự toán: ~{tot_per_person/1e6:.2f} tr/người</span>" if tot_est > 0 else ""
 
                 col_img, col_info = st.columns([1, 2])
                 with col_img:
@@ -674,7 +679,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
 <span class="match-badge">{score:.0f}% Phù hợp</span>
 {rating_part}
 {province_part}
-{price_part}
+{cost_part}
 </div>
 <p style="font-size:0.86rem; color:var(--text-2); margin-bottom:8px;">{str(row.get('description',''))[:150]}...</p>
 <span class="cluster-tag">{cluster_clean}</span>"""
@@ -689,13 +694,26 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                             _logged.add(row["destination_id"])
 
                         reasons = explain_top_criteria(
-                            row, budget=budget_per_person, keyword_query=style,
+                            row, budget=total_budget, keyword_query=style,
                             feedback=fb_counts.get(row["destination_id"]),
                         )
                         if reasons:
                             st.markdown("**VÌ SAO LỰA CHỌN NÀY PHÙ HỢP?**")
                             for r in reasons:
                                 st.markdown(f"- {r}")
+
+                        st.markdown(f"""
+                        <div style="background:var(--cream-dk); padding:10px 14px; border-radius:8px; margin:8px 0 12px 0; border:1px solid var(--border);">
+                            <div style="font-weight:700; color:var(--text-main); font-size:0.88rem; margin-bottom:4px;">
+                                💰 DỰ TOÁN CHI PHÍ CẢ CHUYẾN ĐI ({num_people} người · {duration} ngày): ~{tot_est/1e6:.2f} triệu VNĐ
+                            </div>
+                            <div style="color:var(--text-2); font-size:0.80rem; line-height:1.5;">
+                                🎟️ Vé vào cổng: <b>{row.get('est_ticket_cost', 0):,.0f} đ</b> &nbsp;|&nbsp; 
+                                🏨 Khách sạn ({nights_calc} đêm): <b>{row.get('est_hotel_cost', 0):,.0f} đ</b> &nbsp;|&nbsp; 
+                                🍜 Ẩm thực (~{meals_calc} bữa): <b>{row.get('est_food_cost', 0):,.0f} đ</b>
+                            </div>
+                        </div>
+                        """, unsafe_allow_html=True)
 
                         c_hotel, c_rest = st.columns(2)
                         with c_hotel:
@@ -706,7 +724,9 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                             for _, h in hotels.iterrows():
                                 h_name = clean_title_icon(h.get('hotel_name', ''))
                                 h_rate = format_sub_rating(h.get('rating_num'))
-                                st.markdown(f"- {h_name}{h_rate}")
+                                h_price = format_price_range(h.get('price_min'), h.get('price_max'))
+                                h_p_str = f" <span style='color:var(--text-muted); font-size:0.78rem;'>({h_price}/đêm)</span>" if h_price else ""
+                                st.markdown(f"- {h_name}{h_rate}{h_p_str}", unsafe_allow_html=True)
                         with c_rest:
                             st.markdown("<b>Quán ăn gợi ý:</b>", unsafe_allow_html=True)
                             rests = rest_df[rest_df["destination_id"] == row["destination_id"]].head(2)
@@ -715,7 +735,9 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                             for _, r in rests.iterrows():
                                 r_name = clean_title_icon(r.get('restaurant_name', ''))
                                 r_rate = format_sub_rating(r.get('rating_num'))
-                                st.markdown(f"- {r_name}{r_rate}")
+                                r_price = format_price_range(r.get('price_min'), r.get('price_max'))
+                                r_p_str = f" <span style='color:var(--text-muted); font-size:0.78rem;'>({r_price}/người)</span>" if r_price else ""
+                                st.markdown(f"- {r_name}{r_rate}{r_p_str}", unsafe_allow_html=True)
 
                 st.markdown("<hr style='margin: 16px 0; border-color: var(--border);'>", unsafe_allow_html=True)
 
