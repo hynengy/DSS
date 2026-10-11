@@ -873,12 +873,23 @@ elif st.session_state["active_view"] == "ADMIN":
         )
 
         st.markdown("<b style='font-size:0.80rem; text-transform:uppercase;'>So sánh với hệ thống cơ sở (đánh giá offline)</b>", unsafe_allow_html=True)
-        eval_tbl, n_scn = run_offline_eval(result_df, vectorizer, tfidf_matrix, tuple(sorted(_comm.items())))
+        eval_res = run_offline_eval(result_df, vectorizer, tfidf_matrix, tuple(sorted(_comm.items())))
+        if isinstance(eval_res, tuple) and len(eval_res) == 3:
+            eval_tbl, n_scn, eval_stats = eval_res
+        elif isinstance(eval_res, tuple) and len(eval_res) == 2:
+            eval_tbl, n_scn = eval_res
+            eval_stats = {}
+        else:
+            eval_tbl, n_scn, eval_stats = eval_res[0], eval_res[1], {}
+
         st.dataframe(eval_tbl, use_container_width=True, hide_index=True)
+        sig_info = ""
+        if eval_stats and "p_value" in eval_stats and eval_stats["p_value"] is not None:
+            sig_info = f" (Kiểm định Wilcoxon so với baseline '{eval_stats.get('baseline')}': p = {eval_stats['p_value']:.4f})."
         st.caption(
             f"Mô phỏng {n_scn} kịch bản (ngân sách × số ngày × chủ đề). Một địa điểm 'phù hợp' khi thỏa các ràng buộc "
             "khách nêu: chi phí tối đa ≤ ngân sách, thời lượng lệch ≤ 1 ngày, và đúng chủ đề theo tên/từ khóa gán tay "
-            "(độc lập với TF-IDF của bộ xếp hạng). Dòng 'Giới hạn trên' là mức tối đa có thể đạt. "
+            f"(độc lập với TF-IDF của bộ xếp hạng){sig_info}. Dòng 'Giới hạn trên' là mức tối đa có thể đạt. "
             "Đây là đánh giá theo yêu cầu đã nêu, không thay thế đánh giá của người dùng thật."
         )
 
