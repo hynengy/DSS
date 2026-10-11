@@ -668,7 +668,11 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                 price_str = format_price_range(row.get('cost_min'), row.get('cost_max'))
                 tot_est = row.get("est_total_cost", 0.0)
                 tot_per_person = tot_est / num_people if num_people > 0 else tot_est
-                cost_part = f"<span class='meta-sep'>•</span><span style='color:var(--primary); font-weight:600;' title='Dự toán toàn chuyến gồm Vé + Khách sạn + Ẩm thực'>Dự toán: ~{tot_per_person/1e6:.2f} tr/người</span>" if tot_est > 0 else ""
+                if tot_per_person >= 1e6:
+                    cost_fmt = f"~{tot_per_person/1e6:.2f} tr/người"
+                else:
+                    cost_fmt = f"~{tot_per_person:,.0f} đ/người"
+                cost_part = f"<span class='meta-sep'>•</span><span style='color:var(--primary); font-weight:600;' title='Dự toán toàn chuyến gồm Vé + Khách sạn + Ẩm thực'>Dự toán: {cost_fmt}</span>" if tot_est > 0 else ""
 
                 col_img, col_info = st.columns([1, 2])
                 with col_img:
@@ -702,22 +706,57 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                             for r in reasons:
                                 st.markdown(f"- {r}")
 
-                        st.markdown(f"""
-                        <div style="background:var(--cream-dk); padding:10px 14px; border-radius:8px; margin:8px 0 12px 0; border:1px solid var(--border);">
-                            <div style="font-weight:700; color:var(--text-main); font-size:0.88rem; margin-bottom:4px;">
-                                💰 DỰ TOÁN CHI PHÍ CẢ CHUYẾN ĐI ({num_people} người · {duration} ngày): ~{tot_est/1e6:.2f} triệu VNĐ
+                        if nights_calc > 0:
+                            hotel_pill = f"""
+                            <div style="background: var(--bg-base); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-light);">
+                                <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 2px;">🏨 Khách sạn ({nights_calc} đêm)</div>
+                                <div style="font-size: 0.90rem; font-weight: 700; color: var(--text-main);">{row.get('est_hotel_cost', 0):,.0f} đ</div>
                             </div>
-                            <div style="color:var(--text-2); font-size:0.80rem; line-height:1.5;">
-                                🎟️ Vé vào cổng: <b>{row.get('est_ticket_cost', 0):,.0f} đ</b> &nbsp;|&nbsp; 
-                                🏨 Khách sạn ({nights_calc} đêm): <b>{row.get('est_hotel_cost', 0):,.0f} đ</b> &nbsp;|&nbsp; 
-                                🍜 Ẩm thực (~{meals_calc} bữa): <b>{row.get('est_food_cost', 0):,.0f} đ</b>
+                            """
+                        else:
+                            hotel_pill = """
+                            <div style="background: var(--bg-base); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-light); display: flex; flex-direction: column; justify-content: center;">
+                                <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 2px;">🏨 Lưu trú</div>
+                                <div style="font-size: 0.84rem; font-weight: 600; color: #2A7B5C;">Đi trong ngày (0 đêm)</div>
+                            </div>
+                            """
+
+                        tot_display_str = f"~{tot_est:,.0f} đ" if tot_est < 1e6 else f"~{tot_est/1e6:.2f} triệu VNĐ"
+
+                        st.markdown(f"""
+                        <div style="background: #FFFFFF; border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin: 10px 0 16px 0; box-shadow: var(--shadow-sm);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+                                <div style="font-weight: 700; color: var(--navy); font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; display: flex; align-items: center; gap: 6px;">
+                                    <span>💰</span> DỰ TOÁN CHI PHÍ CẢ CHUYẾN ĐI
+                                    <span style="font-size: 0.72rem; font-weight: 500; background: var(--bg-base); color: var(--text-muted); padding: 2px 8px; border-radius: 12px; border: 1px solid var(--border-light); text-transform: none;">
+                                        {num_people} người · {duration} ngày
+                                    </span>
+                                </div>
+                                <div style="font-size: 1.05rem; font-weight: 800; color: var(--primary);">
+                                    {tot_display_str}
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 8px;">
+                                <div style="background: var(--bg-base); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-light);">
+                                    <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 2px;">🎟️ Vé tham quan</div>
+                                    <div style="font-size: 0.90rem; font-weight: 700; color: var(--text-main);">{row.get('est_ticket_cost', 0):,.0f} đ</div>
+                                </div>
+                                <div style="background: var(--bg-base); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-light);">
+                                    <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 2px;">🍜 Ẩm thực (~{meals_calc} bữa)</div>
+                                    <div style="font-size: 0.90rem; font-weight: 700; color: var(--text-main);">{row.get('est_food_cost', 0):,.0f} đ</div>
+                                </div>
+                                {hotel_pill}
                             </div>
                         </div>
                         """, unsafe_allow_html=True)
 
                         c_hotel, c_rest = st.columns(2)
                         with c_hotel:
-                            st.markdown("<b>Khách sạn lân cận:</b>", unsafe_allow_html=True)
+                            st.markdown("""
+                            <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:var(--text-main); letter-spacing:0.04em; margin-bottom:6px;">
+                                🏨 Khách sạn lân cận
+                            </div>
+                            """, unsafe_allow_html=True)
                             hotels = hotel_df[hotel_df["destination_id"] == row["destination_id"]].head(2)
                             if hotels.empty:
                                 st.caption("Đang cập nhật khách sạn...")
@@ -726,9 +765,13 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                                 h_rate = format_sub_rating(h.get('rating_num'))
                                 h_price = format_price_range(h.get('price_min'), h.get('price_max'))
                                 h_p_str = f" <span style='color:var(--text-muted); font-size:0.78rem;'>({h_price}/đêm)</span>" if h_price else ""
-                                st.markdown(f"- {h_name}{h_rate}{h_p_str}", unsafe_allow_html=True)
+                                st.markdown(f"- **{h_name}**{h_rate}{h_p_str}", unsafe_allow_html=True)
                         with c_rest:
-                            st.markdown("<b>Quán ăn gợi ý:</b>", unsafe_allow_html=True)
+                            st.markdown("""
+                            <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:var(--text-main); letter-spacing:0.04em; margin-bottom:6px;">
+                                🍜 Quán ăn gợi ý
+                            </div>
+                            """, unsafe_allow_html=True)
                             rests = rest_df[rest_df["destination_id"] == row["destination_id"]].head(2)
                             if rests.empty:
                                 st.caption("Đang cập nhật quán ăn...")
@@ -737,7 +780,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                                 r_rate = format_sub_rating(r.get('rating_num'))
                                 r_price = format_price_range(r.get('price_min'), r.get('price_max'))
                                 r_p_str = f" <span style='color:var(--text-muted); font-size:0.78rem;'>({r_price}/người)</span>" if r_price else ""
-                                st.markdown(f"- {r_name}{r_rate}{r_p_str}", unsafe_allow_html=True)
+                                st.markdown(f"- **{r_name}**{r_rate}{r_p_str}", unsafe_allow_html=True)
 
                 st.markdown("<hr style='margin: 16px 0; border-color: var(--border);'>", unsafe_allow_html=True)
 
