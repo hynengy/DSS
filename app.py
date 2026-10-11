@@ -445,10 +445,8 @@ if not st.session_state["is_admin_logged_in"] and st.session_state.get("show_top
             with f_col1:
                 admin_pwd = st.text_input(
                     "Mật khẩu quản trị",
-                    type="password",
-                    placeholder="Nhập mật khẩu (mặc định: admin123 hoặc admin)",
-                    key="admin_pwd_single",
-                    autocomplete="new-password",
+                    placeholder="Nhập mật khẩu (ví dụ: admin123 hoặc admin)",
+                    key="admin_code_input",
                     help="Nhập mật khẩu rồi bấm Enter để vào nhanh"
                 )
             with f_col2:
