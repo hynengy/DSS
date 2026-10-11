@@ -48,13 +48,13 @@ def _tag_text(df):
     return (df["destination_name"].fillna("") + " " + kws).str.lower()
 
 
-def _relevance(df, tag_text, budget, duration, intent, hotel_df=None, num_people=NUM_PEOPLE):
+def _relevance(df, tag_text, budget, duration, intent, hotel_df=None, num_people=NUM_PEOPLE, rest_df=None):
     """
     Trả về (graded 0..1, binary 0/1, intent_ok, budget_ok, duration_ok) theo index df.
     budget = ngân sách / NGƯỜI; so với tổng chi phí cả nhóm (cùng công thức với TOPSIS).
     """
     pref = (max(0.5, duration - 1), duration + 1)
-    cost = estimate_trip_cost(df, pref, hotel_df, num_people)
+    cost = estimate_trip_cost(df, pref, hotel_df, num_people, rest_df)
     b_ok = (cost <= budget * num_people).astype(float)
     d_ok = ((df["duration_days"].fillna(duration) - duration).abs() <= 1).astype(float)
     parts = [b_ok, d_ok]
@@ -92,7 +92,7 @@ ORACLE_NAME = "Giới hạn trên (xếp lý tưởng)"
 
 
 def offline_evaluation(df, tfidf_model, tfidf_matrix, community=None, seed=42, hotel_df=None,
-                       num_people=NUM_PEOPLE):
+                       num_people=NUM_PEOPLE, rest_df=None):
     """
     df: DataFrame điểm đến đã có cluster_id/cluster_name (kết quả run_kmeans),
         thứ tự dòng khớp với tfidf_matrix.
@@ -125,6 +125,7 @@ def offline_evaluation(df, tfidf_model, tfidf_matrix, community=None, seed=42, h
             df, weights=recommended_weights(bool(it)), budget=b * num_people, num_people=num_people,
             preferred_duration=(max(0.5, d - 1), d + 1), keyword_query=it or "",
             tfidf_model=tfidf_model, tfidf_matrix=tfidf_matrix, community=community, hotel_df=hotel_df,
+            rest_df=rest_df
         )
         return list(out.index)
 
@@ -142,7 +143,7 @@ def offline_evaluation(df, tfidf_model, tfidf_matrix, community=None, seed=42, h
     acc = {name: {"p": [], "ndcg": [], "intent": [], "budget": [], "dur": [], "div": [], "seen": set()}
            for name in systems}
     for (b, d, it) in scenarios:
-        graded, binary, i_ok, b_ok, d_ok = _relevance(df, tag_text, b, d, it, hotel_df, num_people)
+        graded, binary, i_ok, b_ok, d_ok = _relevance(df, tag_text, b, d, it, hotel_df, num_people, rest_df)
         for name, fn in systems.items():
             top = (fn(b, d, it, graded=graded) if fn is rank_oracle else fn(b, d, it))[:K]
             a = acc[name]

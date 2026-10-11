@@ -355,8 +355,11 @@ def load_search_model(_dest_df):
 
 
 @st.cache_data(show_spinner="Đang chạy đánh giá offline trên các kịch bản mô phỏng...")
-def run_offline_eval(_result_df, _vectorizer, _tfidf_matrix, community_key):
-    return offline_evaluation(_result_df, _vectorizer, _tfidf_matrix, community=dict(community_key))
+def run_offline_eval(_result_df, _vectorizer, _tfidf_matrix, community_key, _hotel_df=None, _rest_df=None):
+    return offline_evaluation(
+        _result_df, _vectorizer, _tfidf_matrix, community=dict(community_key),
+        hotel_df=_hotel_df, rest_df=_rest_df
+    )
 
 
 # Load Data
@@ -890,7 +893,10 @@ elif st.session_state["active_view"] == "ADMIN":
         )
 
         st.markdown("<b style='font-size:0.80rem; text-transform:uppercase;'>So sánh với hệ thống cơ sở (đánh giá offline)</b>", unsafe_allow_html=True)
-        eval_res = run_offline_eval(result_df, vectorizer, tfidf_matrix, tuple(sorted(_comm.items())))
+        eval_res = run_offline_eval(
+            result_df, vectorizer, tfidf_matrix, tuple(sorted(_comm.items())),
+            _hotel_df=hotel_df, _rest_df=rest_df
+        )
         if isinstance(eval_res, tuple) and len(eval_res) == 3:
             eval_tbl, n_scn, eval_stats = eval_res
         elif isinstance(eval_res, tuple) and len(eval_res) == 2:
