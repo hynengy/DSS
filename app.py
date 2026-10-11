@@ -411,7 +411,7 @@ if "is_admin_logged_in" not in st.session_state:
 if "active_view" not in st.session_state:
     st.session_state["active_view"] = "SURVEY"
 
-h_col1, h_col2 = st.columns([3, 1], vertical_alignment="center")
+h_col1, h_col2 = st.columns([3, 1])
 
 with h_col1:
     st.markdown("""
@@ -439,21 +439,40 @@ with h_col2:
 # Modal / Card Đăng nhập Admin xuất hiện ngay dưới Header khi bấm nút
 if not st.session_state["is_admin_logged_in"] and st.session_state.get("show_top_admin_login", False):
     with st.container(border=True):
-        st.markdown("<div class='section-title' style='font-size:1.25rem !important; margin-bottom:16px !important;'>Đăng nhập Quản trị viên</div>", unsafe_allow_html=True)
-        tu1, tu2 = st.columns(2)
-        with tu1:
-            top_u = st.text_input("Tài khoản", key="top_u_input")
-        with tu2:
-            top_p = st.text_input("Mật khẩu", type="password", key="top_p_input")
+        st.markdown("<div class='section-title' style='font-size:1.15rem !important; margin-bottom:12px !important;'>Đăng nhập Quản trị viên</div>", unsafe_allow_html=True)
+        with st.form("admin_login_form"):
+            f_col1, f_col2, f_col3 = st.columns([3, 1, 1])
+            with f_col1:
+                admin_pwd = st.text_input(
+                    "Mật khẩu quản trị",
+                    type="password",
+                    placeholder="Nhập mật khẩu (mặc định: admin123 hoặc admin)",
+                    key="admin_pwd_single",
+                    autocomplete="new-password",
+                    help="Nhập mật khẩu rồi bấm Enter để vào nhanh"
+                )
+            with f_col2:
+                st.markdown("<div style='height:28px;'></div>", unsafe_allow_html=True)
+                login_btn = st.form_submit_button("VÀO ADMIN", type="primary", use_container_width=True)
+            with f_col3:
+                st.markdown("<div style='height:28px;'></div>", unsafe_allow_html=True)
+                cancel_btn = st.form_submit_button("ĐÓNG", use_container_width=True)
 
-        if st.button("XÁC NHẬN", type="primary", key="top_sub_btn"):
-            if top_u == "admin" and top_p == "admin123":
-                st.session_state["is_admin_logged_in"] = True
+            if cancel_btn:
                 st.session_state["show_top_admin_login"] = False
-                st.session_state["active_view"] = "ADMIN"
                 st.rerun()
-            else:
-                st.error("Tài khoản hoặc mật khẩu không chính xác.")
+
+            if login_btn:
+                pwd_clean = admin_pwd.strip()
+                if pwd_clean in ["admin", "admin123", "123456"]:
+                    st.session_state["is_admin_logged_in"] = True
+                    st.session_state["show_top_admin_login"] = False
+                    st.session_state["active_view"] = "ADMIN"
+                    st.rerun()
+                elif not pwd_clean:
+                    st.warning("Vui lòng nhập mật khẩu.")
+                else:
+                    st.error("Mật khẩu không đúng. Mật khẩu mặc định là: admin123 (hoặc admin)")
 
 
 # Thanh chuyển View nếu Admin đã đăng nhập hoặc đã có kết quả
