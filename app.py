@@ -1193,7 +1193,7 @@ elif st.session_state["active_view"] == "ADMIN":
                     "cluster_fit": "Cụm K-Means"
                 }
                 base_w = recommended_weights(True)
-                learned_w, _ = learn_weights(stats["explicit_reviews"], base_w, has_query=True)
+                learned_w, linfo = learn_weights(stats["explicit_reviews"], base_w, has_query=True)
                 df_weights = pd.DataFrame({
                     "Tiêu chí": [FEATURE_NAMES[k] for k in LEARN_FEATURES],
                     "Trọng số ban đầu": [base_w.get(k, 0.0) for k in LEARN_FEATURES],
@@ -1203,6 +1203,11 @@ elif st.session_state["active_view"] == "ADMIN":
                     st.line_chart(df_weights.set_index("Tiêu chí"), color=["#B3ABA5", "#8C2D19"])
                 else:
                     st.bar_chart(df_weights.set_index("Tiêu chí"), color=["#B3ABA5", "#8C2D19"])
+
+                if linfo["status"] == "learned":
+                    st.caption(f"Đã kích hoạt học máy từ {linfo['n_labels']} nhãn thực tế (hệ số hòa trộn λ = {linfo.get('lambda', 0):.2f}). Đường màu đỏ thể hiện trọng số mới đã dịch chuyển theo dữ liệu người dùng.")
+                else:
+                    st.caption(f"Đang chờ dữ liệu: Hiện có {linfo['n_labels']}/{MIN_LABELS} nhãn (cần tối thiểu {MIN_LABELS} nhãn để bắt đầu học máy). Vì chưa đủ dữ liệu, hai đường hiện đang trùng khớp nhau ở mức trọng số ban đầu.")
 
             # Top địa điểm phù hợp nhất
             fit_counter = {}
