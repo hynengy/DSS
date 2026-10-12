@@ -1,4 +1,4 @@
-Miền,"STT
+﻿Miền,"STT
 destination_id","Tên địa điểm
 destination_name","Vị trí/ Tỉnh thành
 province / location","Mã định danh quán ăn
@@ -137,7 +137,7 @@ Bắc,DEST_MB_01,Vịnh Hạ Long,Quảng Ninh,REST_MB_01,Nhà hàng Hồng Hạ
 ,,,,REST_MT_120,Quán Bò Nướng Một Nắng Dì Mai,"350 Trần Hưng Đạo, Phường 6, TP. Tuy Hòa",Đặc sản nhắm và quà mang về,120.000đ - 250.000đ / phần,4.5/5,"""bò một nắng than hoa chấm muối kiến vàng Krông Pa chua cay""",
 ,DEST_MT_47,Làng cà phê Trung Nguyên,"Thành phố Buôn Ma Thuột, Đắk Lắk",REST_MT_121,Quán Bún Đỏ Cô Tùng,"71 Lý Thường Kiệt, P. Thắng Lợi, Buôn Ma Thuột",Ẩm thực đường phố Ban Mê,25.000đ - 40.000đ / tô,4.7/5,"""bún sợi to màu đỏ hạt điều gạch cua đồng"", ""giò chả"", ""trứng cút""",
 ,,,,REST_MT_122,Bò Nhúng Me Cà Te Quán,"140 Lê Thánh Tông, P. Tân Lợi, TP. Buôn Ma Thuột",Đặc sản nướng thau chảo,120.000đ - 220.000đ / phần,4.8/5,"""bò tơ nhúng sốt me chua cay phết bơ bánh mì chấm sốt nóng""",
-,,,,REST_MT_123,Bánh Ướt Thịt Nướng E11,"45 Trần Nhật Duật, P. Tân Lợi, TP. Buôn Ma Thuột",Ăn vặt cuốn dĩa chồng dĩa,2.500đ/dĩa (tổng 50.000đ/người),4.6/5,"""bánh ướt mỏng nóng hổi cuốn dưa chuột"", ""xoài băm"", ""thịt nướng sả""",
+,,,,REST_MT_123,Bánh Ướt Thịt Nướng E11,"45 Trần Nhật Duật, P. Tân Lợi, TP. Buôn Ma Thuột",Ăn vặt cuốn dĩa chồng dĩa,Bình dân (35.000đ - 60.000đ / người),4.6/5,"""bánh ướt mỏng nóng hổi cuốn dưa chuột"", ""xoài băm"", ""thịt nướng sả""",
 ,DEST_MT_48,Vườn Quốc Gia Yok Đôn,"Krông Na, huyện Buôn Đôn, tỉnh Dak Lak",REST_MT_124,Nhà Hàng Rừng Sêrêpôk,"Khu du lịch Cầu treo Buôn Đôn, Krông Na, Buôn Đôn",Ẩm thực bản sắc Tây Nguyên,100.000đ - 250.000đ / người,4.5/5,"""gà ta nướng than hồng kẹp thanh tre"", ""cơm lam chấm muối mè vừng""",
 ,,,,REST_MT_125,Quán Ẩm Thực Nhà Sàn Buôn Đôn,"Thôn Trí B, Xã Krông Na, Huyện Buôn Đôn",Món ăn người đồng bào Ê-đê,90.000đ - 200.000đ / người,4.4/5,"""cá lăng sông Sêrêpôk nấu măng rừng chua cay"", ""rau nhíp xào tỏi""",
 ,,,,REST_MT_126,Quán Cơm Niêu Tây Nguyên Đôn Ga,"Đường Tỉnh Lộ 1, Trung tâm TT. Buôn Đôn",Cơm niêu gia đình mộc mạc,60.000đ - 150.000đ / người,4.3/5,"""cơm niêu cháy cạnh"", ""canh cà đắng da trâu"", ""thịt heo rừng xào sả""",
