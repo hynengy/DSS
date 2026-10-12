@@ -465,16 +465,16 @@ CLUSTER_COLOR_MAP = {
 }
 
 
-@st.cache_data
-def load_data():
+@st.cache_data(show_spinner=False)
+def load_data(cache_version="v2.1_clean_costs"):
     dest_df = clean_destinations()
     hotel_df = clean_hotels()
     rest_df = clean_restaurants()
     return dest_df, hotel_df, rest_df
 
 
-@st.cache_data
-def load_clustered(_dest_df, k=None):
+@st.cache_data(show_spinner=False)
+def load_clustered(_dest_df, k=None, cache_version="v2.1_clean_costs"):
     result_df, _ = run_kmeans(_dest_df, k=k)
     return result_df
 

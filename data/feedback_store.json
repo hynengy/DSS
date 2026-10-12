@@ -1,182 +1,137 @@
 {
-  "implicit_views": {
-    "DEST_MB_21": {
-      "name": "Cột cờ Lũng Cú",
-      "region": "Miền Bắc",
-      "views": 2
-    },
-    "DEST_MB_17": {
-      "name": "Mộc Châu – Sơn La",
-      "region": "Miền Bắc",
-      "views": 2
-    },
-    "DEST_MB_10": {
-      "name": "Núi Đồi Bù",
-      "region": "Miền Bắc",
-      "views": 2
-    },
-    "DEST_MB_22": {
-      "name": "Thác Bản Giốc",
-      "region": "Miền Bắc",
-      "views": 2
-    },
-    "DEST_MT_27": {
-      "name": "Đèo Hải Vân",
-      "region": "Miền Trung",
-      "views": 2
-    },
-    "DEST_MT_36": {
-      "name": "Động Phong Nha - Kẻ Bàng",
-      "region": "Miền Trung",
-      "views": 2
-    },
-    "DEST_MT_49": {
-      "name": "Măng Đen",
-      "region": "Miền Trung",
-      "views": 2
-    },
-    "DEST_MT_31": {
-      "name": "Cầu Tình Yêu Đà Nẵng",
-      "region": "Miền Trung",
-      "views": 2
-    },
-    "DEST_MT_26": {
-      "name": "Bán đảo Sơn Trà",
-      "region": "Miền Trung",
-      "views": 2
-    },
-    "DEST_MN_81": {
-      "name": "Tượng chúa Kito Vua",
-      "region": "Miền Nam",
-      "views": 2
-    },
-    "DEST_MN_60": {
-      "name": "Đỉnh Langbiang",
-      "region": "Miền Nam",
-      "views": 2
-    },
-    "DEST_MN_61": {
-      "name": "Hồ Tuyền Lâm",
-      "region": "Miền Nam",
-      "views": 2
-    },
-    "DEST_MN_68": {
-      "name": "Đồi Kỳ Quan Phan Thiết",
-      "region": "Miền Nam",
-      "views": 2
-    },
-    "DEST_MN_76": {
-      "name": "Núi Bà Đen Tây Ninh",
-      "region": "Miền Nam",
-      "views": 2
-    },
-    "DEST_MN_59": {
-      "name": "Đồi chè Cầu Đất Farm",
-      "region": "Miền Nam",
-      "views": 1
-    },
-    "DEST_MB_18": {
-      "name": "Đảo Cát Bà",
-      "region": "Miền Bắc",
-      "views": 1
-    },
-    "DEST_MB_14": {
-      "name": "Thiên Sơn – Suối Ngà",
-      "region": "Miền Bắc",
-      "views": 1
-    },
-    "DEST_MT_42": {
-      "name": "Eo Gió Quy Nhơn",
-      "region": "Miền Trung",
-      "views": 1
-    },
-    "DEST_MT_35": {
-      "name": "Vịnh Lăng Cô",
-      "region": "Miền Trung",
-      "views": 1
-    },
-    "DEST_MT_40": {
-      "name": "Bãi biển Nhật Lệ",
-      "region": "Miền Trung",
-      "views": 1
-    },
-    "DEST_MT_23": {
-      "name": "Bà Nà Hills",
-      "region": "Miền Trung",
-      "views": 1
-    },
-    "DEST_MN_89": {
-      "name": "Côn Đảo",
-      "region": "Miền Nam",
-      "views": 1
-    },
-    "DEST_MN_64": {
-      "name": "Ga Đà Lạt",
-      "region": "Miền Nam",
-      "views": 1
-    },
-    "DEST_MN_100": {
-      "name": "Bãi Dài",
-      "region": "Miền Nam",
-      "views": 1
-    },
-    "DEST_MB_16": {
-      "name": "Sapa – Lào Cai",
-      "region": "Miền Bắc",
-      "views": 1
-    },
-    "DEST_MB_13": {
-      "name": "Vườn Quốc Gia Ba Vì",
-      "region": "Miền Bắc",
-      "views": 1
-    },
-    "DEST_MN_94": {
-      "name": "Thành phố Hà Tiên",
-      "region": "Miền Nam",
-      "views": 1
-    }
-  },
   "explicit_reviews": [
     {
-      "timestamp": "2026-10-12 08:07:02",
-      "persona": "Khách (Ngân sách: 1.0 triệu)",
-      "stars": 5,
+      "timestamp": "2026-10-12T03:12:20.000Z",
+      "persona": "Khách (Ngân sách: 2.5 triệu)",
+      "stars": 3,
       "fit_items": [
-        "Cột cờ Lũng Cú (Miền Bắc)",
+        "Chùa Tam Chúc (Miền Bắc)",
+        "Quần Thể Chùa Hương (Miền Bắc)",
+        "Chùa Một Cột (Miền Bắc)"
+      ],
+      "unfit_items": [
+        "Hồ Tuyền Lâm (Miền Nam)",
+        "Bán đảo Sơn Trà (Miền Trung)"
+      ],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_11",
+          "name": "Chùa Tam Chúc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.978,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.12252007121196438,
+            "cluster_fit": 1,
+            "community_score": 0.375
+          }
+        },
+        {
+          "dest_id": "DEST_MN_61",
+          "name": "Hồ Tuyền Lâm",
+          "rank": 2,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.97,
+            "duration_fit": 0.8888888888888888,
+            "style_match": 0.12611584550914798,
+            "cluster_fit": 0.5604021140856987,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_08",
+          "name": "Quần Thể Chùa Hương",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.904,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.11529934365253008,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_26",
+          "name": "Bán đảo Sơn Trà",
+          "rank": 4,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.8823529411764705,
+            "budget_fit": 0.97,
+            "duration_fit": 1,
+            "style_match": 0.11672789957889942,
+            "cluster_fit": 0.5604021140856987,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_07",
+          "name": "Chùa Một Cột",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.975,
+            "duration_fit": 0.7032348804500703,
+            "style_match": 0.1112438092772909,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        }
+      ],
+      "context": {
+        "budget": 2500000,
+        "duration": 0.5,
+        "style": "đi chùa"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T03:10:43.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 3,
+      "fit_items": [
         "Mộc Châu – Sơn La (Miền Bắc)",
+        "Cột cờ Lũng Cú (Miền Bắc)",
         "Núi Đồi Bù (Miền Bắc)",
         "Tượng chúa Kito Vua (Miền Nam)",
         "Đèo Hải Vân (Miền Trung)"
       ],
       "unfit_items": [],
-      "comment": "",
+      "comment": "có một số địa điểm không thuộc núi, ví dụ như hang động Phong Nha-Kẻ Bàng\n",
       "items": [
-        {
-          "dest_id": "DEST_MB_21",
-          "name": "Cột cờ Lũng Cú",
-          "rank": 1,
-          "label": "fit",
-          "features": {
-            "rating_num": 0.764705882352941,
-            "budget_fit": 0.25833333333333336,
-            "duration_fit": 0.3076923076923077,
-            "style_match": 0.13985485590878693,
-            "cluster_fit": 0.7845536240039926,
-            "community_score": 0.6666666666666666
-          }
-        },
         {
           "dest_id": "DEST_MB_17",
           "name": "Mộc Châu – Sơn La",
-          "rank": 2,
+          "rank": 1,
           "label": "fit",
           "features": {
             "rating_num": 0.823529411764706,
-            "budget_fit": 0.0,
-            "duration_fit": 0.5714285714285714,
+            "budget_fit": 0.6033333333333334,
+            "duration_fit": 0.6666666666666666,
             "style_match": 0.15638094450912554,
-            "cluster_fit": 1.0,
-            "community_score": 0.6666666666666666
+            "cluster_fit": 1,
+            "community_score": 0.8947368421052632
+          }
+        },
+        {
+          "dest_id": "DEST_MB_21",
+          "name": "Cột cờ Lũng Cú",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.8041666666666667,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.13985485590878693,
+            "cluster_fit": 0.7845536240039926,
+            "community_score": 0.8888888888888888
           }
         },
         {
@@ -186,11 +141,11 @@
           "label": "fit",
           "features": {
             "rating_num": 0.823529411764706,
-            "budget_fit": 0.0,
-            "duration_fit": 0.6666666666666666,
+            "budget_fit": 0.3875,
+            "duration_fit": 0.5714285714285714,
             "style_match": 0.1354052274430342,
             "cluster_fit": 0.7845536240039926,
-            "community_score": 0.6666666666666666
+            "community_score": 0.75
           }
         },
         {
@@ -200,10 +155,101 @@
           "label": "fit",
           "features": {
             "rating_num": 0.7058823529411765,
-            "budget_fit": 0.0,
-            "duration_fit": 0.4849660523763336,
+            "budget_fit": 0.7208333333333333,
+            "duration_fit": 0.4325259515570934,
             "style_match": 0.11246064918678472,
             "cluster_fit": 0.500189864705869,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MT_27",
+          "name": "Đèo Hải Vân",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.8823529411764705,
+            "budget_fit": 0.7208333333333333,
+            "duration_fit": 0.4384042086804034,
+            "style_match": 0.09287369984227364,
+            "cluster_fit": 1,
+            "community_score": 0.875
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
+        "duration": 1.5,
+        "style": "tôi muốn đi leo núi "
+      }
+    },
+    {
+      "timestamp": "2026-10-12T03:02:08.000Z",
+      "persona": "Khách (Ngân sách: 2.5 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Thác Bản Giốc (Miền Bắc)",
+        "Vườn Quốc Gia Ba Vì (Miền Bắc)",
+        "Vườn Quốc Gia Yok Đôn (Miền Trung)",
+        "Thiên Sơn – Suối Ngà (Miền Bắc)",
+        "Đèo Hải Vân (Miền Trung)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_22",
+          "name": "Thác Bản Giốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.952,
+            "duration_fit": 0.8417508417508418,
+            "style_match": 0.30501204016411965,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MB_13",
+          "name": "Vườn Quốc Gia Ba Vì",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.946,
+            "duration_fit": 0.5,
+            "style_match": 0.2964795967048542,
+            "cluster_fit": 0.7901152950453555,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_48",
+          "name": "Vườn Quốc Gia Yok Đôn",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.954,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.2762499362102925,
+            "cluster_fit": 0.7989529321406834,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_14",
+          "name": "Thiên Sơn – Suối Ngà",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.2941176470588235,
+            "budget_fit": 0.924,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.18862710272756159,
+            "cluster_fit": 0.7901152950453555,
             "community_score": 0.5
           }
         },
@@ -214,32 +260,2412 @@
           "label": "fit",
           "features": {
             "rating_num": 0.8823529411764705,
-            "budget_fit": 0.0,
-            "duration_fit": 0.49236829148202865,
-            "style_match": 0.09287369984227364,
-            "cluster_fit": 1.0,
+            "budget_fit": 0.97,
+            "duration_fit": 0.7806401249024199,
+            "style_match": 0.1825778478146116,
+            "cluster_fit": 1,
+            "community_score": 0.8571428571428571
+          }
+        }
+      ],
+      "context": {
+        "budget": 2500000,
+        "duration": 0.5,
+        "style": "Phong cảnh thiên nhiên nước non hùng vĩ"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T03:00:31.000Z",
+      "persona": "Khách (Ngân sách: 4.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Bãi Tắm Sao",
+        "Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "Khá ổn",
+      "items": [
+        {
+          "dest_id": "DEST_MN_99",
+          "name": "Bãi Tắm Sao, Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.8,
+            "duration_fit": 0.4,
+            "style_match": 0.2959809709985388,
+            "cluster_fit": 1,
+            "community_score": 0.9090909090909091
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.53,
+            "duration_fit": 1,
+            "style_match": 0.23880259016138056,
+            "cluster_fit": 1,
+            "community_score": 0.9411764705882353
+          }
+        },
+        {
+          "dest_id": "DEST_MT_43",
+          "name": "Kỳ Co",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.7125,
+            "duration_fit": 0.4,
+            "style_match": 0.23486648154610168,
+            "cluster_fit": 1,
+            "community_score": 0.9090909090909091
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.85,
+            "duration_fit": 0.4,
+            "style_match": 0.21388912690142275,
+            "cluster_fit": 1,
+            "community_score": 0.9444444444444444
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.8,
+            "duration_fit": 0.4,
+            "style_match": 0.21248057336630619,
+            "cluster_fit": 1,
+            "community_score": 0.9166666666666666
+          }
+        }
+      ],
+      "context": {
+        "budget": 4000000,
+        "duration": 2,
+        "style": "Du lịch biển"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:28:39.000Z",
+      "persona": "Khách (Ngân sách: 10.0 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Bà Nà Hills (Miền Trung)",
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Đảo Bình Hưng (Miền Trung)",
+        "Làng cà phê Trung Nguyên (Miền Trung)",
+        "Đồi chè Cầu Đất Farm (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MT_23",
+          "name": "Bà Nà Hills",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.635,
+            "duration_fit": 0.2,
+            "style_match": 0.08637143515624734,
+            "cluster_fit": 1,
+            "community_score": 0.8333333333333334
+          }
+        },
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.6015,
+            "duration_fit": 0.25,
+            "style_match": 0.08579675020230043,
+            "cluster_fit": 0.7224346967517604,
+            "community_score": 0.8888888888888888
+          }
+        },
+        {
+          "dest_id": "DEST_MT_51",
+          "name": "Đảo Bình Hưng",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.79,
+            "duration_fit": 0.2222222222222222,
+            "style_match": 0.08216462368978764,
+            "cluster_fit": 0.556069666726855,
+            "community_score": 0.8333333333333334
+          }
+        },
+        {
+          "dest_id": "DEST_MT_47",
+          "name": "Làng cà phê Trung Nguyên",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.845,
+            "duration_fit": 0.18181818181818182,
+            "style_match": 0.08210034793204869,
+            "cluster_fit": 0.4973984644845077,
+            "community_score": 0.7142857142857143
+          }
+        },
+        {
+          "dest_id": "DEST_MN_59",
+          "name": "Đồi chè Cầu Đất Farm",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.865,
+            "duration_fit": 0.17580872011251758,
+            "style_match": 0.07518348128643479,
+            "cluster_fit": 0.7224346967517604,
+            "community_score": 0.8333333333333334
+          }
+        }
+      ],
+      "context": {
+        "budget": 10000000,
+        "duration": 5,
+        "style": "Tôi muốn đi đến 1 địa điểm với không gian thoáng "
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:28:32.000Z",
+      "persona": "Khách (Ngân sách: 10.0 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Bà Nà Hills (Miền Trung)",
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Đảo Bình Hưng (Miền Trung)",
+        "Làng cà phê Trung Nguyên (Miền Trung)",
+        "Đồi chè Cầu Đất Farm (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MT_23",
+          "name": "Bà Nà Hills",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.635,
+            "duration_fit": 0.2,
+            "style_match": 0.08637143515624734,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.6015,
+            "duration_fit": 0.25,
+            "style_match": 0.08579675020230043,
+            "cluster_fit": 0.7224346967517604,
+            "community_score": 0.8823529411764706
+          }
+        },
+        {
+          "dest_id": "DEST_MT_51",
+          "name": "Đảo Bình Hưng",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.79,
+            "duration_fit": 0.2222222222222222,
+            "style_match": 0.08216462368978764,
+            "cluster_fit": 0.556069666726855,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MT_47",
+          "name": "Làng cà phê Trung Nguyên",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.845,
+            "duration_fit": 0.18181818181818182,
+            "style_match": 0.08210034793204869,
+            "cluster_fit": 0.4973984644845077,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MN_59",
+          "name": "Đồi chè Cầu Đất Farm",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.865,
+            "duration_fit": 0.17580872011251758,
+            "style_match": 0.07518348128643479,
+            "cluster_fit": 0.7224346967517604,
+            "community_score": 0.8
+          }
+        }
+      ],
+      "context": {
+        "budget": 10000000,
+        "duration": 5,
+        "style": "Tôi muốn đi đến 1 địa điểm với không gian thoáng "
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:28:27.000Z",
+      "persona": "Khách (Ngân sách: 10.0 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Bà Nà Hills (Miền Trung)",
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Đảo Bình Hưng (Miền Trung)",
+        "Làng cà phê Trung Nguyên (Miền Trung)",
+        "Đồi chè Cầu Đất Farm (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MT_23",
+          "name": "Bà Nà Hills",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.635,
+            "duration_fit": 0.2,
+            "style_match": 0.08637143515624734,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.6015,
+            "duration_fit": 0.25,
+            "style_match": 0.08579675020230043,
+            "cluster_fit": 0.7224346967517604,
+            "community_score": 0.8666666666666667
+          }
+        },
+        {
+          "dest_id": "DEST_MT_51",
+          "name": "Đảo Bình Hưng",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.79,
+            "duration_fit": 0.2222222222222222,
+            "style_match": 0.08216462368978764,
+            "cluster_fit": 0.556069666726855,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MT_47",
+          "name": "Làng cà phê Trung Nguyên",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.845,
+            "duration_fit": 0.18181818181818182,
+            "style_match": 0.08210034793204869,
+            "cluster_fit": 0.4973984644845077,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_59",
+          "name": "Đồi chè Cầu Đất Farm",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.865,
+            "duration_fit": 0.17580872011251758,
+            "style_match": 0.07518348128643479,
+            "cluster_fit": 0.7224346967517604,
             "community_score": 0.6666666666666666
           }
         }
       ],
       "context": {
-        "budget": 1000000,
-        "duration": 1.0,
-        "style": "đi leo núi"
+        "budget": 10000000,
+        "duration": 5,
+        "style": "Tôi muốn đi đến 1 địa điểm với không gian thoáng "
       }
     },
     {
-      "timestamp": "2026-10-12 08:06:11",
-      "persona": "Khách (Ngân sách: 1.0 triệu)",
+      "timestamp": "2026-10-12T02:28:25.000Z",
+      "persona": "Khách (Ngân sách: 10.0 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Bà Nà Hills (Miền Trung)",
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Đảo Bình Hưng (Miền Trung)",
+        "Làng cà phê Trung Nguyên (Miền Trung)",
+        "Đồi chè Cầu Đất Farm (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MT_23",
+          "name": "Bà Nà Hills",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.635,
+            "duration_fit": 0.2,
+            "style_match": 0.08637143515624734,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.6015,
+            "duration_fit": 0.25,
+            "style_match": 0.08579675020230043,
+            "cluster_fit": 0.7224346967517604,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MT_51",
+          "name": "Đảo Bình Hưng",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.79,
+            "duration_fit": 0.2222222222222222,
+            "style_match": 0.08216462368978764,
+            "cluster_fit": 0.556069666726855,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_47",
+          "name": "Làng cà phê Trung Nguyên",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.845,
+            "duration_fit": 0.18181818181818182,
+            "style_match": 0.08210034793204869,
+            "cluster_fit": 0.4973984644845077,
+            "community_score": 0.3333333333333333
+          }
+        },
+        {
+          "dest_id": "DEST_MN_59",
+          "name": "Đồi chè Cầu Đất Farm",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.865,
+            "duration_fit": 0.17580872011251758,
+            "style_match": 0.07518348128643479,
+            "cluster_fit": 0.7224346967517604,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 10000000,
+        "duration": 5,
+        "style": "Tôi muốn đi đến 1 địa điểm với không gian thoáng "
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:28:23.000Z",
+      "persona": "Khách (Ngân sách: 10.0 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Bà Nà Hills (Miền Trung)",
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Đảo Bình Hưng (Miền Trung)",
+        "Làng cà phê Trung Nguyên (Miền Trung)",
+        "Đồi chè Cầu Đất Farm (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MT_23",
+          "name": "Bà Nà Hills",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.635,
+            "duration_fit": 0.2,
+            "style_match": 0.08637143515624734,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.6015,
+            "duration_fit": 0.25,
+            "style_match": 0.08579675020230043,
+            "cluster_fit": 0.7224346967517604,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MT_51",
+          "name": "Đảo Bình Hưng",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.79,
+            "duration_fit": 0.2222222222222222,
+            "style_match": 0.08216462368978764,
+            "cluster_fit": 0.556069666726855,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_47",
+          "name": "Làng cà phê Trung Nguyên",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.845,
+            "duration_fit": 0.18181818181818182,
+            "style_match": 0.08210034793204869,
+            "cluster_fit": 0.4973984644845077,
+            "community_score": 0.3333333333333333
+          }
+        },
+        {
+          "dest_id": "DEST_MN_59",
+          "name": "Đồi chè Cầu Đất Farm",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.865,
+            "duration_fit": 0.17580872011251758,
+            "style_match": 0.07518348128643479,
+            "cluster_fit": 0.7224346967517604,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 10000000,
+        "duration": 5,
+        "style": "Tôi muốn đi đến 1 địa điểm với không gian thoáng "
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:22:57.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Cột cờ Lũng Cú (Miền Bắc)",
+        "Núi Đồi Bù (Miền Bắc)",
+        "Đèo Hải Vân (Miền Trung)",
+        "Tượng chúa Kito Vua (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.5658333333333333,
+            "duration_fit": 1,
+            "style_match": 0.17378286552004235,
+            "cluster_fit": 1,
+            "community_score": 0.8333333333333334
+          }
+        },
+        {
+          "dest_id": "DEST_MB_21",
+          "name": "Cột cờ Lũng Cú",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.7666666666666667,
+            "duration_fit": 0.4,
+            "style_match": 0.15541776968422996,
+            "cluster_fit": 0.7845536240039928,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MB_10",
+          "name": "Núi Đồi Bù",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.35,
+            "duration_fit": 0.4444444444444444,
+            "style_match": 0.1504729908449326,
+            "cluster_fit": 0.7845536240039928,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MT_27",
+          "name": "Đèo Hải Vân",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.8823529411764705,
+            "budget_fit": 0.6833333333333333,
+            "duration_fit": 0.35958288385472853,
+            "style_match": 0.10320859578320798,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MN_81",
+          "name": "Tượng chúa Kito Vua",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.6833333333333333,
+            "duration_fit": 0.35561877667140823,
+            "style_match": 0.093351618578185,
+            "cluster_fit": 0.438498850851092,
+            "community_score": 0.8
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
+        "duration": 2,
+        "style": "Núi"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:22:54.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Cột cờ Lũng Cú (Miền Bắc)",
+        "Núi Đồi Bù (Miền Bắc)",
+        "Đèo Hải Vân (Miền Trung)",
+        "Tượng chúa Kito Vua (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.5658333333333333,
+            "duration_fit": 1,
+            "style_match": 0.17378286552004235,
+            "cluster_fit": 1,
+            "community_score": 0.8333333333333334
+          }
+        },
+        {
+          "dest_id": "DEST_MB_21",
+          "name": "Cột cờ Lũng Cú",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.7666666666666667,
+            "duration_fit": 0.4,
+            "style_match": 0.15541776968422996,
+            "cluster_fit": 0.7845536240039928,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MB_10",
+          "name": "Núi Đồi Bù",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.35,
+            "duration_fit": 0.4444444444444444,
+            "style_match": 0.1504729908449326,
+            "cluster_fit": 0.7845536240039928,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MT_27",
+          "name": "Đèo Hải Vân",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.8823529411764705,
+            "budget_fit": 0.6833333333333333,
+            "duration_fit": 0.35958288385472853,
+            "style_match": 0.10320859578320798,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MN_81",
+          "name": "Tượng chúa Kito Vua",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.6833333333333333,
+            "duration_fit": 0.35561877667140823,
+            "style_match": 0.093351618578185,
+            "cluster_fit": 0.438498850851092,
+            "community_score": 0.8
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
+        "duration": 2,
+        "style": "Núi"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:22:49.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Cột cờ Lũng Cú (Miền Bắc)",
+        "Núi Đồi Bù (Miền Bắc)",
+        "Đèo Hải Vân (Miền Trung)",
+        "Tượng chúa Kito Vua (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.5658333333333333,
+            "duration_fit": 1,
+            "style_match": 0.17378286552004235,
+            "cluster_fit": 1,
+            "community_score": 0.8181818181818182
+          }
+        },
+        {
+          "dest_id": "DEST_MB_21",
+          "name": "Cột cờ Lũng Cú",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.7666666666666667,
+            "duration_fit": 0.4,
+            "style_match": 0.15541776968422996,
+            "cluster_fit": 0.7845536240039928,
+            "community_score": 0.8333333333333334
+          }
+        },
+        {
+          "dest_id": "DEST_MB_10",
+          "name": "Núi Đồi Bù",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.35,
+            "duration_fit": 0.4444444444444444,
+            "style_match": 0.1504729908449326,
+            "cluster_fit": 0.7845536240039928,
+            "community_score": 0.6
+          }
+        },
+        {
+          "dest_id": "DEST_MT_27",
+          "name": "Đèo Hải Vân",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.8823529411764705,
+            "budget_fit": 0.6833333333333333,
+            "duration_fit": 0.35958288385472853,
+            "style_match": 0.10320859578320798,
+            "cluster_fit": 1,
+            "community_score": 0.75
+          }
+        },
+        {
+          "dest_id": "DEST_MN_81",
+          "name": "Tượng chúa Kito Vua",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.6833333333333333,
+            "duration_fit": 0.35561877667140823,
+            "style_match": 0.093351618578185,
+            "cluster_fit": 0.438498850851092,
+            "community_score": 0.75
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
+        "duration": 2,
+        "style": "Núi"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:22:37.000Z",
+      "persona": "Khách (Ngân sách: 10.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Bãi Tắm Sao",
+        "Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MN_99",
+          "name": "Bãi Tắm Sao, Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.945,
+            "duration_fit": 0.4,
+            "style_match": 0.2959809709985388,
+            "cluster_fit": 1,
+            "community_score": 0.9
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.887,
+            "duration_fit": 1,
+            "style_match": 0.23880259016138056,
+            "cluster_fit": 1,
+            "community_score": 0.9375
+          }
+        },
+        {
+          "dest_id": "DEST_MT_43",
+          "name": "Kỳ Co",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.9075,
+            "duration_fit": 0.4,
+            "style_match": 0.23486648154610168,
+            "cluster_fit": 1,
+            "community_score": 0.9
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.955,
+            "duration_fit": 0.4,
+            "style_match": 0.21388912690142275,
+            "cluster_fit": 1,
+            "community_score": 0.9411764705882353
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.945,
+            "duration_fit": 0.4,
+            "style_match": 0.21248057336630619,
+            "cluster_fit": 1,
+            "community_score": 0.9090909090909091
+          }
+        }
+      ],
+      "context": {
+        "budget": 10000000,
+        "duration": 2,
+        "style": "Tôi muốn đi đến nơi có biển"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:22:26.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Thác Datanla (Miền Nam)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "VinWonders Nha Trang (Miền Trung)",
+        "Safari Cafe Phan Thiết (Miền Nam)"
+      ],
+      "unfit_items": [
+        "Hồ Hoàn Kiếm (Miền Bắc)"
+      ],
+      "comment": "ổn, hệ thống load hơi chậm chút",
+      "items": [
+        {
+          "dest_id": "DEST_MB_05",
+          "name": "Hồ Hoàn Kiếm",
+          "rank": 1,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.1,
+            "duration_fit": 0.4,
+            "style_match": 0.14463381580982396,
+            "cluster_fit": 0.3454338156075576,
+            "community_score": 0.6
+          }
+        },
+        {
+          "dest_id": "DEST_MN_58",
+          "name": "Thác Datanla",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.75,
+            "duration_fit": 0.4,
+            "style_match": 0.11935840920317269,
+            "cluster_fit": 0.7736904331073324,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.565,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.10538028472956656,
+            "cluster_fit": 0.264380700521129,
+            "community_score": 0.9166666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MT_53",
+          "name": "VinWonders Nha Trang",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.3125,
+            "duration_fit": 0.5,
+            "style_match": 0.10323696515850425,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MN_67",
+          "name": "Safari Cafe Phan Thiết",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.51875,
+            "duration_fit": 0.35958288385472853,
+            "style_match": 0.1016143302701059,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
+        "duration": 2,
+        "style": "khám phá, trò chơi,chụp ảnh"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:22:20.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Thác Datanla (Miền Nam)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "VinWonders Nha Trang (Miền Trung)",
+        "Safari Cafe Phan Thiết (Miền Nam)"
+      ],
+      "unfit_items": [
+        "Hồ Hoàn Kiếm (Miền Bắc)"
+      ],
+      "comment": "ổn, hệ thống load hơi chậm chút",
+      "items": [
+        {
+          "dest_id": "DEST_MB_05",
+          "name": "Hồ Hoàn Kiếm",
+          "rank": 1,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.1,
+            "duration_fit": 0.4,
+            "style_match": 0.14463381580982396,
+            "cluster_fit": 0.3454338156075576,
+            "community_score": 0.75
+          }
+        },
+        {
+          "dest_id": "DEST_MN_58",
+          "name": "Thác Datanla",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.75,
+            "duration_fit": 0.4,
+            "style_match": 0.11935840920317269,
+            "cluster_fit": 0.7736904331073324,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.565,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.10538028472956656,
+            "cluster_fit": 0.264380700521129,
+            "community_score": 0.9090909090909091
+          }
+        },
+        {
+          "dest_id": "DEST_MT_53",
+          "name": "VinWonders Nha Trang",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.3125,
+            "duration_fit": 0.5,
+            "style_match": 0.10323696515850425,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_67",
+          "name": "Safari Cafe Phan Thiết",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.51875,
+            "duration_fit": 0.35958288385472853,
+            "style_match": 0.1016143302701059,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
+        "duration": 2,
+        "style": "khám phá, trò chơi,chụp ảnh"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:22:19.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Thác Datanla (Miền Nam)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "VinWonders Nha Trang (Miền Trung)",
+        "Safari Cafe Phan Thiết (Miền Nam)"
+      ],
+      "unfit_items": [
+        "Hồ Hoàn Kiếm (Miền Bắc)"
+      ],
+      "comment": "ổn, hệ thống load hơi chậm chút",
+      "items": [
+        {
+          "dest_id": "DEST_MB_05",
+          "name": "Hồ Hoàn Kiếm",
+          "rank": 1,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.1,
+            "duration_fit": 0.4,
+            "style_match": 0.14463381580982396,
+            "cluster_fit": 0.3454338156075576,
+            "community_score": 0.75
+          }
+        },
+        {
+          "dest_id": "DEST_MN_58",
+          "name": "Thác Datanla",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.75,
+            "duration_fit": 0.4,
+            "style_match": 0.11935840920317269,
+            "cluster_fit": 0.7736904331073324,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.565,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.10538028472956656,
+            "cluster_fit": 0.264380700521129,
+            "community_score": 0.9090909090909091
+          }
+        },
+        {
+          "dest_id": "DEST_MT_53",
+          "name": "VinWonders Nha Trang",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.3125,
+            "duration_fit": 0.5,
+            "style_match": 0.10323696515850425,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_67",
+          "name": "Safari Cafe Phan Thiết",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.51875,
+            "duration_fit": 0.35958288385472853,
+            "style_match": 0.1016143302701059,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
+        "duration": 2,
+        "style": "khám phá, trò chơi,chụp ảnh"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:20:54.000Z",
+      "persona": "Khách (Ngân sách: 3.5 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Động Phong Nha - Kẻ Bàng (Miền Trung)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Đảo Phú Quốc (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.6757142857142857,
+            "duration_fit": 1,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.7777777777777778
+          }
+        },
+        {
+          "dest_id": "DEST_MT_36",
+          "name": "Động Phong Nha - Kẻ Bàng",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.9411764705882355,
+            "budget_fit": 0.7214285714285714,
+            "duration_fit": 0.4444444444444444,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.6657142857142857,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.8888888888888888
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.46285714285714286,
+            "duration_fit": 1,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.9285714285714286
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.8285714285714286,
+            "duration_fit": 0.4,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.9333333333333333
+          }
+        }
+      ],
+      "context": {
+        "budget": 3500000,
+        "duration": 2,
+        "style": "Thành phố"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:20:50.000Z",
+      "persona": "Khách (Ngân sách: 3.5 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Động Phong Nha - Kẻ Bàng (Miền Trung)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Đảo Phú Quốc (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.6757142857142857,
+            "duration_fit": 1,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.7142857142857143
+          }
+        },
+        {
+          "dest_id": "DEST_MT_36",
+          "name": "Động Phong Nha - Kẻ Bàng",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.9411764705882355,
+            "budget_fit": 0.7214285714285714,
+            "duration_fit": 0.4444444444444444,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.6657142857142857,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.46285714285714286,
+            "duration_fit": 1,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.9166666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.8285714285714286,
+            "duration_fit": 0.4,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.9230769230769231
+          }
+        }
+      ],
+      "context": {
+        "budget": 3500000,
+        "duration": 2,
+        "style": "Thành phố"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:20:47.000Z",
+      "persona": "Khách (Ngân sách: 3.5 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Động Phong Nha - Kẻ Bàng (Miền Trung)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Đảo Phú Quốc (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.6757142857142857,
+            "duration_fit": 1,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.7142857142857143
+          }
+        },
+        {
+          "dest_id": "DEST_MT_36",
+          "name": "Động Phong Nha - Kẻ Bàng",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.9411764705882355,
+            "budget_fit": 0.7214285714285714,
+            "duration_fit": 0.4444444444444444,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.6657142857142857,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.46285714285714286,
+            "duration_fit": 1,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.9166666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.8285714285714286,
+            "duration_fit": 0.4,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.9230769230769231
+          }
+        }
+      ],
+      "context": {
+        "budget": 3500000,
+        "duration": 2,
+        "style": "Thành phố"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:20:44.000Z",
+      "persona": "Khách (Ngân sách: 3.5 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Động Phong Nha - Kẻ Bàng (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.6757142857142857,
+            "duration_fit": 1,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.6657142857142857,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.8333333333333334
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.46285714285714286,
+            "duration_fit": 1,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.9090909090909091
+          }
+        },
+        {
+          "dest_id": "DEST_MT_36",
+          "name": "Động Phong Nha - Kẻ Bàng",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.9411764705882355,
+            "budget_fit": 0.7214285714285714,
+            "duration_fit": 0.4444444444444444,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.75
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.8285714285714286,
+            "duration_fit": 0.4,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.9166666666666666
+          }
+        }
+      ],
+      "context": {
+        "budget": 3500000,
+        "duration": 2,
+        "style": "Thành phố"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:20:42.000Z",
+      "persona": "Khách (Ngân sách: 3.5 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Động Phong Nha - Kẻ Bàng (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.6757142857142857,
+            "duration_fit": 1,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.6657142857142857,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.8333333333333334
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.46285714285714286,
+            "duration_fit": 1,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.9090909090909091
+          }
+        },
+        {
+          "dest_id": "DEST_MT_36",
+          "name": "Động Phong Nha - Kẻ Bàng",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.9411764705882355,
+            "budget_fit": 0.7214285714285714,
+            "duration_fit": 0.4444444444444444,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.75
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.8285714285714286,
+            "duration_fit": 0.4,
+            "style_match": 1,
+            "cluster_fit": 1,
+            "community_score": 0.9166666666666666
+          }
+        }
+      ],
+      "context": {
+        "budget": 3500000,
+        "duration": 2,
+        "style": "Thành phố"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:14:16.000Z",
+      "persona": "Khách (Ngân sách: 2.5 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Bãi Tắm Sao",
+        "Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "Đánh giá rất hợp lý",
+      "items": [
+        {
+          "dest_id": "DEST_MN_99",
+          "name": "Bãi Tắm Sao, Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.65,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.2959809709985388,
+            "cluster_fit": 1,
+            "community_score": 0.8888888888888888
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.218,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.23880259016138056,
+            "cluster_fit": 1,
+            "community_score": 0.9
+          }
+        },
+        {
+          "dest_id": "DEST_MT_43",
+          "name": "Kỳ Co",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.51,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.23486648154610168,
+            "cluster_fit": 1,
+            "community_score": 0.8888888888888888
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.73,
+            "duration_fit": 0.5,
+            "style_match": 0.21388912690142275,
+            "cluster_fit": 1,
+            "community_score": 0.9090909090909091
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.65,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.21248057336630619,
+            "cluster_fit": 1,
+            "community_score": 0.9
+          }
+        }
+      ],
+      "context": {
+        "budget": 2500000,
+        "duration": 2.5,
+        "style": "Đi biển"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:04:46.000Z",
+      "persona": "Khách (Ngân sách: 4.0 triệu)",
+      "stars": 2,
+      "fit_items": [
+        "Hồ Hoàn Kiếm (Miền Bắc)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "Thác Bản Giốc (Miền Bắc)"
+      ],
+      "unfit_items": [
+        "Vườn thú ZooDoo Đà Lạt (Miền Nam)",
+        "Chùa Tam Chúc (Miền Bắc)"
+      ],
+      "comment": "đi chụp ảnh cưới ở chùa có được không z????\n",
+      "items": [
+        {
+          "dest_id": "DEST_MB_05",
+          "name": "Hồ Hoàn Kiếm",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.1375,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.23486556176523365,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.67,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.1711231888159091,
+            "cluster_fit": 0.7055975184922237,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MN_57",
+          "name": "Vườn thú ZooDoo Đà Lạt",
+          "rank": 3,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.83125,
+            "duration_fit": 0.27114967462039047,
+            "style_match": 0.1502018247647189,
+            "cluster_fit": 0.8554968865126481,
+            "community_score": 0.3333333333333333
+          }
+        },
+        {
+          "dest_id": "DEST_MB_22",
+          "name": "Thác Bản Giốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.75125,
+            "duration_fit": 0.27114967462039047,
+            "style_match": 0.03321976063664806,
+            "cluster_fit": 0.8554968865126481,
+            "community_score": 0.75
+          }
+        },
+        {
+          "dest_id": "DEST_MB_11",
+          "name": "Chùa Tam Chúc",
+          "rank": 5,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.7425,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.028093276081623854,
+            "cluster_fit": 1,
+            "community_score": 0.42857142857142855
+          }
+        }
+      ],
+      "context": {
+        "budget": 4000000,
+        "duration": 3,
+        "style": "đi chụp ảnh cưới ở nơi có cảnh đẹp"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:04:42.000Z",
+      "persona": "Khách (Ngân sách: 4.0 triệu)",
+      "stars": 2,
+      "fit_items": [
+        "Hồ Hoàn Kiếm (Miền Bắc)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "Thác Bản Giốc (Miền Bắc)"
+      ],
+      "unfit_items": [
+        "Vườn thú ZooDoo Đà Lạt (Miền Nam)",
+        "Chùa Tam Chúc (Miền Bắc)"
+      ],
+      "comment": "đi chụp ảnh cưới ở chùa có được không z????\n",
+      "items": [
+        {
+          "dest_id": "DEST_MB_05",
+          "name": "Hồ Hoàn Kiếm",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.1375,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.23486556176523365,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.67,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.1711231888159091,
+            "cluster_fit": 0.7055975184922237,
+            "community_score": 0.75
+          }
+        },
+        {
+          "dest_id": "DEST_MN_57",
+          "name": "Vườn thú ZooDoo Đà Lạt",
+          "rank": 3,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.83125,
+            "duration_fit": 0.27114967462039047,
+            "style_match": 0.1502018247647189,
+            "cluster_fit": 0.8554968865126481,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_22",
+          "name": "Thác Bản Giốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.75125,
+            "duration_fit": 0.27114967462039047,
+            "style_match": 0.03321976063664806,
+            "cluster_fit": 0.8554968865126481,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_11",
+          "name": "Chùa Tam Chúc",
+          "rank": 5,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.7425,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.028093276081623854,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 4000000,
+        "duration": 3,
+        "style": "đi chụp ảnh cưới ở nơi có cảnh đẹp"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:03:08.000Z",
+      "persona": "Khách (Ngân sách: 3.0 triệu)",
       "stars": 4,
       "fit_items": [
         "Cột cờ Lũng Cú (Miền Bắc)",
         "Núi Đồi Bù (Miền Bắc)",
-        "Mộc Châu – Sơn La (Miền Bắc)",
-        "Côn Đảo (Miền Nam)",
+        "Tượng chúa Kito Vua (Miền Nam)",
         "Đèo Hải Vân (Miền Trung)"
       ],
+      "unfit_items": [
+        "Mộc Châu – Sơn La (Miền Bắc)"
+      ],
+      "comment": "đi leo núi nhưng lại đề xuất cao nguyên",
+      "items": [
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 1,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.755,
+            "duration_fit": 1,
+            "style_match": 0.15638094450912554,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MB_21",
+          "name": "Cột cờ Lũng Cú",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.8583333333333333,
+            "duration_fit": 0.4,
+            "style_match": 0.13985485590878693,
+            "cluster_fit": 0.7845536240039926,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MB_10",
+          "name": "Núi Đồi Bù",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.65,
+            "duration_fit": 0.4444444444444444,
+            "style_match": 0.1354052274430342,
+            "cluster_fit": 0.7845536240039926,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_81",
+          "name": "Tượng chúa Kito Vua",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.8166666666666667,
+            "duration_fit": 0.35561877667140823,
+            "style_match": 0.11246064918678472,
+            "cluster_fit": 0.500189864705869,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MT_27",
+          "name": "Đèo Hải Vân",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.8823529411764705,
+            "budget_fit": 0.8166666666666667,
+            "duration_fit": 0.35958288385472853,
+            "style_match": 0.09287369984227364,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        }
+      ],
+      "context": {
+        "budget": 3000000,
+        "duration": 2,
+        "style": "đi leo núi"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T02:01:42.000Z",
+      "persona": "Khách (Ngân sách: 3.0 triệu)",
+      "stars": 2,
+      "fit_items": [
+        "Thác Bản Giốc (Miền Bắc)",
+        "Khu Du Lịch Hồ Mây (Miền Nam)",
+        "Chùa Tam Chúc (Miền Bắc)"
+      ],
+      "unfit_items": [
+        "Núi Đồi Bù (Miền Bắc)",
+        "Quần Thể Chùa Hương (Miền Bắc)"
+      ],
+      "comment": "có một vài địa điểm mình không thích\n",
+      "items": [
+        {
+          "dest_id": "DEST_MB_22",
+          "name": "Thác Bản Giốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.7183333333333334,
+            "duration_fit": 0.3720238095238096,
+            "style_match": 0.10359806122089617,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_78",
+          "name": "Khu Du Lịch Hồ Mây",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.5294117647058825,
+            "budget_fit": 0.7033333333333334,
+            "duration_fit": 0.42105263157894735,
+            "style_match": 0.09149849141089961,
+            "cluster_fit": 0.6803295788113791,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_11",
+          "name": "Chùa Tam Chúc",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.6933333333333334,
+            "duration_fit": 0.5,
+            "style_match": 0.08761077381722134,
+            "cluster_fit": 0.7959605783829421,
+            "community_score": 0.4
+          }
+        },
+        {
+          "dest_id": "DEST_MB_10",
+          "name": "Núi Đồi Bù",
+          "rank": 4,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.4,
+            "duration_fit": 0.4444444444444444,
+            "style_match": 0.08064838361290559,
+            "cluster_fit": 0.7959605783829421,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_08",
+          "name": "Quần Thể Chùa Hương",
+          "rank": 5,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.7116666666666667,
+            "duration_fit": 0.5,
+            "style_match": 0.08244742774055339,
+            "cluster_fit": 0.7959605783829421,
+            "community_score": 0.6666666666666666
+          }
+        }
+      ],
+      "context": {
+        "budget": 3000000,
+        "duration": 2,
+        "style": "đi ngắm cảnh đẹp"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T01:58:48.000Z",
+      "persona": "Khách (Ngân sách: 5.0 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Bãi Tắm Sao",
+        "Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
       "unfit_items": [],
+      "comment": "cũng tạm",
+      "items": [
+        {
+          "dest_id": "DEST_MN_99",
+          "name": "Bãi Tắm Sao, Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.7766666666666666,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.2959809709985388,
+            "cluster_fit": 1,
+            "community_score": 0.875
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.494,
+            "duration_fit": 0.5,
+            "style_match": 0.23880259016138056,
+            "cluster_fit": 1,
+            "community_score": 0.8888888888888888
+          }
+        },
+        {
+          "dest_id": "DEST_MT_43",
+          "name": "Kỳ Co",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.71,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.23486648154610168,
+            "cluster_fit": 1,
+            "community_score": 0.875
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.83,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.21388912690142275,
+            "cluster_fit": 1,
+            "community_score": 0.9
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.7766666666666666,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.21248057336630619,
+            "cluster_fit": 1,
+            "community_score": 0.8888888888888888
+          }
+        }
+      ],
+      "context": {
+        "budget": 5000000,
+        "duration": 3,
+        "style": "đi biển"
+      }
+    },
+    {
+      "timestamp": "2026-10-12T01:58:43.000Z",
+      "persona": "Khách (Ngân sách: 5.0 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Bãi Tắm Sao",
+        "Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "cũng tạm",
+      "items": [
+        {
+          "dest_id": "DEST_MN_99",
+          "name": "Bãi Tắm Sao, Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.7766666666666666,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.2959809709985388,
+            "cluster_fit": 1,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.494,
+            "duration_fit": 0.5,
+            "style_match": 0.23880259016138056,
+            "cluster_fit": 1,
+            "community_score": 0.875
+          }
+        },
+        {
+          "dest_id": "DEST_MT_43",
+          "name": "Kỳ Co",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.71,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.23486648154610168,
+            "cluster_fit": 1,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.83,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.21388912690142275,
+            "cluster_fit": 1,
+            "community_score": 0.8888888888888888
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.7766666666666666,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.21248057336630619,
+            "cluster_fit": 1,
+            "community_score": 0.875
+          }
+        }
+      ],
+      "context": {
+        "budget": 5000000,
+        "duration": 3,
+        "style": "đi biển"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:37:38.000Z",
+      "persona": "Khách (Ngân sách: 2.5 triệu)",
+      "stars": 3,
+      "fit_items": [
+        "Hòn Tằm (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Vịnh Nha Trang (Miền Trung)"
+      ],
+      "unfit_items": [
+        "Làng cà phê Trung Nguyên (Miền Trung)"
+      ],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MT_50",
+          "name": "Hòn Tằm",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.8823529411764705,
+            "budget_fit": 0.58,
+            "duration_fit": 0.5714285714285714,
+            "style_match": 0.13964302306721182,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.79,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.13419145669246144,
+            "cluster_fit": 1,
+            "community_score": 0.875
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.278,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.1199915550459799,
+            "cluster_fit": 1,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MT_47",
+          "name": "Làng cà phê Trung Nguyên",
+          "rank": 4,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.838,
+            "duration_fit": 0.5,
+            "style_match": 0.132139047249636,
+            "cluster_fit": 0.3401971194706231,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_54",
+          "name": "Vịnh Nha Trang",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.438,
+            "duration_fit": 1,
+            "style_match": 0.1084076883639678,
+            "cluster_fit": 0.24980468685578588,
+            "community_score": 0.6666666666666666
+          }
+        }
+      ],
+      "context": {
+        "budget": 2500000,
+        "duration": 1.5,
+        "style": "nghỉ dưỡng, trekking"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:35:25.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 2,
+      "fit_items": [
+        "Cột cờ Lũng Cú (Miền Bắc)",
+        "Mộc Châu – Sơn La (Miền Bắc)"
+      ],
+      "unfit_items": [
+        "Chùa Tam Chúc (Miền Bắc)",
+        "Cầu Tràng Tiền (Miền Trung)",
+        "Thành Phố Rạch Giá (Miền Nam)"
+      ],
       "comment": "",
       "items": [
         {
@@ -249,75 +2675,1432 @@
           "label": "fit",
           "features": {
             "rating_num": 0.764705882352941,
-            "budget_fit": 0.1125,
+            "budget_fit": 0.925,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.30933101717707706,
+            "cluster_fit": 1,
+            "community_score": 0.75
+          }
+        },
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.9075,
+            "duration_fit": 0.5,
+            "style_match": 0.0710154239758769,
+            "cluster_fit": 0.2067265621124015,
+            "community_score": 0.75
+          }
+        },
+        {
+          "dest_id": "DEST_MB_11",
+          "name": "Chùa Tam Chúc",
+          "rank": 3,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.945,
+            "duration_fit": 1,
+            "style_match": 0.053363458569031554,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_34",
+          "name": "Cầu Tràng Tiền",
+          "rank": 4,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.965,
+            "duration_fit": 0.5333333333333333,
+            "style_match": 0.05611364313053284,
+            "cluster_fit": 0.2564809972785511,
+            "community_score": 0.3333333333333333
+          }
+        },
+        {
+          "dest_id": "DEST_MN_93",
+          "name": "Thành Phố Rạch Giá",
+          "rank": 5,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.5294117647058825,
+            "budget_fit": 0.925,
+            "duration_fit": 1,
+            "style_match": 0.05058029473357883,
+            "cluster_fit": 0.19877343740187747,
+            "community_score": 0.3333333333333333
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
+        "duration": 1,
+        "style": "hoa tam giác mạch"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:35:20.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 2,
+      "fit_items": [
+        "Cột cờ Lũng Cú (Miền Bắc)",
+        "Mộc Châu – Sơn La (Miền Bắc)"
+      ],
+      "unfit_items": [
+        "Cầu Tràng Tiền (Miền Trung)",
+        "Chùa Tam Chúc (Miền Bắc)",
+        "Thành Phố Rạch Giá (Miền Nam)"
+      ],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_21",
+          "name": "Cột cờ Lũng Cú",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.925,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.30933101717707706,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.9075,
+            "duration_fit": 0.5,
+            "style_match": 0.0710154239758769,
+            "cluster_fit": 0.2067265621124015,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MT_34",
+          "name": "Cầu Tràng Tiền",
+          "rank": 3,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.965,
+            "duration_fit": 0.5333333333333333,
+            "style_match": 0.05611364313053284,
+            "cluster_fit": 0.2564809972785511,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_11",
+          "name": "Chùa Tam Chúc",
+          "rank": 4,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.945,
+            "duration_fit": 1,
+            "style_match": 0.053363458569031554,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MN_93",
+          "name": "Thành Phố Rạch Giá",
+          "rank": 5,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.5294117647058825,
+            "budget_fit": 0.925,
+            "duration_fit": 1,
+            "style_match": 0.05058029473357883,
+            "cluster_fit": 0.19877343740187747,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
+        "duration": 1,
+        "style": "hoa tam giác mạch"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:30:52.000Z",
+      "persona": "Khách (Ngân sách: 0.5 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Hồ Tuyền Lâm (Miền Nam)",
+        "Bán đảo Sơn Trà (Miền Trung)",
+        "Chùa Tam Chúc (Miền Bắc)",
+        "Quần Thể Chùa Hương (Miền Bắc)",
+        "Chùa Một Cột (Miền Bắc)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MN_61",
+          "name": "Hồ Tuyền Lâm",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.85,
+            "duration_fit": 0.8888888888888888,
+            "style_match": 0.12611584550914798,
+            "cluster_fit": 0.5604021140856987,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_26",
+          "name": "Bán đảo Sơn Trà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.8823529411764705,
+            "budget_fit": 0.85,
+            "duration_fit": 1,
+            "style_match": 0.11672789957889942,
+            "cluster_fit": 0.5604021140856987,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_11",
+          "name": "Chùa Tam Chúc",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.89,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.12252007121196438,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_08",
+          "name": "Quần Thể Chùa Hương",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.52,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.11529934365253008,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_07",
+          "name": "Chùa Một Cột",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.875,
+            "duration_fit": 0.7032348804500703,
+            "style_match": 0.1112438092772909,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 500000,
+        "duration": 0.5,
+        "style": "đi chùa"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:18:38.000Z",
+      "persona": "Khách (Ngân sách: 2.5 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Đảo Phú Quốc (Miền Nam)",
+        "Vịnh Nha Trang (Miền Trung)",
+        "Vĩnh Hy (Miền Trung)",
+        "Đảo Nam Du (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.85,
             "duration_fit": 0.3333333333333333,
-            "style_match": 0.1381916521727417,
-            "cluster_fit": 0.6483913051015533,
+            "style_match": 0.27015540206914995,
+            "cluster_fit": 1,
+            "community_score": 0.8571428571428571
+          }
+        },
+        {
+          "dest_id": "DEST_MT_54",
+          "name": "Vịnh Nha Trang",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.508,
+            "duration_fit": 1,
+            "style_match": 0.22928162926247286,
+            "cluster_fit": 0.296336024932386,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_56",
+          "name": "Vĩnh Hy",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.77,
+            "duration_fit": 0.5,
+            "style_match": 0.17210226458551386,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_96",
+          "name": "Đảo Nam Du",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.719,
+            "duration_fit": 0.5,
+            "style_match": 0.17080354066142348,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.81,
+            "duration_fit": 0.5,
+            "style_match": 0.16717380063793985,
+            "cluster_fit": 1,
+            "community_score": 0.8571428571428571
+          }
+        }
+      ],
+      "context": {
+        "budget": 2500000,
+        "duration": 1.5,
+        "style": "du lịch vịnh"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:15:55.000Z",
+      "persona": "Khách (Ngân sách: 1.5 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Tràng An",
+        "Ninh Bình (Miền Bắc)",
+        "Động Phong Nha - Kẻ Bàng (Miền Trung)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "Hang Én (Miền Trung)",
+        "Hang Sơn Đoòng (Miền Trung)"
+      ],
+      "unfit_items": [],
+      "comment": "Hang động chứ không phải Thành phố Hà Tiên",
+      "items": [
+        {
+          "dest_id": "DEST_MB_09",
+          "name": "Tràng An, Ninh Bình",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.7766666666666666,
+            "duration_fit": 1,
+            "style_match": 0.29925827353977874,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MT_36",
+          "name": "Động Phong Nha - Kẻ Bàng",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.9411764705882355,
+            "budget_fit": 0.7833333333333333,
+            "duration_fit": 0.8,
+            "style_match": 0.2539039100202414,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.72,
+            "duration_fit": 0.4,
+            "style_match": 0.23781145435242307,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MT_37",
+          "name": "Hang Én",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.9411764705882355,
+            "budget_fit": 0,
+            "duration_fit": 0.5,
+            "style_match": 0.20251582962110745,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MT_39",
+          "name": "Hang Sơn Đoòng",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 1,
+            "budget_fit": 0,
+            "duration_fit": 0.25,
+            "style_match": 0.17601799039345986,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 1500000,
+        "duration": 1,
+        "style": "Du lịch hang động"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:15:50.000Z",
+      "persona": "Khách (Ngân sách: 0.5 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Bãi Tắm Sao",
+        "Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MN_99",
+          "name": "Bãi Tắm Sao, Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.7,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.2959809709985388,
+            "cluster_fit": 1,
+            "community_score": 0.8333333333333334
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.54,
+            "duration_fit": 0.5,
+            "style_match": 0.23880259016138056,
+            "cluster_fit": 1,
+            "community_score": 0.8333333333333334
+          }
+        },
+        {
+          "dest_id": "DEST_MT_43",
+          "name": "Kỳ Co",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.23486648154610168,
+            "cluster_fit": 1,
+            "community_score": 0.8333333333333334
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.7,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.21388912690142275,
+            "cluster_fit": 1,
+            "community_score": 0.8333333333333334
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.7,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.21248057336630619,
+            "cluster_fit": 1,
+            "community_score": 0.8333333333333334
+          }
+        }
+      ],
+      "context": {
+        "budget": 500000,
+        "duration": 1,
+        "style": "Tôi muốn đi biển"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:15:46.000Z",
+      "persona": "Khách (Ngân sách: 1.5 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Tràng An",
+        "Ninh Bình (Miền Bắc)",
+        "Động Phong Nha - Kẻ Bàng (Miền Trung)",
+        "Vịnh Hạ Long (Miền Bắc)",
+        "Hang Én (Miền Trung)"
+      ],
+      "unfit_items": [
+        "Thành phố Hà Tiên (Miền Nam)"
+      ],
+      "comment": "Hang động chứ không phải Thành phố Hà Tiên",
+      "items": [
+        {
+          "dest_id": "DEST_MB_09",
+          "name": "Tràng An, Ninh Bình",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.7766666666666666,
+            "duration_fit": 1,
+            "style_match": 0.29925827353977874,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_36",
+          "name": "Động Phong Nha - Kẻ Bàng",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.9411764705882355,
+            "budget_fit": 0.7833333333333333,
+            "duration_fit": 0.8,
+            "style_match": 0.2539039100202414,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_01",
+          "name": "Vịnh Hạ Long",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.72,
+            "duration_fit": 0.4,
+            "style_match": 0.23781145435242307,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_37",
+          "name": "Hang Én",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.9411764705882355,
+            "budget_fit": 0,
+            "duration_fit": 0.5,
+            "style_match": 0.20251582962110745,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_94",
+          "name": "Thành phố Hà Tiên",
+          "rank": 5,
+          "label": "unfit",
+          "features": {
+            "rating_num": 0.588235294117647,
+            "budget_fit": 0.9,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.17693910354985926,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 1500000,
+        "duration": 1,
+        "style": "Du lịch hang động"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:14:56.000Z",
+      "persona": "Khách (Ngân sách: 0.5 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Cột cờ Lũng Cú (Miền Bắc)",
+        "Núi Đồi Bù (Miền Bắc)",
+        "Đèo Hải Vân (Miền Trung)",
+        "Tượng chúa Kito Vua (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.63,
+            "duration_fit": 0.5,
+            "style_match": 0.17378286552004235,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_21",
+          "name": "Cột cờ Lũng Cú",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.7,
+            "duration_fit": 0.2857142857142857,
+            "style_match": 0.15541776968422996,
+            "cluster_fit": 0.7845536240039928,
             "community_score": 0.5
           }
         },
         {
           "dest_id": "DEST_MB_10",
           "name": "Núi Đồi Bù",
-          "rank": 2,
-          "label": "fit",
-          "features": {
-            "rating_num": 0.823529411764706,
-            "budget_fit": 0.0,
-            "duration_fit": 0.5714285714285714,
-            "style_match": 0.18594105825402005,
-            "cluster_fit": 0.6483913051015533,
-            "community_score": 0.5
-          }
-        },
-        {
-          "dest_id": "DEST_MB_17",
-          "name": "Mộc Châu – Sơn La",
           "rank": 3,
           "label": "fit",
           "features": {
             "rating_num": 0.823529411764706,
-            "budget_fit": 0.0,
-            "duration_fit": 0.6666666666666666,
-            "style_match": 0.15452120664400995,
-            "cluster_fit": 1.0,
-            "community_score": 0.5
-          }
-        },
-        {
-          "dest_id": "DEST_MN_89",
-          "name": "Côn Đảo",
-          "rank": 4,
-          "label": "fit",
-          "features": {
-            "rating_num": 0.764705882352941,
-            "budget_fit": 0.0,
-            "duration_fit": 0.5,
-            "style_match": 0.1333995775611777,
-            "cluster_fit": 0.9721995378129484,
+            "budget_fit": 0.7,
+            "duration_fit": 0.8,
+            "style_match": 0.1504729908449326,
+            "cluster_fit": 0.7845536240039928,
             "community_score": 0.5
           }
         },
         {
           "dest_id": "DEST_MT_27",
           "name": "Đèo Hải Vân",
-          "rank": 5,
+          "rank": 4,
           "label": "fit",
           "features": {
             "rating_num": 0.8823529411764705,
-            "budget_fit": 0.0,
-            "duration_fit": 0.4384042086804034,
-            "style_match": 0.13061319404198443,
-            "cluster_fit": 1.0,
+            "budget_fit": 0.7,
+            "duration_fit": 0.5614823133071308,
+            "style_match": 0.10320859578320798,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_81",
+          "name": "Tượng chúa Kito Vua",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.7,
+            "duration_fit": 0.5518763796909492,
+            "style_match": 0.093351618578185,
+            "cluster_fit": 0.438498850851092,
             "community_score": 0.5
           }
         }
       ],
       "context": {
-        "budget": 1000000,
+        "budget": 500000,
+        "duration": 1,
+        "style": "Đi núi"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:12:13.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Bãi Tắm Sao",
+        "Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MN_99",
+          "name": "Bãi Tắm Sao, Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.7208333333333333,
+            "duration_fit": 0.5,
+            "style_match": 0.2959809709985388,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.3475,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.23880259016138056,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MT_43",
+          "name": "Kỳ Co",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.5375,
+            "duration_fit": 0.5,
+            "style_match": 0.23486648154610168,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.7875,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.21388912690142275,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.7208333333333333,
+            "duration_fit": 0.5,
+            "style_match": 0.21248057336630619,
+            "cluster_fit": 1,
+            "community_score": 0.8
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
         "duration": 1.5,
-        "style": "núi rừng hoang sơ"
+        "style": "du lịch biển"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:12:09.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Bãi Tắm Sao",
+        "Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MN_99",
+          "name": "Bãi Tắm Sao, Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.7208333333333333,
+            "duration_fit": 0.5,
+            "style_match": 0.2959809709985388,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.3475,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.23880259016138056,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MT_43",
+          "name": "Kỳ Co",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.5375,
+            "duration_fit": 0.5,
+            "style_match": 0.23486648154610168,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.7875,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.21388912690142275,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.7208333333333333,
+            "duration_fit": 0.5,
+            "style_match": 0.21248057336630619,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
+        "duration": 1.5,
+        "style": "du lịch biển"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T21:12:05.000Z",
+      "persona": "Khách (Ngân sách: 2.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Bãi Tắm Sao",
+        "Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MN_99",
+          "name": "Bãi Tắm Sao, Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.7208333333333333,
+            "duration_fit": 0.5,
+            "style_match": 0.2959809709985388,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.3475,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.23880259016138056,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MT_43",
+          "name": "Kỳ Co",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.5375,
+            "duration_fit": 0.5,
+            "style_match": 0.23486648154610168,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.7875,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.21388912690142275,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.7208333333333333,
+            "duration_fit": 0.5,
+            "style_match": 0.21248057336630619,
+            "cluster_fit": 1,
+            "community_score": 0.6666666666666666
+          }
+        }
+      ],
+      "context": {
+        "budget": 2000000,
+        "duration": 1.5,
+        "style": "du lịch biển"
+      }
+    },
+    {
+      "timestamp": "2026-10-11T20:58:06.000Z",
+      "persona": "Khách (Ngân sách: 3.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Bãi Tắm Sao",
+        "Phú Quốc (Miền Nam)",
+        "Đảo Cát Bà (Miền Bắc)",
+        "Kỳ Co (Miền Trung)",
+        "Đảo Phú Quốc (Miền Nam)",
+        "Bãi Dài (Miền Nam)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MN_99",
+          "name": "Bãi Tắm Sao, Phú Quốc",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.647058823529412,
+            "budget_fit": 0.8,
+            "duration_fit": 0.5,
+            "style_match": 0.2959809709985388,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_18",
+          "name": "Đảo Cát Bà",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.3358333333333333,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.23880259016138056,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_43",
+          "name": "Kỳ Co",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.53125,
+            "duration_fit": 0.5,
+            "style_match": 0.23486648154610168,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_95",
+          "name": "Đảo Phú Quốc",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.825,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.21388912690142275,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_100",
+          "name": "Bãi Dài",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.7541666666666667,
+            "duration_fit": 0.5,
+            "style_match": 0.21248057336630619,
+            "cluster_fit": 1,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 3000000,
+        "duration": 1.5,
+        "style": "du lịch biển"
       }
     }
-  ]
+  ],
+  "implicit_views": {
+    "DEST_MB_05": {
+      "name": "Hồ Hoàn Kiếm",
+      "region": "Miền Bắc",
+      "views": 7
+    },
+    "DEST_MB_18": {
+      "name": "Đảo Cát Bà",
+      "region": "Miền Bắc",
+      "views": 12
+    },
+    "DEST_MB_01": {
+      "name": "Vịnh Hạ Long",
+      "region": "Miền Bắc",
+      "views": 15
+    },
+    "DEST_MT_43": {
+      "name": "Kỳ Co",
+      "region": "Miền Trung",
+      "views": 11
+    },
+    "DEST_MT_28": {
+      "name": "Bãi biển Mỹ Khê",
+      "region": "Miền Trung",
+      "views": 11
+    },
+    "DEST_MT_56": {
+      "name": "Vĩnh Hy",
+      "region": "Miền Trung",
+      "views": 11
+    },
+    "DEST_MT_40": {
+      "name": "Bãi biển Nhật Lệ",
+      "region": "Miền Trung",
+      "views": 10
+    },
+    "DEST_MT_29": {
+      "name": "Bãi biển Tiên Sa",
+      "region": "Miền Trung",
+      "views": 11
+    },
+    "DEST_MT_54": {
+      "name": "Vịnh Nha Trang",
+      "region": "Miền Trung",
+      "views": 13
+    },
+    "DEST_MN_99": {
+      "name": "Bãi Tắm Sao, Phú Quốc",
+      "region": "Miền Nam",
+      "views": 12
+    },
+    "DEST_MN_95": {
+      "name": "Đảo Phú Quốc",
+      "region": "Miền Nam",
+      "views": 12
+    },
+    "DEST_MN_100": {
+      "name": "Bãi Dài",
+      "region": "Miền Nam",
+      "views": 12
+    },
+    "DEST_MN_89": {
+      "name": "Côn Đảo",
+      "region": "Miền Nam",
+      "views": 11
+    },
+    "DEST_MN_96": {
+      "name": "Đảo Nam Du",
+      "region": "Miền Nam",
+      "views": 12
+    },
+    "DEST_MN_82": {
+      "name": "Mũi Nghinh phong",
+      "region": "Miền Nam",
+      "views": 10
+    },
+    "DEST_MB_17": {
+      "name": "Mộc Châu – Sơn La",
+      "region": "Miền Bắc",
+      "views": 9
+    },
+    "DEST_MB_21": {
+      "name": "Cột cờ Lũng Cú",
+      "region": "Miền Bắc",
+      "views": 7
+    },
+    "DEST_MB_10": {
+      "name": "Núi Đồi Bù",
+      "region": "Miền Bắc",
+      "views": 6
+    },
+    "DEST_MB_16": {
+      "name": "Sapa – Lào Cai",
+      "region": "Miền Bắc",
+      "views": 5
+    },
+    "DEST_MB_13": {
+      "name": "Vườn Quốc Gia Ba Vì",
+      "region": "Miền Bắc",
+      "views": 5
+    },
+    "DEST_MB_14": {
+      "name": "Thiên Sơn – Suối Ngà",
+      "region": "Miền Bắc",
+      "views": 6
+    },
+    "DEST_MT_27": {
+      "name": "Đèo Hải Vân",
+      "region": "Miền Trung",
+      "views": 8
+    },
+    "DEST_MT_36": {
+      "name": "Động Phong Nha - Kẻ Bàng",
+      "region": "Miền Trung",
+      "views": 8
+    },
+    "DEST_MT_35": {
+      "name": "Vịnh Lăng Cô",
+      "region": "Miền Trung",
+      "views": 5
+    },
+    "DEST_MT_49": {
+      "name": "Măng Đen",
+      "region": "Miền Trung",
+      "views": 4
+    },
+    "DEST_MT_31": {
+      "name": "Cầu Tình Yêu Đà Nẵng",
+      "region": "Miền Trung",
+      "views": 4
+    },
+    "DEST_MT_50": {
+      "name": "Hòn Tằm",
+      "region": "Miền Trung",
+      "views": 5
+    },
+    "DEST_MT_26": {
+      "name": "Bán đảo Sơn Trà",
+      "region": "Miền Trung",
+      "views": 9
+    },
+    "DEST_MN_81": {
+      "name": "Tượng chúa Kito Vua",
+      "region": "Miền Nam",
+      "views": 5
+    },
+    "DEST_MN_60": {
+      "name": "Đỉnh Langbiang",
+      "region": "Miền Nam",
+      "views": 5
+    },
+    "DEST_MN_68": {
+      "name": "Đồi Kỳ Quan Phan Thiết",
+      "region": "Miền Nam",
+      "views": 4
+    },
+    "DEST_MB_09": {
+      "name": "Tràng An, Ninh Bình",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MN_76": {
+      "name": "Núi Bà Đen Tây Ninh",
+      "region": "Miền Nam",
+      "views": 8
+    },
+    "DEST_MN_94": {
+      "name": "Thành phố Hà Tiên",
+      "region": "Miền Nam",
+      "views": 7
+    },
+    "DEST_MT_37": {
+      "name": "Hang Én",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MT_39": {
+      "name": "Hang Sơn Đoòng",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MT_25": {
+      "name": "Ngũ Hành Sơn",
+      "region": "Miền Trung",
+      "views": 5
+    },
+    "DEST_MT_38": {
+      "name": "Động Thiên Đường",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_33": {
+      "name": "Sông Hương",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MN_61": {
+      "name": "Hồ Tuyền Lâm",
+      "region": "Miền Nam",
+      "views": 8
+    },
+    "DEST_MB_11": {
+      "name": "Chùa Tam Chúc",
+      "region": "Miền Bắc",
+      "views": 4
+    },
+    "DEST_MB_08": {
+      "name": "Quần Thể Chùa Hương",
+      "region": "Miền Bắc",
+      "views": 3
+    },
+    "DEST_MB_07": {
+      "name": "Chùa Một Cột",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MB_04": {
+      "name": "Văn Miếu - Quốc Tử Giám",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MB_15": {
+      "name": "Thành Cổ Loa",
+      "region": "Miền Bắc",
+      "views": 4
+    },
+    "DEST_MN_93": {
+      "name": "Thành Phố Rạch Giá",
+      "region": "Miền Nam",
+      "views": 3
+    },
+    "DEST_MT_34": {
+      "name": "Cầu Tràng Tiền",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MT_47": {
+      "name": "Làng cà phê Trung Nguyên",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_23": {
+      "name": "Bà Nà Hills",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MN_83": {
+      "name": "Bạch Dinh",
+      "region": "Miền Nam",
+      "views": 1
+    },
+    "DEST_MB_22": {
+      "name": "Thác Bản Giốc",
+      "region": "Miền Bắc",
+      "views": 5
+    },
+    "DEST_MB_20": {
+      "name": "Khu du lịch Sông Hồng",
+      "region": "Miền Bắc",
+      "views": 1
+    },
+    "DEST_MT_24": {
+      "name": "Cù Lao Chàm",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MT_53": {
+      "name": "VinWonders Nha Trang",
+      "region": "Miền Trung",
+      "views": 3
+    },
+    "DEST_MN_78": {
+      "name": "Khu Du Lịch Hồ Mây",
+      "region": "Miền Nam",
+      "views": 4
+    },
+    "DEST_MN_92": {
+      "name": "Mũi Cà Mau",
+      "region": "Miền Nam",
+      "views": 1
+    },
+    "DEST_MN_88": {
+      "name": "Nhà Cổ Bình Thủy",
+      "region": "Miền Nam",
+      "views": 1
+    },
+    "DEST_MN_59": {
+      "name": "Đồi chè Cầu Đất Farm",
+      "region": "Miền Nam",
+      "views": 2
+    },
+    "DEST_MN_57": {
+      "name": "Vườn thú ZooDoo Đà Lạt",
+      "region": "Miền Nam",
+      "views": 3
+    },
+    "DEST_MN_58": {
+      "name": "Thác Datanla",
+      "region": "Miền Nam",
+      "views": 4
+    },
+    "DEST_MN_63": {
+      "name": "Hồ Xuân Hương",
+      "region": "Miền Nam",
+      "views": 1
+    },
+    "DEST_MN_64": {
+      "name": "Ga Đà Lạt",
+      "region": "Miền Nam",
+      "views": 1
+    },
+    "DEST_MT_48": {
+      "name": "Vườn Quốc Gia Yok Đôn",
+      "region": "Miền Trung",
+      "views": 3
+    },
+    "DEST_MT_55": {
+      "name": "Hòn Mun Nha Trang",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MN_67": {
+      "name": "Safari Cafe Phan Thiết",
+      "region": "Miền Nam",
+      "views": 3
+    },
+    "DEST_MN_80": {
+      "name": "Công viên nước Tropicana Park Hồ Tràm",
+      "region": "Miền Nam",
+      "views": 3
+    },
+    "DEST_MT_51": {
+      "name": "Đảo Bình Hưng",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MN_75": {
+      "name": "Chợ Bến Thành",
+      "region": "Miền Nam",
+      "views": 1
+    },
+    "DEST_MN_91": {
+      "name": "Vườn Quốc Gia U Minh Hạ",
+      "region": "Miền Nam",
+      "views": 1
+    }
+  }
 }
