@@ -14,7 +14,7 @@ from utils.preprocessing import (
 )
 from utils.kmeans import run_kmeans, build_feature_matrix
 from utils.topsis import rank_by_suitability, explain_top_criteria, recommended_weights
-from utils.learning import build_name_index, community_scores, learn_weights, MIN_LABELS
+from utils.learning import build_name_index, community_scores, learn_weights, MIN_LABELS, LEARN_FEATURES
 from utils.evaluation import offline_evaluation, online_metrics, clustering_report
 
 
