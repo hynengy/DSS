@@ -1158,6 +1158,17 @@ elif st.session_state["active_view"] == "ADMIN":
     with st.container(border=True):
         st.markdown('<div class="section-title">Trực quan hóa Dữ liệu Thực nghiệm (Sơ đồ & Biểu đồ)</div>', unsafe_allow_html=True)
         if stats["total_explicit"] > 0:
+            c_sel1, c_sel2 = st.columns([2, 1])
+            with c_sel1:
+                chart_type = st.radio(
+                    "Dạng biểu đồ hiển thị:",
+                    ["Biểu đồ đường (Line Chart)", "Biểu đồ cột (Bar Chart)"],
+                    horizontal=True,
+                    index=0
+                )
+
+            is_line = "đường" in chart_type
+
             c_chart1, c_chart2 = st.columns(2)
             with c_chart1:
                 st.markdown("<div style='font-size:0.88rem; font-weight:600; color:var(--text-main); margin-bottom:8px;'>Phân bố mức độ hài lòng (1 - 5 sao)</div>", unsafe_allow_html=True)
@@ -1167,7 +1178,10 @@ elif st.session_state["active_view"] == "ADMIN":
                     if s in [1, 2, 3, 4, 5]:
                         star_counts[f"{s} sao"] += 1
                 df_stars = pd.DataFrame(list(star_counts.items()), columns=["Mức độ", "Số lượt"])
-                st.bar_chart(df_stars.set_index("Mức độ"), color="#8C2D19")
+                if is_line:
+                    st.line_chart(df_stars.set_index("Mức độ"), color="#8C2D19")
+                else:
+                    st.bar_chart(df_stars.set_index("Mức độ"), color="#8C2D19")
 
             with c_chart2:
                 st.markdown("<div style='font-size:0.88rem; font-weight:600; color:var(--text-main); margin-bottom:8px;'>Sự dịch chuyển Trọng số TOPSIS (Ban đầu vs Đã học)</div>", unsafe_allow_html=True)
@@ -1185,7 +1199,10 @@ elif st.session_state["active_view"] == "ADMIN":
                     "Trọng số ban đầu": [base_w.get(k, 0.0) for k in LEARN_FEATURES],
                     "Trọng số đã học": [learned_w.get(k, 0.0) for k in LEARN_FEATURES]
                 })
-                st.bar_chart(df_weights.set_index("Tiêu chí"), color=["#B3ABA5", "#8C2D19"])
+                if is_line:
+                    st.line_chart(df_weights.set_index("Tiêu chí"), color=["#B3ABA5", "#8C2D19"])
+                else:
+                    st.bar_chart(df_weights.set_index("Tiêu chí"), color=["#B3ABA5", "#8C2D19"])
 
             # Top địa điểm phù hợp nhất
             fit_counter = {}
@@ -1196,7 +1213,10 @@ elif st.session_state["active_view"] == "ADMIN":
                 st.markdown("<div style='font-size:0.88rem; font-weight:600; color:var(--text-main); margin-top:16px; margin-bottom:8px;'>Top địa điểm được người dùng đánh giá 'Phù hợp' nhiều nhất</div>", unsafe_allow_html=True)
                 top_fits = sorted(fit_counter.items(), key=lambda x: x[1], reverse=True)[:8]
                 df_top_fit = pd.DataFrame(top_fits, columns=["Điểm đến", "Lượt vote"]).set_index("Điểm đến")
-                st.bar_chart(df_top_fit, color="#8C2D19")
+                if is_line:
+                    st.line_chart(df_top_fit, color="#8C2D19")
+                else:
+                    st.bar_chart(df_top_fit, color="#8C2D19")
         else:
             st.info("Chưa có đủ dữ liệu đánh giá để vẽ biểu đồ. Khi người dùng gửi đánh giá từ trang Gợi ý, hệ thống sẽ tự động vẽ sơ đồ trực quan hóa tại đây.")
 
