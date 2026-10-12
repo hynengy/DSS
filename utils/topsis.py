@@ -161,10 +161,17 @@ def cluster_affinity(df, keyword_query, tfidf_model, tfidf_matrix):
 
 
 def trip_days(preferred_duration):
-    """Số ngày chuyến đi (điểm giữa khoảng thời lượng người dùng chọn)."""
-    if not preferred_duration:
+    """Số ngày chuyến đi."""
+    if preferred_duration is None:
         return 1.0
+    if isinstance(preferred_duration, (int, float)):
+        return max(0.5, float(preferred_duration))
     lo, hi = preferred_duration
+    # Nếu khoảng dung sai quanh duration dạng (max(0.5, d - 1), d + 1)
+    if lo == 0.5 and hi == 1.5:
+        return 0.5
+    if lo == 0.5 and hi == 2.0:
+        return 1.0
     return (lo + hi) / 2 if hi < 999 else lo + 1
 
 
@@ -183,32 +190,46 @@ def hotel_price_per_night(hotel_df):
 
 def restaurant_meal_price(rest_df):
     """
-    Giá một bữa ăn tiêu biểu / người của từng điểm đến = TRUNG VỊ giá giữa (min+max)/2 các quán ăn
-    lân cận (trung vị để tránh quán siêu sang hoặc quán ăn vặt kéo lệch). Bỏ giá thiếu/0.
+    Giá một bữa ăn thực tế tiêu biểu / người của từng điểm đến:
+    - Sử dụng giá tối thiểu (price_min) của các quán ăn lân cận làm giá suất ăn cơ bản
+      (do price_min là giá 1 phần ăn/món chính đơn lẻ, còn price_max thường là combo lẩu/bàn tiệc cả nhóm).
+    - Chuẩn hóa về mức chi tiêu ẩm thực thực tế của du khách tại Việt Nam:
+      tối thiểu 35.000đ (bình dân), trung bình ~60.000 - 70.000đ, tối đa 75.000đ/người/bữa.
     """
     if rest_df is None or rest_df.empty or "destination_id" not in rest_df.columns:
         return pd.Series(dtype=float)
     r = rest_df[["destination_id", "price_min", "price_max"]].copy()
-    r["mid"] = r[["price_min", "price_max"]].mean(axis=1)
-    r = r[r["mid"] > 0]
-    return r.groupby("destination_id")["mid"].median()
+    p_base = r["price_min"].fillna(55000.0).clip(lower=35000.0, upper=75000.0)
+    r["meal_price"] = p_base
+    return r.groupby("destination_id")["meal_price"].median()
 
 
 def estimate_trip_cost_breakdown(
-    df, preferred_duration=None, hotel_df=None, rest_df=None, num_people: int = 1
+    df, preferred_duration=None, hotel_df=None, rest_df=None, num_people: int = 1, exact_duration: float = None
 ):
     """
     Tính chi phí phân rã (vé tham quan, khách sạn, ẩm thực) và tổng chi phí của cả nhóm.
+    - Đi nửa ngày (<= 0.5 ngày): 0 đêm khách sạn, 1 bữa ăn.
+    - Đi 1 ngày (<= 1.0 ngày): 0 đêm khách sạn (đi về trong ngày), 2 bữa ăn.
+    - Đi từ 1.5 ngày trở lên: nights = max(0, int(np.ceil(days)) - 1) đêm khách sạn, 2 bữa/ngày/người.
     """
     num_people = max(1, int(num_people or 1))
-    days = max(0.5, float(trip_days(preferred_duration)))
+    if exact_duration is not None:
+        days = max(0.5, float(exact_duration))
+    else:
+        days = max(0.5, float(trip_days(preferred_duration)))
 
     # 1. Chi phí vé tham quan
     ticket_per_person = df[["cost_min", "cost_max"]].mean(axis=1).fillna(0)
     ticket_cost = ticket_per_person * num_people
 
-    # 2. Chi phí lưu trú khách sạn (nếu chuyến đi >= 1.5 ngày)
-    nights = max(0, int(np.ceil(days)) - 1)
+    # 2. Chi phí lưu trú khách sạn:
+    # Đi nửa ngày (<= 0.5) hoặc đi 1 ngày (<= 1.0): Đi trong ngày, hoàn toàn không ở khách sạn (0 đêm)
+    if days <= 1.0:
+        nights = 0
+    else:
+        nights = max(0, int(np.ceil(days)) - 1)
+
     hotel_cost = pd.Series(0.0, index=df.index)
     if nights > 0 and hotel_df is not None and "destination_id" in df.columns:
         per_night = hotel_price_per_night(hotel_df)
@@ -217,16 +238,26 @@ def estimate_trip_cost_breakdown(
             room_cost = df["destination_id"].map(per_night).fillna(per_night.median())
             hotel_cost = room_cost * rooms * nights
 
-    # 3. Chi phí ẩm thực (ước tính 2 bữa chính/ngày/người)
+    # 3. Chi phí ẩm thực:
+    # - Nửa ngày: 1 bữa ăn (~35k - 70k)
+    # - 1 ngày: 2 bữa ăn
+    # - > 1 ngày: ước tính 2 bữa/ngày/người
+    if days <= 0.5:
+        meals_count = 1
+    elif days <= 1.0:
+        meals_count = 2
+    else:
+        meals_count = max(2, int(round(days * 2)))
+
     food_cost = pd.Series(0.0, index=df.index)
     if rest_df is not None and "destination_id" in df.columns:
         meal_rate = restaurant_meal_price(rest_df)
-        meals_count = max(1, int(np.ceil(days * 2)))
         if not meal_rate.empty:
-            per_meal = df["destination_id"].map(meal_rate).fillna(meal_rate.median()).fillna(80000.0)
+            per_meal = df["destination_id"].map(meal_rate).fillna(meal_rate.median()).fillna(60000.0)
             food_cost = per_meal * meals_count * num_people
         else:
-            food_cost = pd.Series(80000.0 * meals_count * num_people, index=df.index)
+            food_cost = pd.Series(60000.0 * meals_count * num_people, index=df.index)
+
 
     total_cost = ticket_cost + hotel_cost + food_cost
     return {
@@ -237,15 +268,16 @@ def estimate_trip_cost_breakdown(
     }
 
 
-def estimate_trip_cost(df, preferred_duration=None, hotel_df=None, num_people: int = 1, rest_df=None) -> pd.Series:
+def estimate_trip_cost(df, preferred_duration=None, hotel_df=None, num_people: int = 1, rest_df=None, exact_duration: float = None) -> pd.Series:
     """
     Tổng chi phí ước tính của CẢ NHÓM cho từng điểm đến:
         vé vào cổng/người x số người
-      + giá phòng/đêm x số phòng x số đêm (nếu chuyến đi > 1 ngày)
+      + giá phòng/đêm x số phòng x số đêm (chỉ tính khi đi > 1 ngày)
       + chi phí ăn uống/bữa x số bữa x số người (nếu có rest_df)
     """
-    breakdown = estimate_trip_cost_breakdown(df, preferred_duration, hotel_df, rest_df, num_people)
+    breakdown = estimate_trip_cost_breakdown(df, preferred_duration, hotel_df, rest_df, num_people, exact_duration=exact_duration)
     return breakdown["total"]
+
 
 
 def build_decision_matrix(
@@ -260,6 +292,7 @@ def build_decision_matrix(
     hotel_df: pd.DataFrame = None,
     num_people: int = 1,
     rest_df: pd.DataFrame = None,
+    exact_duration: float = None,
 ) -> pd.DataFrame:
     """
     Xây ma trận quyết định (decision matrix) từ dữ liệu điểm đến đã lọc,
@@ -277,7 +310,9 @@ def build_decision_matrix(
 
     # ── budget_fit: phần ngân sách còn lại sau tổng chi phí ước tính ────
     # Giá trị ∈ [0, 1]: 1 = tối ưu ngân sách, 0 = vượt ngân sách
-    breakdown = estimate_trip_cost_breakdown(df, preferred_duration, hotel_df, rest_df, num_people)
+    breakdown = estimate_trip_cost_breakdown(
+        df, preferred_duration, hotel_df, rest_df, num_people, exact_duration=exact_duration
+    )
     m["est_total_cost"] = breakdown["total"]
     m["est_ticket_cost"] = breakdown["ticket"]
     m["est_hotel_cost"] = breakdown["hotel"]
@@ -289,11 +324,15 @@ def build_decision_matrix(
         m["budget_fit"] = 1.0  # Không có budget → không phạt
 
     # ── duration_fit: 1 / (1 + |thời lượng điểm đến - số ngày khách có|) ∈ (0, 1] ──
-    if preferred_duration:
+    if exact_duration is not None:
+        target_dur = float(exact_duration)
+        m["duration_fit"] = 1.0 / (1.0 + (df["duration_days"].fillna(target_dur) - target_dur).abs())
+    elif preferred_duration:
         mid = trip_days(preferred_duration)
         m["duration_fit"] = 1.0 / (1.0 + (df["duration_days"].fillna(mid) - mid).abs())
     else:
         m["duration_fit"] = 1.0
+
 
     # ── style_match: TF-IDF cosine > cluster filter > uniform ─
     if keyword_query and tfidf_model is not None and tfidf_matrix is not None:
@@ -332,6 +371,7 @@ def build_decision_matrix(
 def rank_by_suitability(
     df: pd.DataFrame,
     budget=None,
+    duration=None,
     preferred_duration=None,
     selected_clusters=None,
     weights=None,
@@ -350,12 +390,25 @@ def rank_by_suitability(
     """
     if budget is None:
         budget = kwargs.get("user_budget", kwargs.get("user_budget_input"))
+    if duration is None:
+        duration = kwargs.get("user_duration")
+
+    exact_dur = None
+    if duration is not None:
+        try:
+            exact_dur = float(duration)
+        except (ValueError, TypeError):
+            pass
+
     if preferred_duration is None:
-        duration_val = kwargs.get("user_duration")
-        if duration_val is not None and not isinstance(duration_val, (tuple, list)):
-            preferred_duration = (max(0.5, duration_val - 1), duration_val + 1)
-        elif duration_val is not None:
-            preferred_duration = duration_val
+        if exact_dur is not None:
+            preferred_duration = (max(0.5, exact_dur - 1), exact_dur + 1)
+        else:
+            duration_val = kwargs.get("user_duration")
+            if duration_val is not None and not isinstance(duration_val, (tuple, list)):
+                preferred_duration = (max(0.5, duration_val - 1), duration_val + 1)
+            elif duration_val is not None:
+                preferred_duration = duration_val
     if keyword_query is None:
         keyword_query = kwargs.get("user_style", kwargs.get("style"))
     if tfidf_model is None:
@@ -386,8 +439,10 @@ def rank_by_suitability(
         hotel_df=hotel_df,
         num_people=num_people,
         rest_df=kwargs.get("rest_df"),
+        exact_duration=exact_dur,
     )
     est_cost = matrix.pop("est_total_cost")  # thông tin hiển thị, không phải tiêu chí TOPSIS
+
     est_ticket = matrix.pop("est_ticket_cost")
     est_hotel = matrix.pop("est_hotel_cost")
     est_food = matrix.pop("est_food_cost")

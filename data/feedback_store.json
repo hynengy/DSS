@@ -1,4 +1,323 @@
 {
-  "implicit_views": {},
-  "explicit_reviews": []
+  "implicit_views": {
+    "DEST_MB_21": {
+      "name": "Cột cờ Lũng Cú",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MB_17": {
+      "name": "Mộc Châu – Sơn La",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MB_10": {
+      "name": "Núi Đồi Bù",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MB_22": {
+      "name": "Thác Bản Giốc",
+      "region": "Miền Bắc",
+      "views": 2
+    },
+    "DEST_MT_27": {
+      "name": "Đèo Hải Vân",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_36": {
+      "name": "Động Phong Nha - Kẻ Bàng",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_49": {
+      "name": "Măng Đen",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_31": {
+      "name": "Cầu Tình Yêu Đà Nẵng",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MT_26": {
+      "name": "Bán đảo Sơn Trà",
+      "region": "Miền Trung",
+      "views": 2
+    },
+    "DEST_MN_81": {
+      "name": "Tượng chúa Kito Vua",
+      "region": "Miền Nam",
+      "views": 2
+    },
+    "DEST_MN_60": {
+      "name": "Đỉnh Langbiang",
+      "region": "Miền Nam",
+      "views": 2
+    },
+    "DEST_MN_61": {
+      "name": "Hồ Tuyền Lâm",
+      "region": "Miền Nam",
+      "views": 2
+    },
+    "DEST_MN_68": {
+      "name": "Đồi Kỳ Quan Phan Thiết",
+      "region": "Miền Nam",
+      "views": 2
+    },
+    "DEST_MN_76": {
+      "name": "Núi Bà Đen Tây Ninh",
+      "region": "Miền Nam",
+      "views": 2
+    },
+    "DEST_MN_59": {
+      "name": "Đồi chè Cầu Đất Farm",
+      "region": "Miền Nam",
+      "views": 1
+    },
+    "DEST_MB_18": {
+      "name": "Đảo Cát Bà",
+      "region": "Miền Bắc",
+      "views": 1
+    },
+    "DEST_MB_14": {
+      "name": "Thiên Sơn – Suối Ngà",
+      "region": "Miền Bắc",
+      "views": 1
+    },
+    "DEST_MT_42": {
+      "name": "Eo Gió Quy Nhơn",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MT_35": {
+      "name": "Vịnh Lăng Cô",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MT_40": {
+      "name": "Bãi biển Nhật Lệ",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MT_23": {
+      "name": "Bà Nà Hills",
+      "region": "Miền Trung",
+      "views": 1
+    },
+    "DEST_MN_89": {
+      "name": "Côn Đảo",
+      "region": "Miền Nam",
+      "views": 1
+    },
+    "DEST_MN_64": {
+      "name": "Ga Đà Lạt",
+      "region": "Miền Nam",
+      "views": 1
+    },
+    "DEST_MN_100": {
+      "name": "Bãi Dài",
+      "region": "Miền Nam",
+      "views": 1
+    },
+    "DEST_MB_16": {
+      "name": "Sapa – Lào Cai",
+      "region": "Miền Bắc",
+      "views": 1
+    },
+    "DEST_MB_13": {
+      "name": "Vườn Quốc Gia Ba Vì",
+      "region": "Miền Bắc",
+      "views": 1
+    },
+    "DEST_MN_94": {
+      "name": "Thành phố Hà Tiên",
+      "region": "Miền Nam",
+      "views": 1
+    }
+  },
+  "explicit_reviews": [
+    {
+      "timestamp": "2026-10-12 08:07:02",
+      "persona": "Khách (Ngân sách: 1.0 triệu)",
+      "stars": 5,
+      "fit_items": [
+        "Cột cờ Lũng Cú (Miền Bắc)",
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Núi Đồi Bù (Miền Bắc)",
+        "Tượng chúa Kito Vua (Miền Nam)",
+        "Đèo Hải Vân (Miền Trung)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_21",
+          "name": "Cột cờ Lũng Cú",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.25833333333333336,
+            "duration_fit": 0.3076923076923077,
+            "style_match": 0.13985485590878693,
+            "cluster_fit": 0.7845536240039926,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.0,
+            "duration_fit": 0.5714285714285714,
+            "style_match": 0.15638094450912554,
+            "cluster_fit": 1.0,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MB_10",
+          "name": "Núi Đồi Bù",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.0,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.1354052274430342,
+            "cluster_fit": 0.7845536240039926,
+            "community_score": 0.6666666666666666
+          }
+        },
+        {
+          "dest_id": "DEST_MN_81",
+          "name": "Tượng chúa Kito Vua",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.7058823529411765,
+            "budget_fit": 0.0,
+            "duration_fit": 0.4849660523763336,
+            "style_match": 0.11246064918678472,
+            "cluster_fit": 0.500189864705869,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_27",
+          "name": "Đèo Hải Vân",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.8823529411764705,
+            "budget_fit": 0.0,
+            "duration_fit": 0.49236829148202865,
+            "style_match": 0.09287369984227364,
+            "cluster_fit": 1.0,
+            "community_score": 0.6666666666666666
+          }
+        }
+      ],
+      "context": {
+        "budget": 1000000,
+        "duration": 1.0,
+        "style": "đi leo núi"
+      }
+    },
+    {
+      "timestamp": "2026-10-12 08:06:11",
+      "persona": "Khách (Ngân sách: 1.0 triệu)",
+      "stars": 4,
+      "fit_items": [
+        "Cột cờ Lũng Cú (Miền Bắc)",
+        "Núi Đồi Bù (Miền Bắc)",
+        "Mộc Châu – Sơn La (Miền Bắc)",
+        "Côn Đảo (Miền Nam)",
+        "Đèo Hải Vân (Miền Trung)"
+      ],
+      "unfit_items": [],
+      "comment": "",
+      "items": [
+        {
+          "dest_id": "DEST_MB_21",
+          "name": "Cột cờ Lũng Cú",
+          "rank": 1,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.1125,
+            "duration_fit": 0.3333333333333333,
+            "style_match": 0.1381916521727417,
+            "cluster_fit": 0.6483913051015533,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_10",
+          "name": "Núi Đồi Bù",
+          "rank": 2,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.0,
+            "duration_fit": 0.5714285714285714,
+            "style_match": 0.18594105825402005,
+            "cluster_fit": 0.6483913051015533,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MB_17",
+          "name": "Mộc Châu – Sơn La",
+          "rank": 3,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.823529411764706,
+            "budget_fit": 0.0,
+            "duration_fit": 0.6666666666666666,
+            "style_match": 0.15452120664400995,
+            "cluster_fit": 1.0,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MN_89",
+          "name": "Côn Đảo",
+          "rank": 4,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.764705882352941,
+            "budget_fit": 0.0,
+            "duration_fit": 0.5,
+            "style_match": 0.1333995775611777,
+            "cluster_fit": 0.9721995378129484,
+            "community_score": 0.5
+          }
+        },
+        {
+          "dest_id": "DEST_MT_27",
+          "name": "Đèo Hải Vân",
+          "rank": 5,
+          "label": "fit",
+          "features": {
+            "rating_num": 0.8823529411764705,
+            "budget_fit": 0.0,
+            "duration_fit": 0.4384042086804034,
+            "style_match": 0.13061319404198443,
+            "cluster_fit": 1.0,
+            "community_score": 0.5
+          }
+        }
+      ],
+      "context": {
+        "budget": 1000000,
+        "duration": 1.5,
+        "style": "núi rừng hoang sơ"
+      }
+    }
+  ]
 }
