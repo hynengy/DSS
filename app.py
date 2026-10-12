@@ -408,6 +408,15 @@ details.desc-details > summary {
 details.desc-details > summary::-webkit-details-marker {
     display: none;
 }
+details.desc-details .show-less {
+    display: none;
+}
+details.desc-details[open] .short-text {
+    display: none !important;
+}
+details.desc-details[open] .show-less {
+    display: inline !important;
+}
 
 </style>
 
@@ -814,18 +823,16 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                     cost_fmt = f"~{tot_per_person:,.0f} đ/người"
                 cost_part = f"<span class='meta-sep'>•</span><span style='color:var(--primary); font-weight:600;' title='Dự toán toàn chuyến gồm Vé + Khách sạn + Ẩm thực'>Dự toán: {cost_fmt}</span>" if tot_est > 0 else ""
 
-                # Mô tả địa điểm có (Xem thêm)
+                # Mô tả địa điểm có (Xem thêm / Thu gọn)
                 desc_text = str(row.get('description', '')).strip()
                 if len(desc_text) > 130:
                     desc_intro = desc_text[:125].rsplit(' ', 1)[0]
                     desc_html = f"""<div style="font-size:0.88rem; color:var(--text-2); line-height:1.55; margin-bottom:8px;">
 <details class="desc-details">
 <summary>
-<span>{desc_intro}... </span><span style="color:var(--primary); font-weight:600; text-decoration:underline; font-size:0.84rem;">(Xem thêm)</span>
+<span class="short-text">{desc_intro}... <span style="color:var(--primary); font-weight:600; text-decoration:underline; font-size:0.84rem;">(Xem thêm)</span></span>
+<span class="show-less">{desc_text} <span style="color:var(--primary); font-weight:600; text-decoration:underline; font-size:0.84rem; margin-left:4px;">(Thu gọn)</span></span>
 </summary>
-<div style="margin-top:5px; padding-top:5px; border-top:1px dashed #E0D6CB; color:var(--text-2); font-size:0.88rem; line-height:1.55;">
-{desc_text}
-</div>
 </details>
 </div>"""
                 else:
