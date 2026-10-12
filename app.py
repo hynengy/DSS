@@ -49,42 +49,45 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,500;0,600;0,700;1,400&display=swap');
 
 :root {
-    --primary:      #9E4429;
-    --primary-dk:   #81351E;
-    --primary-lt:   #FBF4F1;
-    --bg-base:      #F8F7F4;
+    --primary:      #8C2D19; /* Nâu đỏ sang trọng */
+    --primary-dk:   #6E2010;
+    --primary-lt:   #FAF1ED;
+    --primary-glow: rgba(140, 45, 25, 0.12);
+    --bg-base:      #FAF8F5; /* Nền kem ấm cổ điển */
     --bg-card:      #FFFFFF;
     --cream-dk:     #EFEBE2;
-    --text-main:    #1F2937;
-    --text-muted:   #6B7280;
-    --text-2:       #4B5563;
+    --text-main:    #261E1A;
+    --text-muted:   #6D645E;
+    --text-2:       #4D443F;
     --white:        #FFFFFF;
-    --border:       #E5E7EB;
-    --border-light: #F3F4F6;
+    --border:       #E8E0D7;
+    --border-light: #F4EFEB;
     --gold:         #B87C28;
     --gold-bg:      #FCF8EF;
-    --shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.05);
-    --shadow-md:    0 4px 12px rgba(0, 0, 0, 0.06);
-    --shadow-lg:    0 10px 24px rgba(0, 0, 0, 0.08);
+    --shadow-sm:    0 1px 4px rgba(40, 20, 15, 0.05);
+    --shadow-md:    0 4px 14px rgba(40, 20, 15, 0.07);
+    --shadow-lg:    0 10px 28px rgba(40, 20, 15, 0.10);
     --r-sm:         6px;
     --r-md:         10px;
-    --font:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font:         'Times New Roman', Times, 'Lora', serif;
+    --font-heading: 'Playfair Display', 'Times New Roman', Times, serif;
 }
 
 /* Base font & page background */
 html, body, .stApp {
-    font-family: var(--font);
+    font-family: var(--font) !important;
     background-color: var(--bg-base) !important;
     color: var(--text-main);
+    font-size: 16px;
 }
 
-p, label, li, span {
+p, label, li, span, div, input, textarea, select {
     font-family: var(--font);
     color: var(--text-main);
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
 /* Hide Streamlit default chrome */
@@ -92,45 +95,49 @@ p, label, li, span {
 
 /* ═══ HEADINGS & TITLES ═══ */
 h1, h2, h3, h4, .admin-table-title {
-    font-family: var(--font) !important;
-    font-weight: 600 !important;
-    color: var(--text-main) !important;
-    line-height: 1.4 !important;
-    letter-spacing: normal !important;
+    font-family: var(--font-heading) !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.01em !important;
 }
 
-/* ═══ HERO BANNER ═══ */
+/* ═══ HERO BANNER (NÂU ĐỎ HOÀNG GIA) ═══ */
 .hero {
-    background-color: #1E293B;
+    background: linear-gradient(135deg, #42160F 0%, #290D08 100%);
     border-radius: var(--r-md);
-    padding: 32px 24px;
+    padding: 34px 26px;
     text-align: center;
     margin-bottom: 24px;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(140, 45, 25, 0.35);
 }
 .hero-eyebrow {
-    color: #F59E0B;
-    font-size: 0.75rem;
+    color: #E6A75E;
+    font-size: 0.80rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     margin-bottom: 8px;
     display: inline-block;
+    font-family: var(--font);
 }
 .hero-title {
-    font-family: var(--font) !important;
-    font-weight: 600 !important;
-    font-size: 1.7rem !important;
+    font-family: var(--font-heading) !important;
+    font-weight: 700 !important;
+    font-size: 1.9rem !important;
     line-height: 1.35 !important;
-    color: #F8FAFC !important;
-    margin-bottom: 8px !important;
+    color: #FFF9F5 !important;
+    margin-bottom: 10px !important;
 }
 .hero-description {
-    color: #94A3B8;
-    font-size: 0.90rem;
-    max-width: 620px;
+    color: #D9CBC2;
+    font-size: 0.95rem;
+    max-width: 660px;
     margin: 0 auto;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-style: italic;
+    font-family: var(--font);
 }
 
 /* ═══ CARD CONTAINERS ═══ */
@@ -142,18 +149,18 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
     margin-bottom: 20px;
 }
 div[data-testid="stVerticalBlockBorderWrapper"] > div {
-    padding: 20px 24px !important;
+    padding: 22px 26px !important;
 }
 
 .section-title {
-    font-family: var(--font) !important;
-    font-size: 1.15rem !important;
-    font-weight: 600 !important;
-    color: var(--text-main) !important;
+    font-family: var(--font-heading) !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
     margin-bottom: 16px !important;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1.5px solid var(--border);
     padding-bottom: 8px;
-    line-height: 1.4 !important;
+    line-height: 1.35 !important;
 }
 
 /* ═══ BUTTONS ═══ */
@@ -165,8 +172,17 @@ div[data-testid="stVerticalBlockBorderWrapper"] > div {
 }
 .stButton > button {
     border-radius: var(--r-sm) !important;
-    padding: 7px 18px !important;
-    font-size: 0.88rem !important;
+    padding: 7px 20px !important;
+    font-size: 0.92rem !important;
+}
+.stButton > button[kind="primary"] {
+    background-color: var(--primary) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    box-shadow: 0 2px 6px rgba(140, 45, 25, 0.25) !important;
+}
+.stButton > button[kind="primary"]:hover {
+    background-color: var(--primary-dk) !important;
 }
 
 /* Align button right in header column */
@@ -178,7 +194,7 @@ div[data-testid="column"]:nth-of-type(2) .stButton {
 /* ═══ FORM LABELS & INPUTS ═══ */
 .stTextInput label, .stNumberInput label, .stSlider label, .stTextArea label {
     font-family: var(--font) !important;
-    font-size: 0.82rem !important;
+    font-size: 0.88rem !important;
     font-weight: 600 !important;
     color: var(--text-2) !important;
     letter-spacing: normal !important;
@@ -186,7 +202,7 @@ div[data-testid="column"]:nth-of-type(2) .stButton {
 }
 .stTextInput input, .stTextArea textarea, .stNumberInput input {
     font-family: var(--font) !important;
-    font-size: 0.92rem !important;
+    font-size: 0.96rem !important;
     color: var(--text-main) !important;
     background-color: #FFFFFF !important;
     border: 1px solid var(--border) !important;
@@ -195,13 +211,13 @@ div[data-testid="column"]:nth-of-type(2) .stButton {
 }
 .stTextInput input::placeholder, .stTextArea textarea::placeholder {
     font-family: var(--font) !important;
-    font-style: normal !important;
-    color: #9CA3AF !important;
-    font-size: 0.88rem !important;
+    font-style: italic !important;
+    color: #9C938D !important;
+    font-size: 0.90rem !important;
 }
 .stTextInput input:focus, .stTextArea textarea:focus, .stNumberInput input:focus {
     border-color: var(--primary) !important;
-    box-shadow: 0 0 0 2px rgba(158, 68, 41, 0.12) !important;
+    box-shadow: 0 0 0 2px var(--primary-glow) !important;
 }
 
 /* ═══ KPI METRIC CARDS ═══ */
@@ -209,60 +225,70 @@ div[data-testid="column"]:nth-of-type(2) .stButton {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--r-md);
-    padding: 16px;
+    padding: 18px 16px;
     text-align: center;
     box-shadow: var(--shadow-sm);
+    border-top: 3px solid var(--primary);
 }
 .kpi-value {
     color: var(--primary);
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     font-weight: 700;
-    font-family: var(--font);
+    font-family: var(--font-heading);
     line-height: 1.3;
 }
 .kpi-label {
     color: var(--text-muted);
     font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.04em;
-    margin-top: 4px;
+    letter-spacing: 0.05em;
+    margin-top: 6px;
+    font-family: var(--font);
 }
 
 /* ═══ DESTINATION ITEM CARDS ═══ */
 .dest-card-img {
-    width: 100%; height: 160px; object-fit: cover;
+    width: 100%; height: 165px; object-fit: cover;
     border-radius: var(--r-sm);
     box-shadow: var(--shadow-sm);
 }
 .dest-name {
-    font-family: var(--font);
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--text-main);
+    font-family: var(--font-heading) !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
     line-height: 1.35;
     margin-bottom: 6px;
 }
 .match-badge {
-    background: #FDF2E9; color: var(--primary);
-    border: 1px solid #FADBD8;
-    padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.78rem;
+    background: linear-gradient(135deg, #FAF0EB 0%, #F5DDD4 100%);
+    color: var(--primary);
+    border: 1px solid #E8B6A7;
+    padding: 3px 10px; border-radius: 6px;
+    font-weight: 700; font-size: 0.82rem;
+    font-family: var(--font);
+    display: inline-flex; align-items: center;
+    box-shadow: 0 1px 3px rgba(140, 45, 25, 0.08);
 }
 .cluster-tag {
-    font-size: 0.75rem; font-weight: 500; padding: 2px 8px;
+    font-size: 0.76rem; font-weight: 500; padding: 2px 9px;
     border-radius: 4px; display: inline-block;
-    background: #F3F4F6; color: var(--text-2);
+    background: #F4EFEB; color: var(--text-2);
     border: 1px solid var(--border);
+    font-family: var(--font);
 }
 .dest-meta {
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    font-size: 0.82rem; color: var(--text-2); margin-bottom: 8px;
+    font-size: 0.85rem; color: var(--text-2); margin-bottom: 8px;
     line-height: 1.4;
+    font-family: var(--font);
 }
 .meta-sep {
-    color: #D1D5DB; margin: 0 2px;
+    color: #D6CBC2; margin: 0 2px;
 }
 
 </style>
+
 """, unsafe_allow_html=True)
 
 
@@ -385,13 +411,14 @@ h_col1, h_col2 = st.columns([3, 1])
 with h_col1:
     st.markdown("""
     <div style="padding: 4px 0;">
-        <div style="font-family:var(--font); font-size:1.30rem; font-weight:700; color:var(--text-main); line-height:1.4;">
+        <div style="font-family:var(--font-heading); font-size:1.45rem; font-weight:700; color:var(--primary); line-height:1.35;">
             Hệ thống Trợ giúp Ra quyết định Du lịch
         </div>
-        <div style="font-size:0.75rem; font-weight:600; color:var(--text-muted); margin-top:2px;">
+        <div style="font-size:0.75rem; font-weight:600; color:var(--text-muted); margin-top:2px; letter-spacing:0.04em;">
             ĐỒ ÁN DSS · K-MEANS · TOPSIS · CONTENT-BASED FILTERING
         </div>
     </div>
+
     """, unsafe_allow_html=True)
 
 with h_col2:
