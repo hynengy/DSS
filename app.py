@@ -37,7 +37,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 # =========================================================
 st.set_page_config(
     page_title="Hệ thống Trợ giúp Ra quyết định Du lịch Việt Nam",
-    page_icon="🇻🇳",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -676,10 +675,10 @@ if st.session_state["active_view"] == "SURVEY":
                 help="Chọn thời gian: 0.5 ngày (nửa ngày), 1 ngày (đi về trong ngày - không ở khách sạn), hoặc từ 1.5 ngày trở lên nếu có qua đêm."
             )
             if duration <= 1.0:
-                st.caption("🚗 Chuyến đi trong ngày (không cần lưu trú khách sạn).")
+                st.caption("Chuyến đi trong ngày (không cần lưu trú khách sạn).")
             else:
                 _n_prev = max(0, int(np.ceil(duration)) - 1)
-                st.caption(f"🏨 Chuyến đi qua đêm (dự kiến lưu trú {_n_prev} đêm).")
+                st.caption(f"Chuyến đi qua đêm (dự kiến lưu trú {_n_prev} đêm).")
 
 
 
@@ -763,7 +762,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                 try:
                     n = float(val)
                     if not np.isnan(n) and n > 0:
-                        return f" (★ {n:.1f})"
+                        return f" ({n:.1f}/5)"
                 except (ValueError, TypeError):
                     pass
             return ""
@@ -781,7 +780,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                 cluster_clean = clean_title_icon(row.get("cluster_name", "Cụm địa điểm"))
 
                 r_num = row.get("rating_num")
-                rating_part = f"<span>★ {r_num:.1f}</span><span class='meta-sep'>•</span>" if (pd.notna(r_num) and r_num > 0) else ""
+                rating_part = f"<span>{r_num:.1f}/5</span><span class='meta-sep'>•</span>" if (pd.notna(r_num) and r_num > 0) else ""
                 province_part = f"<span>{row.get('province', '')}</span>" if row.get('province') else ""
                 price_str = format_price_range(row.get('cost_min'), row.get('cost_max'))
                 tot_est = row.get("est_total_cost", 0.0)
@@ -996,9 +995,9 @@ elif st.session_state["active_view"] == "ADMIN":
     stats = get_feedback_stats()
 
     if is_cloud_configured():
-        st.success("🟢 **Lưu trữ Cloud (Google Sheets):** Đã kết nối thành công. Toàn bộ đánh giá từ người dùng được lưu vĩnh viễn và không bị mất khi ứng dụng khởi động lại.")
+        st.success("**Lưu trữ Cloud (Google Sheets):** Đã kết nối thành công. Toàn bộ đánh giá từ người dùng được lưu vĩnh viễn và không bị mất khi ứng dụng khởi động lại.")
     else:
-        st.warning("⚠️ **Lưu trữ Cục bộ (Chưa kết nối Google Sheets):** Dữ liệu đang lưu tạm trên file server. Khi app chuyển sang chế độ Sleep trên Streamlit Cloud, dữ liệu có thể bị xóa. Xem hướng dẫn kết nối Google Sheets ở mục Quản lý phía dưới.")
+        st.warning("**Lưu trữ Cục bộ (Chưa kết nối Google Sheets):** Dữ liệu đang lưu tạm trên file server. Khi app chuyển sang chế độ Sleep trên Streamlit Cloud, dữ liệu có thể bị xóa. Xem hướng dẫn kết nối Google Sheets ở mục Quản lý phía dưới.")
 
     # Metric KPI Cards
     m1, m2, m3 = st.columns(3)
@@ -1134,7 +1133,7 @@ elif st.session_state["active_view"] == "ADMIN":
         with q_col1:
             feedback_json_str = json.dumps(load_feedback_data(), ensure_ascii=False, indent=2)
             st.download_button(
-                label="📥 Tải file sao lưu (.json)",
+                label="Tải file sao lưu (.json)",
                 data=feedback_json_str,
                 file_name="feedback_backup.json",
                 mime="application/json",
@@ -1142,7 +1141,7 @@ elif st.session_state["active_view"] == "ADMIN":
             )
         with q_col2:
             if is_cloud_configured():
-                if st.button("☁️ Đồng bộ lên Google Sheets", use_container_width=True):
+                if st.button("Đồng bộ lên Google Sheets", use_container_width=True):
                     ok, msg = sync_local_to_cloud()
                     if ok:
                         st.success(msg)
@@ -1150,29 +1149,29 @@ elif st.session_state["active_view"] == "ADMIN":
                     else:
                         st.error(msg)
             else:
-                st.button("☁️ Chưa kết nối Google Sheets", disabled=True, use_container_width=True)
+                st.button("Chưa kết nối Google Sheets", disabled=True, use_container_width=True)
         with q_col3:
-            if st.button("🗑️ Xóa sạch dữ liệu (Reset)", type="secondary", use_container_width=True):
+            if st.button("Xóa sạch dữ liệu (Reset)", type="secondary", use_container_width=True):
                 reset_feedback_data()
                 st.session_state.pop("_logged_views", None)
                 st.success("Đã xóa toàn bộ dữ liệu phản hồi về trạng thái ban đầu!")
                 st.rerun()
 
-        with st.expander("📋 Hướng dẫn kết nối Google Sheets để lưu đánh giá vĩnh viễn (Chỉ mất 1 phút)"):
+        with st.expander("Hướng dẫn kết nối Google Sheets để lưu đánh giá vĩnh viễn (Chỉ mất 1 phút)"):
             st.markdown("""
             **Cách thiết lập để đánh giá của mọi người không bao giờ bị mất khi deploy Streamlit Cloud:**
 
             1. Mở [Google Sheets](https://sheets.new) tạo một file Trang tính mới.
-            2. Trên thanh menu, chọn **Tiện ích mở rộng (Extensions)** ➔ **Apps Script**.
+            2. Trên thanh menu, chọn **Tiện ích mở rộng (Extensions)** -> **Apps Script**.
             3. Xóa hết mã có sẵn trong Apps Script, dán toàn bộ mã trong file [`google_sheets_script.js`](file:///c:/Users/Lenovo/Downloads/DSS%20%281%29/DSS/google_sheets_script.js) vào.
-            4. Bấm **Triển khai (Deploy)** ➔ **Tùy chọn triển khai mới (New deployment)**.
-            5. Bấm vào biểu tượng bánh răng bên cạnh 'Chọn loại' ➔ Chọn **Ứng dụng web (Web app)**:
+            4. Bấm **Triển khai (Deploy)** -> **Tùy chọn triển khai mới (New deployment)**.
+            5. Bấm vào biểu tượng bánh răng bên cạnh 'Chọn loại' -> Chọn **Ứng dụng web (Web app)**:
                - **Mô tả:** `DSS Feedback Backend`
                - **Thực thi dưới dạng:** `Tôi (tài khoản của bạn)`
                - **Người có quyền truy cập:** **Bất kỳ ai (Anyone)** *(Quan trọng: phải chọn Bất kỳ ai để Streamlit gửi được dữ liệu)*
-            6. Bấm **Triển khai (Deploy)** ➔ Bấm **Ủy quyền truy cập (Authorize access)** ➔ Sao chép **URL ứng dụng web** (có đuôi `/exec`).
+            6. Bấm **Triển khai (Deploy)** -> Bấm **Ủy quyền truy cập (Authorize access)** -> Sao chép **URL ứng dụng web** (có đuôi `/exec`).
             7. **Cấu hình trên Streamlit Cloud:**
-               - Vào dashboard của [Streamlit Cloud](https://share.streamlit.io) ➔ Bấm vào dấu `...` cạnh app ➔ Chọn **Settings** ➔ **Secrets**.
+               - Vào dashboard của [Streamlit Cloud](https://share.streamlit.io) -> Bấm vào dấu `...` cạnh app -> Chọn **Settings** -> **Secrets**.
                - Dán dòng sau vào và bấm Save:
                  ```toml
                  FEEDBACK_WEBHOOK_URL = "URL_BẠN_VỪA_COPY"
