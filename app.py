@@ -108,7 +108,7 @@ button[data-testid="baseButton-primary"],
     border-radius: var(--r-sm) !important;
     padding: 8px 18px !important;
     font-size: 0.95rem !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     box-shadow: 0 2px 6px rgba(140, 45, 25, 0.25) !important;
     transition: all 0.2s ease !important;
 }
@@ -137,7 +137,7 @@ button[data-testid="baseButton-primary"] div,
     fill: #FFFFFF !important;
     font-family: var(--font) !important;
     font-size: 0.95rem !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
 }
 
 /* Hover nút đỏ */
@@ -215,9 +215,10 @@ button[data-testid="baseButton-primary"]:hover *,
     color: #FFFFFF !important;
 }
 
-/* ═══ NÚT PHỤ (SECONDARY) ═══ */
+/* ═══ NÚT PHỤ (SECONDARY) - IN ĐẬM CHỮ ═══ */
 button[kind="secondary"],
 button[data-testid="baseButton-secondary"],
+.stButton > button,
 .stButton > button[kind="secondary"],
 .stFormSubmitButton > button[kind="secondary"],
 .stDownloadButton > button[kind="secondary"] {
@@ -227,17 +228,20 @@ button[data-testid="baseButton-secondary"],
     border-radius: var(--r-sm) !important;
     padding: 7px 18px !important;
     box-shadow: var(--shadow-sm) !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
     transition: all 0.2s ease !important;
 }
 button[kind="secondary"] *,
 button[data-testid="baseButton-secondary"] *,
+.stButton > button *,
 .stButton > button[kind="secondary"] *,
 .stFormSubmitButton > button[kind="secondary"] *,
 .stDownloadButton > button[kind="secondary"] * {
     color: var(--text-main) !important;
     font-family: var(--font) !important;
-    font-weight: 500 !important;
-    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
 }
 button[kind="secondary"]:hover,
 button[data-testid="baseButton-secondary"]:hover {
