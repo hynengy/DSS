@@ -526,6 +526,7 @@ if st.session_state["active_view"] == "SURVEY":
                 step=500000,
                 help="Nhập chi phí dự kiến cho một người. Hệ thống sẽ tự động nhân với số người."
             )
+        with rc3:
             duration = st.number_input(
                 "Thời gian chuyến đi (ngày)",
                 min_value=0.5,
@@ -539,6 +540,7 @@ if st.session_state["active_view"] == "SURVEY":
             else:
                 _n_prev = max(0, int(np.ceil(duration)) - 1)
                 st.caption(f"🏨 Chuyến đi qua đêm (dự kiến lưu trú {_n_prev} đêm).")
+
 
 
         st.markdown("<hr style='margin: 20px 0; border-color: var(--border);'>", unsafe_allow_html=True)
