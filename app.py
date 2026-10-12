@@ -170,8 +170,10 @@ button[data-testid="baseButton-primary"]:hover *,
     font-family: var(--font) !important;
 }
 .hero-title, .hero h1, .hero h2 {
-    font-size: 1.60rem !important;
-    font-weight: 700 !important;
+    font-size: 1.85rem !important; /* Cỡ to */
+    font-weight: 800 !important; /* In đậm */
+    text-transform: uppercase !important; /* In hoa */
+    letter-spacing: 0.04em !important;
     line-height: 1.35 !important;
     color: #FFFFFF !important; /* Chữ trắng tuyệt đối */
     margin-bottom: 8px !important;
@@ -620,7 +622,7 @@ if st.session_state["active_view"] == "SURVEY":
     st.markdown("""
     <div class="hero">
         <span class="hero-eyebrow">Tối ưu hóa Lộ trình</span>
-        <div class="hero-title">Thiết kế chuyến đi của riêng bạn</div>
+        <div class="hero-title">THIẾT KẾ CHUYẾN ĐI CỦA RIÊNG BẠN</div>
         <div class="hero-description">
             Chia sẻ nguyện vọng và ngân sách để hệ thống gợi ý những điểm đến phù hợp nhất dành cho bạn.
         </div>
@@ -723,7 +725,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
         st.markdown("""
         <div class="hero">
             <div class="hero-content">
-                <div class="hero-title">Gợi ý danh sách điểm đến du lịch theo 3 Miền</div>
+                <div class="hero-title">GỢI Ý DANH SÁCH ĐIỂM ĐẾN DU LỊCH THEO 3 MIỀN</div>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -983,7 +985,7 @@ elif st.session_state["active_view"] == "ADMIN":
     <div class="hero">
         <div class="hero-content">
             <span class="hero-eyebrow">Khu vực Quản trị</span>
-            <div class="hero-title">Phản hồi Người dùng & Tương tác Thực tế</div>
+            <div class="hero-title">PHẢN HỒI NGƯỜI DÙNG & TƯƠNG TÁC THỰC TẾ</div>
             <div class="hero-description">
                 Tổng hợp Explicit Feedback (đánh giá tường minh) và Implicit Feedback (hành vi mở xem) thu thập từ hệ thống.
             </div>
