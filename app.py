@@ -49,8 +49,6 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,500;0,600;0,700;1,400&display=swap');
-
 :root {
     --primary:      #8C2D19; /* Nâu đỏ sang trọng */
     --primary-dk:   #6E2010;
@@ -59,9 +57,9 @@ st.markdown("""
     --bg-base:      #FAF8F5; /* Nền kem ấm cổ điển */
     --bg-card:      #FFFFFF;
     --cream-dk:     #EFEBE2;
-    --text-main:    #261E1A;
+    --text-main:    #2A2421;
     --text-muted:   #6D645E;
-    --text-2:       #4D443F;
+    --text-2:       #483F3A;
     --white:        #FFFFFF;
     --border:       #E8E0D7;
     --border-light: #F4EFEB;
@@ -72,117 +70,182 @@ st.markdown("""
     --shadow-lg:    0 10px 28px rgba(40, 20, 15, 0.10);
     --r-sm:         6px;
     --r-md:         10px;
-    --font:         'Times New Roman', Times, 'Lora', serif;
-    --font-heading: 'Playfair Display', 'Times New Roman', Times, serif;
+    --font:         'Times New Roman', Times, serif;
 }
 
-/* Base font & page background */
+/* ═══ BASE FONT & PAGE BACKGROUND ═══ */
 html, body, .stApp {
     font-family: var(--font) !important;
     background-color: var(--bg-base) !important;
     color: var(--text-main);
-    font-size: 16px;
-}
-
-p, label, li, span, div, input, textarea, select {
-    font-family: var(--font);
-    color: var(--text-main);
-    line-height: 1.55;
+    font-size: 15px;
 }
 
 /* Hide Streamlit default chrome */
 #MainMenu, footer, [data-testid="stDecoration"] { visibility: hidden; }
 
-/* ═══ HEADINGS & TITLES ═══ */
-h1, h2, h3, h4, .admin-table-title {
-    font-family: var(--font-heading) !important;
-    font-weight: 700 !important;
-    color: var(--primary) !important;
-    line-height: 1.35 !important;
-    letter-spacing: 0.01em !important;
-}
-
-/* ═══ HERO BANNER (NÂU ĐỎ HOÀNG GIA) ═══ */
-.hero {
-    background: linear-gradient(135deg, #42160F 0%, #290D08 100%);
-    border-radius: var(--r-md);
-    padding: 34px 26px;
-    text-align: center;
-    margin-bottom: 24px;
-    box-shadow: var(--shadow-md);
-    border: 1px solid rgba(140, 45, 25, 0.35);
-}
-.hero-eyebrow {
-    color: #E6A75E;
-    font-size: 0.80rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 8px;
-    display: inline-block;
-    font-family: var(--font);
-}
-.hero-title {
-    font-family: var(--font-heading) !important;
-    font-weight: 700 !important;
-    font-size: 1.9rem !important;
-    line-height: 1.35 !important;
-    color: #FFF9F5 !important;
-    margin-bottom: 10px !important;
-}
-.hero-description {
-    color: #D9CBC2;
-    font-size: 0.95rem;
-    max-width: 660px;
-    margin: 0 auto;
-    line-height: 1.6;
-    font-style: italic;
-    font-family: var(--font);
-}
-
-/* ═══ CARD CONTAINERS ═══ */
-div[data-testid="stVerticalBlockBorderWrapper"] {
-    background: var(--bg-card);
-    border: 1px solid var(--border) !important;
-    border-radius: var(--r-md) !important;
-    box-shadow: var(--shadow-sm) !important;
-    margin-bottom: 20px;
-}
-div[data-testid="stVerticalBlockBorderWrapper"] > div {
-    padding: 22px 26px !important;
-}
-
-.section-title {
-    font-family: var(--font-heading) !important;
-    font-size: 1.25rem !important;
-    font-weight: 700 !important;
-    color: var(--primary) !important;
-    margin-bottom: 16px !important;
-    border-bottom: 1.5px solid var(--border);
-    padding-bottom: 8px;
-    line-height: 1.35 !important;
-}
-
-/* ═══ BUTTONS ═══ */
-.stButton > button, .stButton > button p {
+/* ═══ ĐỒNG BỘ CỠ CHỮ THÔNG THƯỜNG (KHÔNG IN ĐẬM TRÀN LAN) ═══ */
+p, li, .stMarkdown p {
     font-family: var(--font) !important;
-    font-weight: 600 !important;
-    letter-spacing: normal !important;
-    line-height: 1.4 !important;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-main);
+    line-height: 1.55;
 }
-.stButton > button {
-    border-radius: var(--r-sm) !important;
-    padding: 7px 20px !important;
-    font-size: 0.92rem !important;
-}
-.stButton > button[kind="primary"] {
+
+/* ═══ QUY TẮC BẮT BUỘC: NỀN ĐỎ / NÂU ĐỎ THÌ CHỮ PHẢI TRẮNG 100% ═══ */
+
+/* 1. Nút bấm chính (Primary Button) - Toàn bộ nút và mọi phần tử con đều chữ trắng */
+button[kind="primary"],
+button[data-testid="baseButton-primary"],
+.stButton > button[kind="primary"],
+.stFormSubmitButton > button[kind="primary"],
+.stFormSubmitButton > button[data-testid="baseButton-primary"],
+.stDownloadButton > button[kind="primary"] {
     background-color: var(--primary) !important;
+    background: var(--primary) !important;
     color: #FFFFFF !important;
-    border: none !important;
+    border: 1px solid var(--primary-dk) !important;
+    border-radius: var(--r-sm) !important;
+    padding: 8px 18px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
     box-shadow: 0 2px 6px rgba(140, 45, 25, 0.25) !important;
+    transition: all 0.2s ease !important;
 }
+
+button[kind="primary"] *,
+button[kind="primary"] p,
+button[kind="primary"] span,
+button[kind="primary"] div,
+button[data-testid="baseButton-primary"] *,
+button[data-testid="baseButton-primary"] p,
+button[data-testid="baseButton-primary"] span,
+button[data-testid="baseButton-primary"] div,
+.stButton > button[kind="primary"] *,
+.stButton > button[kind="primary"] p,
+.stButton > button[kind="primary"] span,
+.stButton > button[kind="primary"] div,
+.stFormSubmitButton > button[kind="primary"] *,
+.stFormSubmitButton > button[kind="primary"] p,
+.stFormSubmitButton > button[kind="primary"] span,
+.stFormSubmitButton > button[kind="primary"] div,
+.stDownloadButton > button[kind="primary"] *,
+.stDownloadButton > button[kind="primary"] p,
+.stDownloadButton > button[kind="primary"] span,
+.stDownloadButton > button[kind="primary"] div {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+    font-family: var(--font) !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+/* Hover nút đỏ */
+button[kind="primary"]:hover,
+button[data-testid="baseButton-primary"]:hover,
 .stButton > button[kind="primary"]:hover {
     background-color: var(--primary-dk) !important;
+    background: var(--primary-dk) !important;
+    border-color: #551608 !important;
+    color: #FFFFFF !important;
+}
+button[kind="primary"]:hover *,
+button[data-testid="baseButton-primary"]:hover *,
+.stButton > button[kind="primary"]:hover * {
+    color: #FFFFFF !important;
+}
+
+/* 2. Banner Hero (Nền nâu đỏ đậm) */
+.hero {
+    background: linear-gradient(135deg, #50170B 0%, #300C06 100%) !important;
+    border-radius: var(--r-md);
+    padding: 26px 20px;
+    text-align: center;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(140, 45, 25, 0.4);
+}
+.hero, .hero * {
+    font-family: var(--font) !important;
+}
+.hero-title, .hero h1, .hero h2 {
+    font-size: 1.60rem !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    color: #FFFFFF !important; /* Chữ trắng tuyệt đối */
+    margin-bottom: 8px !important;
+}
+.hero-description, .hero p {
+    color: #F5EAE4 !important; /* Trắng sáng */
+    font-size: 0.92rem !important;
+    max-width: 660px;
+    margin: 0 auto;
+    line-height: 1.55;
+    font-weight: 400 !important;
+    font-style: normal !important;
+}
+.hero-eyebrow {
+    color: #F8D0A0 !important; /* Vàng kim nhạt sang trọng */
+    font-size: 0.80rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+/* 3. Huy hiệu Match-Badge (Nền nâu đỏ -> Chữ trắng nổi bật) */
+.match-badge {
+    background-color: var(--primary) !important;
+    background: var(--primary) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.80rem;
+    font-family: var(--font);
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(140, 45, 25, 0.25);
+}
+.match-badge * {
+    color: #FFFFFF !important;
+}
+
+/* ═══ NÚT PHỤ (SECONDARY) ═══ */
+button[kind="secondary"],
+button[data-testid="baseButton-secondary"],
+.stButton > button[kind="secondary"],
+.stFormSubmitButton > button[kind="secondary"],
+.stDownloadButton > button[kind="secondary"] {
+    background-color: #FFFFFF !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-sm) !important;
+    padding: 7px 18px !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all 0.2s ease !important;
+}
+button[kind="secondary"] *,
+button[data-testid="baseButton-secondary"] *,
+.stButton > button[kind="secondary"] *,
+.stFormSubmitButton > button[kind="secondary"] *,
+.stDownloadButton > button[kind="secondary"] * {
+    color: var(--text-main) !important;
+    font-family: var(--font) !important;
+    font-weight: 500 !important;
+    font-size: 0.92rem !important;
+}
+button[kind="secondary"]:hover,
+button[data-testid="baseButton-secondary"]:hover {
+    border-color: var(--primary) !important;
+    background-color: var(--primary-lt) !important;
+    color: var(--primary) !important;
+}
+button[kind="secondary"]:hover * {
+    color: var(--primary) !important;
 }
 
 /* Align button right in header column */
@@ -191,18 +254,50 @@ div[data-testid="column"]:nth-of-type(2) .stButton {
     justify-content: flex-end;
 }
 
-/* ═══ FORM LABELS & INPUTS ═══ */
-.stTextInput label, .stNumberInput label, .stSlider label, .stTextArea label {
+/* ═══ TIÊU ĐỀ MỤC & PHÂN CẤP (CHỈ TO VÀ ĐẬM Ở MỤC CẦN THIẾT) ═══ */
+h1, h2, h3, h4, .admin-table-title {
     font-family: var(--font) !important;
-    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    line-height: 1.35 !important;
+}
+
+.section-title {
+    font-family: var(--font) !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    margin-bottom: 14px !important;
+    border-bottom: 1.5px solid var(--border);
+    padding-bottom: 6px;
+    line-height: 1.35 !important;
+}
+
+/* Card Containers */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background: var(--bg-card);
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-md) !important;
+    box-shadow: var(--shadow-sm) !important;
+    margin-bottom: 20px;
+}
+div[data-testid="stVerticalBlockBorderWrapper"] > div {
+    padding: 20px 24px !important;
+}
+
+/* ═══ FORM LABELS & INPUTS ═══ */
+.stTextInput label, .stNumberInput label, .stSlider label, .stTextArea label, .stSelectbox label {
+    font-family: var(--font) !important;
+    font-size: 0.90rem !important;
     font-weight: 600 !important;
     color: var(--text-2) !important;
     letter-spacing: normal !important;
     text-transform: none !important;
 }
-.stTextInput input, .stTextArea textarea, .stNumberInput input {
+.stTextInput input, .stTextArea textarea, .stNumberInput input, .stSelectbox select {
     font-family: var(--font) !important;
-    font-size: 0.96rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 400 !important;
     color: var(--text-main) !important;
     background-color: #FFFFFF !important;
     border: 1px solid var(--border) !important;
@@ -220,28 +315,54 @@ div[data-testid="column"]:nth-of-type(2) .stButton {
     box-shadow: 0 0 0 2px var(--primary-glow) !important;
 }
 
-/* ═══ KPI METRIC CARDS ═══ */
+/* Chú thích & Lựa chọn Radio */
+.stCaption, [data-testid="stCaptionContainer"] {
+    font-family: var(--font) !important;
+    font-size: 0.82rem !important;
+    color: var(--text-muted) !important;
+    font-weight: 400 !important;
+}
+.stRadio label, .stRadio div[role="radiogroup"] label {
+    font-family: var(--font) !important;
+    font-size: 0.92rem !important;
+    font-weight: 400 !important;
+    color: var(--text-main) !important;
+}
+
+/* Tabs */
+button[data-baseweb="tab"] {
+    font-family: var(--font) !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    color: var(--text-muted) !important;
+}
+button[data-baseweb="tab"][aria-selected="true"] {
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+}
+
+/* ═══ KPI METRIC CARDS (ADMIN) ═══ */
 .kpi-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--r-md);
-    padding: 18px 16px;
+    padding: 16px 14px;
     text-align: center;
     box-shadow: var(--shadow-sm);
     border-top: 3px solid var(--primary);
 }
 .kpi-value {
     color: var(--primary);
-    font-size: 1.9rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    font-family: var(--font-heading);
-    line-height: 1.3;
+    font-family: var(--font);
+    line-height: 1.25;
 }
 .kpi-label {
     color: var(--text-muted);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
     margin-top: 6px;
     font-family: var(--font);
 }
@@ -253,25 +374,15 @@ div[data-testid="column"]:nth-of-type(2) .stButton {
     box-shadow: var(--shadow-sm);
 }
 .dest-name {
-    font-family: var(--font-heading) !important;
-    font-size: 1.25rem !important;
+    font-family: var(--font) !important;
+    font-size: 1.12rem !important;
     font-weight: 700 !important;
     color: var(--primary) !important;
     line-height: 1.35;
-    margin-bottom: 6px;
-}
-.match-badge {
-    background: linear-gradient(135deg, #FAF0EB 0%, #F5DDD4 100%);
-    color: var(--primary);
-    border: 1px solid #E8B6A7;
-    padding: 3px 10px; border-radius: 6px;
-    font-weight: 700; font-size: 0.82rem;
-    font-family: var(--font);
-    display: inline-flex; align-items: center;
-    box-shadow: 0 1px 3px rgba(140, 45, 25, 0.08);
+    margin-bottom: 4px;
 }
 .cluster-tag {
-    font-size: 0.76rem; font-weight: 500; padding: 2px 9px;
+    font-size: 0.78rem; font-weight: 500; padding: 2px 8px;
     border-radius: 4px; display: inline-block;
     background: #F4EFEB; color: var(--text-2);
     border: 1px solid var(--border);
@@ -279,7 +390,7 @@ div[data-testid="column"]:nth-of-type(2) .stButton {
 }
 .dest-meta {
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    font-size: 0.85rem; color: var(--text-2); margin-bottom: 8px;
+    font-size: 0.88rem; color: var(--text-2); margin-bottom: 6px;
     line-height: 1.4;
     font-family: var(--font);
 }
@@ -411,10 +522,10 @@ h_col1, h_col2 = st.columns([3, 1])
 with h_col1:
     st.markdown("""
     <div style="padding: 4px 0;">
-        <div style="font-family:var(--font-heading); font-size:1.45rem; font-weight:700; color:var(--primary); line-height:1.35;">
+        <div style="font-family:var(--font); font-size:1.35rem; font-weight:700; color:var(--primary); line-height:1.35;">
             Hệ thống Trợ giúp Ra quyết định Du lịch
         </div>
-        <div style="font-size:0.75rem; font-weight:600; color:var(--text-muted); margin-top:2px; letter-spacing:0.04em;">
+        <div style="font-size:0.76rem; font-weight:500; color:var(--text-muted); margin-top:2px; letter-spacing:0.04em;">
             ĐỒ ÁN DSS · K-MEANS · TOPSIS · CONTENT-BASED FILTERING
         </div>
     </div>
@@ -690,7 +801,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
 {province_part}
 {cost_part}
 </div>
-<p style="font-size:0.86rem; color:var(--text-2); margin-bottom:8px;">{str(row.get('description',''))[:150]}...</p>
+<p style="font-size:0.88rem; color:var(--text-2); margin-bottom:8px; line-height:1.5;">{str(row.get('description',''))[:150]}...</p>
 <span class="cluster-tag">{cluster_clean}</span>"""
                     st.markdown(card_html, unsafe_allow_html=True)
 
@@ -707,7 +818,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                             feedback=fb_counts.get(row["destination_id"]),
                         )
                         if reasons:
-                            st.markdown("<div style='font-size:0.82rem; font-weight:600; color:var(--text-main); margin-bottom:4px;'>Vì sao lựa chọn này phù hợp?</div>", unsafe_allow_html=True)
+                            st.markdown("<div style='font-size:0.86rem; font-weight:600; color:var(--text-main); margin-bottom:4px;'>Vì sao lựa chọn này phù hợp?</div>", unsafe_allow_html=True)
                             for r in reasons:
                                 st.markdown(f"- {r}")
 
@@ -720,12 +831,12 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                         dur_lbl = f"{duration:g} ngày (nửa ngày)" if duration == 0.5 else f"{duration:g} ngày"
 
                         st.markdown(f"""
-<div style="background:#FAF8F5; border:1px solid var(--border); border-radius:6px; padding:10px 14px; margin:10px 0 14px 0; font-size:0.86rem;">
+<div style="background:#FAF8F5; border:1px solid var(--border); border-radius:6px; padding:10px 14px; margin:10px 0 14px 0; font-size:0.88rem;">
 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-light); padding-bottom:6px; margin-bottom:8px;">
 <span style="font-weight:600; color:var(--text-main);">Dự toán chi phí ({num_people} người · {dur_lbl})</span>
-<span style="font-weight:700; color:var(--primary); font-size:0.95rem;">~{tot_val:,.0f} VNĐ</span>
+<span style="font-weight:700; color:var(--primary); font-size:1.0rem;">~{tot_val:,.0f} VNĐ</span>
 </div>
-<div style="display:flex; flex-wrap:wrap; gap:14px; color:var(--text-2); font-size:0.82rem;">
+<div style="display:flex; flex-wrap:wrap; gap:14px; color:var(--text-2); font-size:0.85rem;">
 <span>Vé tham quan: <b>{ticket_val:,.0f} đ</b></span>
 <span style="color:var(--border);">|</span>
 <span>Ẩm thực (~{meals_calc} bữa): <b>{food_val:,.0f} đ</b></span>
@@ -738,7 +849,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                         if nights_calc > 0:
                             c_hotel, c_rest = st.columns(2)
                             with c_hotel:
-                                st.markdown("<div style='font-size:0.82rem; font-weight:600; color:var(--text-main); margin-bottom:6px;'>Khách sạn lưu trú qua đêm</div>", unsafe_allow_html=True)
+                                st.markdown("<div style='font-size:0.86rem; font-weight:600; color:var(--text-main); margin-bottom:6px;'>Khách sạn lưu trú qua đêm</div>", unsafe_allow_html=True)
                                 hotels = hotel_df[hotel_df["destination_id"] == row["destination_id"]].head(2)
                                 if hotels.empty:
                                     st.caption("Đang cập nhật khách sạn...")
@@ -749,7 +860,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                                     h_p_str = f" <span style='color:var(--text-muted); font-size:0.80rem;'>({h_price}/đêm)</span>" if h_price else ""
                                     st.markdown(f"- **{h_name}**{h_rate}{h_p_str}", unsafe_allow_html=True)
                             with c_rest:
-                                st.markdown("<div style='font-size:0.82rem; font-weight:600; color:var(--text-main); margin-bottom:6px;'>Quán ăn gợi ý</div>", unsafe_allow_html=True)
+                                st.markdown("<div style='font-size:0.86rem; font-weight:600; color:var(--text-main); margin-bottom:6px;'>Quán ăn gợi ý</div>", unsafe_allow_html=True)
                                 rests = rest_df[rest_df["destination_id"] == row["destination_id"]].head(2)
                                 if rests.empty:
                                     st.caption("Đang cập nhật quán ăn...")
@@ -760,7 +871,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                                     r_p_str = f" <span style='color:var(--text-muted); font-size:0.80rem;'>({r_price}/người)</span>" if r_price else ""
                                     st.markdown(f"- **{r_name}**{r_rate}{r_p_str}", unsafe_allow_html=True)
                         else:
-                            st.markdown("<div style='font-size:0.82rem; font-weight:600; color:var(--text-main); margin-bottom:6px;'>Quán ăn & Ẩm thực lân cận (Chuyến đi trong ngày, không cần lưu trú)</div>", unsafe_allow_html=True)
+                            st.markdown("<div style='font-size:0.86rem; font-weight:600; color:var(--text-main); margin-bottom:6px;'>Quán ăn & Ẩm thực lân cận (Chuyến đi trong ngày, không cần lưu trú)</div>", unsafe_allow_html=True)
                             rests = rest_df[rest_df["destination_id"] == row["destination_id"]].head(3)
                             if rests.empty:
                                 st.caption("Đang cập nhật quán ăn...")
@@ -788,7 +899,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
             st.markdown('<div class="section-title">Kết quả gợi ý có hữu ích không?</div>', unsafe_allow_html=True)
             st.markdown('<div style="font-size:0.88rem; color:var(--text-muted); margin-bottom:14px;">Đánh giá của bạn giúp hệ thống cập nhật trọng số và cải thiện độ chính xác.</div>', unsafe_allow_html=True)
 
-            st.markdown("<div style='font-size:0.82rem; font-weight:600; color:var(--text-main); margin-bottom:4px;'>Mức độ hài lòng:</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:0.86rem; font-weight:600; color:var(--text-main); margin-bottom:4px;'>Mức độ hài lòng:</div>", unsafe_allow_html=True)
             stars_choice = st.radio(
                 "Mức độ hài lòng",
                 [1, 2, 3, 4, 5],
@@ -798,7 +909,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                 label_visibility="collapsed"
             )
 
-            st.markdown("<div style='font-size:0.82rem; font-weight:600; color:var(--text-main); margin-top:14px; margin-bottom:6px;'>Đánh giá sự phù hợp của các địa điểm gợi ý:</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:0.86rem; font-weight:600; color:var(--text-main); margin-top:14px; margin-bottom:6px;'>Đánh giá sự phù hợp của các địa điểm gợi ý:</div>", unsafe_allow_html=True)
 
             top_recommended = scored_df.head(5)
             item_evals = {}
