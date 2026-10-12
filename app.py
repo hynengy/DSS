@@ -1154,6 +1154,54 @@ elif st.session_state["active_view"] == "ADMIN":
 
     st.markdown("<div style='height:24px;'></div>", unsafe_allow_html=True)
 
+    # Trực quan hóa Dữ liệu Thực nghiệm (Sơ đồ & Biểu đồ)
+    with st.container(border=True):
+        st.markdown('<div class="section-title">Trực quan hóa Dữ liệu Thực nghiệm (Sơ đồ & Biểu đồ)</div>', unsafe_allow_html=True)
+        if stats["total_explicit"] > 0:
+            c_chart1, c_chart2 = st.columns(2)
+            with c_chart1:
+                st.markdown("<div style='font-size:0.88rem; font-weight:600; color:var(--text-main); margin-bottom:8px;'>Phân bố mức độ hài lòng (1 - 5 sao)</div>", unsafe_allow_html=True)
+                star_counts = {f"{i} sao": 0 for i in range(1, 6)}
+                for r in stats["explicit_reviews"]:
+                    s = r.get("stars")
+                    if s in [1, 2, 3, 4, 5]:
+                        star_counts[f"{s} sao"] += 1
+                df_stars = pd.DataFrame(list(star_counts.items()), columns=["Mức độ", "Số lượt"])
+                st.bar_chart(df_stars.set_index("Mức độ"), color="#8C2D19")
+
+            with c_chart2:
+                st.markdown("<div style='font-size:0.88rem; font-weight:600; color:var(--text-main); margin-bottom:8px;'>Sự dịch chuyển Trọng số TOPSIS (Ban đầu vs Đã học)</div>", unsafe_allow_html=True)
+                FEATURE_NAMES = {
+                    "rating_num": "Đánh giá (Rating)",
+                    "budget_fit": "Ngân sách (Budget)",
+                    "duration_fit": "Thời gian (Duration)",
+                    "style_match": "Sở thích (Style)",
+                    "cluster_fit": "Cụm K-Means"
+                }
+                base_w = recommended_weights(True)
+                learned_w, _ = learn_weights(stats["explicit_reviews"], base_w, has_query=True)
+                df_weights = pd.DataFrame({
+                    "Tiêu chí": [FEATURE_NAMES[k] for k in LEARN_FEATURES],
+                    "Trọng số ban đầu": [base_w.get(k, 0.0) for k in LEARN_FEATURES],
+                    "Trọng số đã học": [learned_w.get(k, 0.0) for k in LEARN_FEATURES]
+                })
+                st.bar_chart(df_weights.set_index("Tiêu chí"), color=["#B3ABA5", "#8C2D19"])
+
+            # Top địa điểm phù hợp nhất
+            fit_counter = {}
+            for r in stats["explicit_reviews"]:
+                for item in r.get("fit_items", []):
+                    fit_counter[item] = fit_counter.get(item, 0) + 1
+            if fit_counter:
+                st.markdown("<div style='font-size:0.88rem; font-weight:600; color:var(--text-main); margin-top:16px; margin-bottom:8px;'>Top địa điểm được người dùng đánh giá 'Phù hợp' nhiều nhất</div>", unsafe_allow_html=True)
+                top_fits = sorted(fit_counter.items(), key=lambda x: x[1], reverse=True)[:8]
+                df_top_fit = pd.DataFrame(top_fits, columns=["Điểm đến", "Lượt vote"]).set_index("Điểm đến")
+                st.bar_chart(df_top_fit, color="#8C2D19")
+        else:
+            st.info("Chưa có đủ dữ liệu đánh giá để vẽ biểu đồ. Khi người dùng gửi đánh giá từ trang Gợi ý, hệ thống sẽ tự động vẽ sơ đồ trực quan hóa tại đây.")
+
+    st.markdown("<div style='height:24px;'></div>", unsafe_allow_html=True)
+
     # 1. Implicit Feedback Table
     with st.container(border=True):
         st.markdown('<div class="section-title">Lượt xem địa điểm (Implicit Feedback)</div>', unsafe_allow_html=True)
