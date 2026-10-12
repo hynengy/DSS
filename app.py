@@ -399,6 +399,16 @@ button[data-baseweb="tab"][aria-selected="true"] {
     color: #D6CBC2; margin: 0 2px;
 }
 
+/* Custom Xem Thêm Details/Summary */
+details.desc-details > summary {
+    list-style: none;
+    outline: none;
+    cursor: pointer;
+}
+details.desc-details > summary::-webkit-details-marker {
+    display: none;
+}
+
 </style>
 
 """, unsafe_allow_html=True)
@@ -757,15 +767,28 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
         st.info(f"Dự toán ngân sách chuyến đi: Đã tổng hợp vé tham quan, {stay_desc} và ẩm thực nhà hàng (~{meals_calc} bữa) để đối chiếu với ngân sách {total_budget/1e6:.1f} triệu VNĐ của nhóm bạn.")
         t_mb, t_mt, t_mn = st.tabs(["Miền Bắc", "Miền Trung", "Miền Nam"])
 
-        def format_sub_rating(val):
-            if pd.notna(val):
+        def render_mini_card(title, rating_num, price_min, price_max, price_suffix):
+            rate_html = ""
+            if pd.notna(rating_num):
                 try:
-                    n = float(val)
+                    n = float(rating_num)
                     if not np.isnan(n) and n > 0:
-                        return f" ({n:.1f}/5)"
+                        rate_html = f"<span style='color:#F5A623; font-weight:bold;'>★</span> <span style='font-weight:600;'>{n:.1f}</span>"
                 except (ValueError, TypeError):
                     pass
-            return ""
+
+            p_str = format_price_range(price_min, price_max)
+            p_html = f"<span style='color:var(--primary); font-weight:600;'>{p_str}{price_suffix}</span>" if p_str else ""
+
+            meta_elements = [el for el in [rate_html, p_html] if el]
+            meta_row = " <span style='color:#DDD5CE; margin:0 4px;'>•</span> ".join(meta_elements) if meta_elements else ""
+
+            return f"""
+<div style="background:#FAF8F5; border:1px solid #ECE3D9; border-radius:6px; padding:7px 11px; margin-bottom:7px;">
+    <div style="font-weight:600; font-size:0.86rem; color:var(--text-main); line-height:1.35; margin-bottom:2px;">{title}</div>
+    <div style="font-size:0.82rem; color:var(--text-2); display:flex; align-items:center; flex-wrap:wrap; gap:4px;">{meta_row}</div>
+</div>
+"""
 
         def render_region_destinations(region_name, df_data):
             region_df = df_data[df_data["Miền"] == region_name].copy()
@@ -780,7 +803,7 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                 cluster_clean = clean_title_icon(row.get("cluster_name", "Cụm địa điểm"))
 
                 r_num = row.get("rating_num")
-                rating_part = f"<span>{r_num:.1f}/5</span><span class='meta-sep'>•</span>" if (pd.notna(r_num) and r_num > 0) else ""
+                rating_part = f"<span><span style='color:#F5A623; font-size:0.92rem;'>★</span> <b style='color:var(--text-main);'>{r_num:.1f}</b>/5</span><span class='meta-sep'>•</span>" if (pd.notna(r_num) and r_num > 0) else ""
                 province_part = f"<span>{row.get('province', '')}</span>" if row.get('province') else ""
                 price_str = format_price_range(row.get('cost_min'), row.get('cost_max'))
                 tot_est = row.get("est_total_cost", 0.0)
@@ -790,6 +813,23 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                 else:
                     cost_fmt = f"~{tot_per_person:,.0f} đ/người"
                 cost_part = f"<span class='meta-sep'>•</span><span style='color:var(--primary); font-weight:600;' title='Dự toán toàn chuyến gồm Vé + Khách sạn + Ẩm thực'>Dự toán: {cost_fmt}</span>" if tot_est > 0 else ""
+
+                # Mô tả địa điểm có (Xem thêm)
+                desc_text = str(row.get('description', '')).strip()
+                if len(desc_text) > 130:
+                    desc_intro = desc_text[:125].rsplit(' ', 1)[0]
+                    desc_html = f"""<div style="font-size:0.88rem; color:var(--text-2); line-height:1.55; margin-bottom:8px;">
+<details class="desc-details">
+<summary>
+<span>{desc_intro}... </span><span style="color:var(--primary); font-weight:600; text-decoration:underline; font-size:0.84rem;">(Xem thêm)</span>
+</summary>
+<div style="margin-top:5px; padding-top:5px; border-top:1px dashed #E0D6CB; color:var(--text-2); font-size:0.88rem; line-height:1.55;">
+{desc_text}
+</div>
+</details>
+</div>"""
+                else:
+                    desc_html = f"""<div style="font-size:0.88rem; color:var(--text-2); line-height:1.55; margin-bottom:8px;">{desc_text}</div>"""
 
                 col_img, col_info = st.columns([1, 2])
                 with col_img:
@@ -802,13 +842,12 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
 {province_part}
 {cost_part}
 </div>
-<p style="font-size:0.88rem; color:var(--text-2); margin-bottom:8px; line-height:1.5;">{str(row.get('description',''))[:150]}...</p>
+{desc_html}
 <span class="cluster-tag">{cluster_clean}</span>"""
                     st.markdown(card_html, unsafe_allow_html=True)
 
                     with st.expander(f"Chi tiết chi phí & gợi ý cho {row['destination_name'].strip()}"):
-                        # Log implicit view: nội dung expander chạy lại ở MỖI lần rerun nên phải
-                        # khử trùng theo phiên, nếu không mỗi lần bấm sao/radio đều cộng lại lượt xem.
+                        # Log implicit view
                         _logged = st.session_state.setdefault("_logged_views", set())
                         if row["destination_id"] not in _logged:
                             log_implicit_view(row["destination_id"], row["destination_name"].strip(), region_name)
@@ -819,31 +858,40 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                             feedback=fb_counts.get(row["destination_id"]),
                         )
                         if reasons:
-                            st.markdown("<div style='font-size:0.86rem; font-weight:600; color:var(--text-main); margin-bottom:4px;'>Vì sao lựa chọn này phù hợp?</div>", unsafe_allow_html=True)
+                            items_li = []
                             for r in reasons:
-                                st.markdown(f"- {r}")
+                                r_clean = r.replace("★", "<span style='color:#F5A623; font-weight:bold;'>★</span>")
+                                items_li.append(f"<li style='margin-bottom:4px;'>{r_clean}</li>")
+                            st.markdown(f"""
+<div style="margin-bottom:12px;">
+    <div style="font-size:0.88rem; font-weight:600; color:var(--primary); margin-bottom:5px;">Vì sao lựa chọn này phù hợp?</div>
+    <ul style="margin:0; padding-left:18px; font-size:0.85rem; color:var(--text-2); line-height:1.5;">
+        {''.join(items_li)}
+    </ul>
+</div>
+""", unsafe_allow_html=True)
 
                         ticket_val = row.get('est_ticket_cost', 0)
                         hotel_val = row.get('est_hotel_cost', 0)
                         food_val = row.get('est_food_cost', 0)
                         tot_val = row.get('est_total_cost', 0)
 
-                        hotel_text = f"Khách sạn ({nights_calc} đêm): <b>{hotel_val:,.0f} đ</b>" if nights_calc > 0 else "Lưu trú: <b>0 đ (Đi trong ngày - Không ở khách sạn)</b>"
+                        hotel_text = f"Khách sạn ({nights_calc} đêm): <b style='color:var(--text-main);'>{hotel_val:,.0f} đ</b>" if nights_calc > 0 else "Lưu trú: <b style='color:var(--text-main);'>0 đ (Đi trong ngày)</b>"
                         dur_lbl = f"{duration:g} ngày (nửa ngày)" if duration == 0.5 else f"{duration:g} ngày"
 
                         st.markdown(f"""
-<div style="background:#FAF8F5; border:1px solid var(--border); border-radius:6px; padding:10px 14px; margin:10px 0 14px 0; font-size:0.88rem;">
-<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-light); padding-bottom:6px; margin-bottom:8px;">
-<span style="font-weight:600; color:var(--text-main);">Dự toán chi phí ({num_people} người · {dur_lbl})</span>
-<span style="font-weight:700; color:var(--primary); font-size:1.0rem;">~{tot_val:,.0f} VNĐ</span>
-</div>
-<div style="display:flex; flex-wrap:wrap; gap:14px; color:var(--text-2); font-size:0.85rem;">
-<span>Vé tham quan: <b>{ticket_val:,.0f} đ</b></span>
-<span style="color:var(--border);">|</span>
-<span>Ẩm thực (~{meals_calc} bữa): <b>{food_val:,.0f} đ</b></span>
-<span style="color:var(--border);">|</span>
-<span>{hotel_text}</span>
-</div>
+<div style="background:#FAF8F5; border:1px solid #EAE1D7; border-radius:6px; padding:10px 14px; margin:10px 0 14px 0;">
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #EFE7DE; padding-bottom:6px; margin-bottom:8px;">
+        <span style="font-weight:600; font-size:0.88rem; color:var(--text-main);">Dự toán chi phí ({num_people} người · {dur_lbl})</span>
+        <span style="font-weight:700; color:var(--primary); font-size:1.0rem;">~{tot_val:,.0f} VNĐ</span>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:12px; font-size:0.84rem; color:var(--text-2); align-items:center;">
+        <span>Vé tham quan: <b style="color:var(--text-main);">{ticket_val:,.0f} đ</b></span>
+        <span style="color:#D6CBC2;">•</span>
+        <span>Ẩm thực (~{meals_calc} bữa): <b style="color:var(--text-main);">{food_val:,.0f} đ</b></span>
+        <span style="color:#D6CBC2;">•</span>
+        <span>{hotel_text}</span>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -855,33 +903,39 @@ elif st.session_state["active_view"] == "RECOMMENDATIONS":
                                 if hotels.empty:
                                     st.caption("Đang cập nhật khách sạn...")
                                 for _, h in hotels.iterrows():
-                                    h_name = clean_title_icon(h.get('hotel_name', ''))
-                                    h_rate = format_sub_rating(h.get('rating_num'))
-                                    h_price = format_price_range(h.get('price_min'), h.get('price_max'))
-                                    h_p_str = f" <span style='color:var(--text-muted); font-size:0.80rem;'>({h_price}/đêm)</span>" if h_price else ""
-                                    st.markdown(f"- **{h_name}**{h_rate}{h_p_str}", unsafe_allow_html=True)
+                                    st.markdown(render_mini_card(
+                                        clean_title_icon(h.get('hotel_name', '')),
+                                        h.get('rating_num'),
+                                        h.get('price_min'),
+                                        h.get('price_max'),
+                                        "/đêm"
+                                    ), unsafe_allow_html=True)
                             with c_rest:
                                 st.markdown("<div style='font-size:0.86rem; font-weight:600; color:var(--text-main); margin-bottom:6px;'>Quán ăn gợi ý</div>", unsafe_allow_html=True)
                                 rests = rest_df[rest_df["destination_id"] == row["destination_id"]].head(2)
                                 if rests.empty:
                                     st.caption("Đang cập nhật quán ăn...")
                                 for _, r in rests.iterrows():
-                                    r_name = clean_title_icon(r.get('restaurant_name', ''))
-                                    r_rate = format_sub_rating(r.get('rating_num'))
-                                    r_price = format_price_range(r.get('price_min'), r.get('price_max'))
-                                    r_p_str = f" <span style='color:var(--text-muted); font-size:0.80rem;'>({r_price}/người)</span>" if r_price else ""
-                                    st.markdown(f"- **{r_name}**{r_rate}{r_p_str}", unsafe_allow_html=True)
+                                    st.markdown(render_mini_card(
+                                        clean_title_icon(r.get('restaurant_name', '')),
+                                        r.get('rating_num'),
+                                        r.get('price_min'),
+                                        r.get('price_max'),
+                                        "/người"
+                                    ), unsafe_allow_html=True)
                         else:
                             st.markdown("<div style='font-size:0.86rem; font-weight:600; color:var(--text-main); margin-bottom:6px;'>Quán ăn & Ẩm thực lân cận (Chuyến đi trong ngày, không cần lưu trú)</div>", unsafe_allow_html=True)
                             rests = rest_df[rest_df["destination_id"] == row["destination_id"]].head(3)
                             if rests.empty:
                                 st.caption("Đang cập nhật quán ăn...")
                             for _, r in rests.iterrows():
-                                r_name = clean_title_icon(r.get('restaurant_name', ''))
-                                r_rate = format_sub_rating(r.get('rating_num'))
-                                r_price = format_price_range(r.get('price_min'), r.get('price_max'))
-                                r_p_str = f" <span style='color:var(--text-muted); font-size:0.80rem;'>({r_price}/người)</span>" if r_price else ""
-                                st.markdown(f"- **{r_name}**{r_rate}{r_p_str}", unsafe_allow_html=True)
+                                st.markdown(render_mini_card(
+                                    clean_title_icon(r.get('restaurant_name', '')),
+                                    r.get('rating_num'),
+                                    r.get('price_min'),
+                                    r.get('price_max'),
+                                    "/người"
+                                ), unsafe_allow_html=True)
 
 
                 st.markdown("<hr style='margin: 16px 0; border-color: var(--border);'>", unsafe_allow_html=True)
