@@ -177,15 +177,17 @@ def trip_days(preferred_duration):
 
 def hotel_price_per_night(hotel_df):
     """
-    Giá phòng tiêu biểu / đêm của từng điểm đến = TRUNG VỊ giá giữa (min+max)/2 các khách sạn
-    lân cận (trung vị để 1 khách sạn siêu sang không kéo lệch). Bỏ giá thiếu/0.
+    Giá phòng tiêu chuẩn / đêm của từng điểm đến:
+    - Sử dụng giá phòng tối thiểu (price_min) của các khách sạn lân cận (đại diện cho hạng phòng tiêu chuẩn),
+      tránh lấy giá trung bình kéo theo các hạng phòng cao cấp (Suite, Villa 5-10 triệu).
+    - Lấy mức giá phòng tiêu chuẩn thấp nhất mà du khách có thể đặt được tại điểm đến đó.
     """
     if hotel_df is None or hotel_df.empty or "destination_id" not in hotel_df.columns:
         return pd.Series(dtype=float)
-    h = hotel_df[["destination_id", "price_min", "price_max"]].copy()
-    h["mid"] = h[["price_min", "price_max"]].mean(axis=1)
-    h = h[h["mid"] > 0]
-    return h.groupby("destination_id")["mid"].median()
+    h = hotel_df[["destination_id", "price_min"]].copy()
+    h = h[h["price_min"] > 0]
+    return h.groupby("destination_id")["price_min"].min()
+
 
 
 def restaurant_meal_price(rest_df):
