@@ -47,6 +47,28 @@ KEYWORD_FIXES = {
     "tâmlinh": "tâm linh",
 }
 
+VIETNAMESE_STOP_WORDS = [
+    "muốn", "đi", "đến", "tôi", "cho", "bảo", "ở", "tại", "của", "và", "những",
+    "cái", "là", "đó", "này", "với", "một", "các", "có", "được", "ra", "vào",
+    "lại", "thì", "hãy", "gì", "nào", "mấy", "bao", "nhiêu", "nữa", "rồi",
+    "rất", "đẹp", "nơi", "mang", "đậm", "chất", "tuyệt", "vời", "khá", "nhiều",
+    "cũng", "đây", "như", "thế", "khi", "sẽ", "bị", "từ", "để", "về", "cùng",
+    "nhất", "nhau", "luôn", "đang", "còn", "cần", "thật", "sự", "chỉ", "thể",
+    "hơn", "quá", "lắm", "ơi", "đâu", "ai", "sao", "chúng", "mình", "người",
+    "thích", "nhìn", "ngắm", "thấy", "chút", "hơi", "nên", "thôi",
+    # Từ chung chung trong câu hỏi của khách, không mang nghĩa chủ đề
+    "địa", "điểm", "chỗ", "muốn", "kiếm", "tìm", "gợi", "ý",
+    # Từ nhiễu đặc thù ngành du lịch (không mang tính phân loại chủ đề)
+    "du", "lịch", "khách", "tham", "quan", "nổi", "tiếng", "nằm", "thuộc",
+    "cách", "phía", "khu", "vực", "thu", "hút", "hàng", "năm", "trung", "tâm",
+    "thành", "phố", "tỉnh", "việt", "nam", "đông", "tây", "nam", "bắc",
+    # Các tính từ miêu tả chung chung dễ gây nhiễu cụm
+    "xanh", "mát", "trong", "lành", "rộng", "lớn", "thoáng", "đãng",
+    "bầu", "không", "khí", "yên", "bình", "tươi",
+    # LƯU Ý: KHÔNG đưa "thiên", "nhiên", "phong", "cảnh" vào đây - chúng là một phần của
+    # cụm từ mang nghĩa ("thiên nhiên", "phong cảnh") và tên riêng ("Phong Nha", "Thiên Mụ").
+]
+
 # Keyword dài bất thường (>3 từ) thường là tên địa điểm bị nhét nhầm vào cột
 # keywords (vd "Buu dien Trung tam Sai Gon"), không phải keyword chủ đề thật
 # -> loại bỏ để không làm nhiễu cụm.
@@ -69,29 +91,6 @@ def normalize_keywords(kws):
         if kw and len(kw.split()) <= MAX_KEYWORD_WORDS:
             cleaned.append(kw)
     return cleaned
-
-
-VIETNAMESE_STOP_WORDS = [
-    "muốn", "đi", "đến", "tôi", "cho", "bảo", "ở", "tại", "của", "và", "những",
-    "cái", "là", "đó", "này", "với", "một", "các", "có", "được", "ra", "vào",
-    "lại", "thì", "hãy", "gì", "nào", "mấy", "bao", "nhiêu", "nữa", "rồi",
-    "rất", "đẹp", "nơi", "mang", "đậm", "chất", "tuyệt", "vời", "khá", "nhiều",
-    "cũng", "đây", "như", "thế", "khi", "sẽ", "bị", "từ", "để", "về", "cùng",
-    "nhất", "nhau", "luôn", "đang", "còn", "cần", "thật", "sự", "chỉ", "thể",
-    "hơn", "quá", "lắm", "ơi", "đâu", "ai", "sao", "chúng", "mình", "người",
-    "thích", "nhìn", "ngắm", "thấy", "chút", "hơi", "nên", "thôi",
-    # Từ chung chung trong câu hỏi của khách, không mang nghĩa chủ đề
-    "địa", "điểm", "chỗ", "muốn", "kiếm", "tìm", "gợi", "ý",
-    # Từ nhiễu đặc thù ngành du lịch (không mang tính phân loại chủ đề)
-    "du", "lịch", "khách", "tham", "quan", "nổi", "tiếng", "nằm", "thuộc",
-    "cách", "phía", "khu", "vực", "thu", "hút", "hàng", "năm", "trung", "tâm",
-    "thành", "phố", "tỉnh", "việt", "nam", "đông", "tây", "nam", "bắc",
-    # Các tính từ miêu tả chung chung dễ gây nhiễu cụm
-    "xanh", "mát", "trong", "lành", "rộng", "lớn", "thoáng", "đãng",
-    "bầu", "không", "khí", "yên", "bình", "tươi",
-    # LƯU Ý: KHÔNG đưa "thiên", "nhiên", "phong", "cảnh" vào đây - chúng là một phần của
-    # cụm từ mang nghĩa ("thiên nhiên", "phong cảnh") và tên riêng ("Phong Nha", "Thiên Mụ").
-]
 
 
 # Các cột có ngoại lai (vd cost_max = 70 triệu, thời lượng 37 ngày do dữ liệu nhập

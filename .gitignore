@@ -1,10 +1,27 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+
+# Caches and checkpoints
 .ipynb_checkpoints/
+.pytest_cache/
+
+# Virtual Environments
 .env
 .venv/
 env/
 venv/
+ENV/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Deployment Secrets (sử dụng mẫu tại .streamlit/secrets.toml.example)
 .streamlit/secrets.toml
+

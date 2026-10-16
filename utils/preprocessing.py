@@ -1,12 +1,27 @@
 import os
+import sys
 import re
 import pandas as pd
+
+# Đảm bảo in tiếng Việt trên console Windows không bị lỗi UnicodeEncodeError
+if sys.stdout and hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(BASE_DIR, "data")
 
 def find_file(filename_candidates):
     """Tìm đường dẫn file hợp lệ từ danh sách các tên file/đường dẫn khả thi."""
     for path in filename_candidates:
         if os.path.exists(path):
             return path
+        # Kiểm tra thêm đường dẫn trong thư mục data chuẩn của project
+        cand_in_data = os.path.join(DATA_DIR, os.path.basename(path))
+        if os.path.exists(cand_in_data):
+            return cand_in_data
     raise FileNotFoundError(
         f"Không tìm thấy file dữ liệu nào trong số: {filename_candidates}"
     )
@@ -248,39 +263,45 @@ def clean_restaurants(path=None):
 
 
 if __name__ == "__main__":
-    os.makedirs("data", exist_ok=True)
+    os.makedirs(DATA_DIR, exist_ok=True)
 
     dest_df = clean_destinations()
     hotel_df = clean_hotels()
     rest_df = clean_restaurants()
 
-    print("=== Destinations ===")
-    print(
-        dest_df[
-            [
-                "destination_name",
-                "rating_num",
-                "cost_min",
-                "cost_max",
-                "duration_days",
-            ]
-        ].head()
-    )
+    print("=== Destinations (5 mẫu đầu) ===")
+    try:
+        print(
+            dest_df[
+                [
+                    "destination_name",
+                    "rating_num",
+                    "cost_min",
+                    "cost_max",
+                    "duration_days",
+                ]
+            ].head().to_string()
+        )
+    except Exception:
+        print(f"Tổng số điểm đến đã làm sạch: {len(dest_df)}")
 
     # Xuất dữ liệu đã làm sạch vào thư mục data/
-    dest_df.to_csv(
-        "data/clean_destinations.csv", index=False, encoding="utf-8-sig"
-    )
-    hotel_df.to_csv("data/clean_hotels.csv", index=False, encoding="utf-8-sig")
-    rest_df.to_csv(
-        "data/clean_restaurants.csv", index=False, encoding="utf-8-sig"
-    )
+    clean_dest_path = os.path.join(DATA_DIR, "clean_destinations.csv")
+    clean_hotel_path = os.path.join(DATA_DIR, "clean_hotels.csv")
+    clean_rest_path = os.path.join(DATA_DIR, "clean_restaurants.csv")
+    clean_excel_path = os.path.join(DATA_DIR, "Cleaned_Travel_Dataset.xlsx")
 
-    with pd.ExcelWriter(
-        "data/Cleaned_Travel_Dataset.xlsx", engine="openpyxl"
-    ) as writer:
-        dest_df.to_excel(writer, sheet_name="Destinations", index=False)
-        hotel_df.to_excel(writer, sheet_name="Hotels", index=False)
-        rest_df.to_excel(writer, sheet_name="Restaurants", index=False)
+    dest_df.to_csv(clean_dest_path, index=False, encoding="utf-8-sig")
+    hotel_df.to_csv(clean_hotel_path, index=False, encoding="utf-8-sig")
+    rest_df.to_csv(clean_rest_path, index=False, encoding="utf-8-sig")
 
-    print("\n-> Đã xuất thành công Dữ liệu làm sạch vào thư mục 'data/'!")
+    try:
+        with pd.ExcelWriter(clean_excel_path, engine="openpyxl") as writer:
+            dest_df.to_excel(writer, sheet_name="Destinations", index=False)
+            hotel_df.to_excel(writer, sheet_name="Hotels", index=False)
+            rest_df.to_excel(writer, sheet_name="Restaurants", index=False)
+        print("-> Đã xuất thành công file Excel tổng hợp: Cleaned_Travel_Dataset.xlsx")
+    except Exception as e:
+        print(f"-> Bỏ qua xuất Excel (yêu cầu openpyxl): {e}")
+
+    print("-> Đã xuất thành công các file CSV dữ liệu làm sạch vào thư mục 'data/'!")
